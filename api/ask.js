@@ -40,6 +40,9 @@ export default async function handler(req, res) {
     return res.status(200).json(withDebug ? { status, answer, citations, debug } : { status, answer, citations });
   } catch (err) {
     console.error(err);
-    return res.status(502).json({ error: "Something went wrong answering that. Try again in a minute." });
+    const body = { error: "Something went wrong answering that. Try again in a minute." };
+    // In debug mode, show the upstream status line so evaluation failures can be diagnosed.
+    if (String(req.query?.debug || "") === "1") body.detail = String(err.message).slice(0, 160);
+    return res.status(502).json(body);
   }
 }
