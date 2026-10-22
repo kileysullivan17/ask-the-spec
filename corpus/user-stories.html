@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<!-- ============================================================
+  RENDERED ARTIFACT: User stories, Anomaly Upload Validator.
+
+  GENERATED, NOT HAND WRITTEN. Rendered from user_stories_sanitised.docx in
+  the sanitized source set, which is also the file the download
+  link serves, so the page and the download are the same
+  document. Structure is read from the WordprocessingML: heading
+  rank from run size and color, tables from w:tbl with
+  w:tblHeader marking the header row.
+
+  The document text is reproduced as written. Em dashes, double
+  spaces and the sanitization placeholders ("the organization",
+  "the Source Platform", "the OEM") are the source document's
+  own. Do not copy-edit this page. To change it, change the
+  DOCX and re-render.
+============================================================ -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>User stories · Anomaly Upload Validator · Kiley Sullivan</title>
+<meta name="description" content="Twenty user stories across seven epics for the Anomaly Upload Validator, each with testable acceptance criteria and the version it shipped in.">
+<link rel="canonical" href="https://kileysullivan.com/artifacts/user-stories">
+<meta property="og:title" content="User stories · Anomaly Upload Validator · Kiley Sullivan">
+<meta property="og:description" content="Twenty user stories across seven epics for the Anomaly Upload Validator, each with testable acceptance criteria and the version it shipped in.">
+<meta property="og:url" content="https://kileysullivan.com/artifacts/user-stories">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kiley Sullivan">
+<meta property="og:image" content="https://kileysullivan.com/assets/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kiley Sullivan, product manager for AI-native software">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kileysullivan.com/assets/og-default.png">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=Barlow:ital,wght@0,500;0,600;1,500&family=Overpass+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script src="https://cdn.amplitude.com/libs/analytics-browser-2.45.8-min.js.gz" defer></script>
+<script src="../analytics.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="116 76 140 166" width="19" height="22" focusable="false"><path fill="currentColor" d="M127.9 82.5C132.1 82.7 136.3 82.7 140.5 82.6C140.4 101.6 140.8 121.1 140.4 140.1C146.3 134.3 152.1 127.8 157.9 122.3C163.3 122 169.2 122.2 174.6 122.1C166.9 129.4 159.2 137 151.5 144.4L244.2 237L224.1 237L141.3 154.2L140.9 154.5C140.2 157.1 140.5 172.3 140.5 176L127.8 176C128.3 167.4 127.8 155.5 127.9 146.7C128.1 125.3 127.7 103.9 127.9 82.5Z"/></svg></span>
+      <span class="brand-name">Kiley Sullivan</span>
+    </a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="../about.html">About</a>
+      <a href="../case-studies.html">Case studies</a>
+      <a href="../process.html">Process</a>
+      <a href="../writing.html">Writing</a>
+      <a class="nav-contact" href="#contact">Contact</a>
+      <a class="btn btn-primary btn-sm" href="../kiley-sullivan-resume.pdf">Résumé</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="container">
+  <a class="breadcrumb" href="../anomaly-upload-validator.html">← Anomaly Upload Validator</a>
+
+  <div class="page-hero">
+    <p class="label">Anomaly Upload Validator · Specification artifact</p>
+    <h1 class="display">User Stories &amp; Acceptance Criteria</h1>
+    <p class="lede">The work decomposed into shippable pieces.</p>
+    <div class="hero-actions">
+      <a class="btn btn-ghost" href="../assets/artifacts/user_stories_sanitised.docx" download>Download the user stories (DOCX) ↓</a>
+    </div>
+    <p class="media-note">This page is rendered from that DOCX. Same document, same words.</p>
+  </div>
+
+  <div class="doc">
+    <p>Anomaly Upload Validator — User Stories &amp; Acceptance Criteria</p>
+    <p><strong>Platform A  ·  Internal Tool  ·  v3.1.4  ·  September 2026</strong></p>
+    <h2>Overview</h2>
+    <p>This document contains the user stories and acceptance criteria for the Anomaly Upload Validator. Stories are organized by epic and reflect delivered functionality as of v3.1.4. Each story follows the format: "As a [persona], I want [capability], so that [outcome]." Acceptance criteria are written as testable, unambiguous conditions.</p>
+    <h2>Story Map</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-1-cap">
+    <table>
+    <caption id="user-stories-table-1-cap" class="sr-only">Story Map</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Epic</strong></th><td><strong>Name</strong></td><td><strong>Stories</strong></td><td><strong>Version</strong></td><td><strong>Status</strong></td></tr>
+    <tr><th scope="row">EP-01</th><td>File Ingestion</td><td>3 stories</td><td>v1.0–v2.3</td><td>✅ Done</td></tr>
+    <tr><th scope="row">EP-02</th><td>Validation</td><td>4 stories</td><td>v1.0–v1.2</td><td>✅ Done</td></tr>
+    <tr><th scope="row">EP-03</th><td>Status &amp; Compliance</td><td>3 stories</td><td>v1.1–v1.2</td><td>✅ Done</td></tr>
+    <tr><th scope="row">EP-04</th><td>Conversion Engine</td><td>4 stories</td><td>v2.0–v2.1</td><td>✅ Done</td></tr>
+    <tr><th scope="row">EP-05</th><td>Manual Review Resolution</td><td>2 stories</td><td>v2.0</td><td>✅ Done</td></tr>
+    <tr><th scope="row">EP-06</th><td>Results Dashboard</td><td>2 stories</td><td>v1.0–v2.0</td><td>✅ Done</td></tr>
+    <tr><th scope="row">EP-07</th><td>Export</td><td>5 stories</td><td>v1.0–v2.7</td><td>✅ Done</td></tr>
+    <tr><th scope="row">EP-08</th><td>Output Fidelity</td><td>4 stories</td><td>v2.7.1–v3.1.4</td><td>✅ Done</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>EP-01 — File Ingestion</h2>
+    <p><em>Uploading raw source platform exports into the tool.</em></p>
+    <p>US-01 — Upload a dataset file</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-2-cap">
+    <table>
+    <caption id="user-stories-table-2-cap" class="sr-only">EP-01 — File Ingestion</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v1.0</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want to upload a CSV or XLSX file by dragging it into the tool or browsing for it, so that I can begin validating a dataset without needing any technical setup.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> Tool accepts .csv, .xlsx, and .xls file formats.</li>
+    <li><strong>AC-02:</strong> User can drag and drop a file onto the designated drop zone.</li>
+    <li><strong>AC-03:</strong> User can alternatively click the drop zone to open a file browser.</li>
+    <li><strong>AC-04:</strong> On successful load, the filename and total data row count are displayed.</li>
+    <li><strong>AC-05:</strong> If the file is empty or cannot be parsed, a clear error message is shown and no validation runs.</li>
+    <li><strong>AC-06:</strong> No file data is transmitted to any external server at any point.</li>
+    </ul>
+    <p>US-02 — Have column names normalized automatically</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-3-cap">
+    <table>
+    <caption id="user-stories-table-3-cap" class="sr-only">EP-01 — File Ingestion</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v1.0</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want the tool to automatically handle common column name variations in source platform exports, so that I don't have to manually rename columns before uploading.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> "Date" is treated as "Inspection Date".</li>
+    <li><strong>AC-02:</strong> "Blade Chamber" is treated as "BladeChamber".</li>
+    <li><strong>AC-03:</strong> "Chord (%)" is treated as "Chord(%)".</li>
+    <li><strong>AC-04:</strong> "Turbine Serial Number" is treated as "Serial Number".</li>
+    <li><strong>AC-05:</strong> "Links" is treated as "Source Images".</li>
+    <li><strong>AC-06:</strong> Unrecognized column names are passed through unchanged and do not cause errors.</li>
+    <li><strong>AC-07:</strong> Normalisation is applied silently — no notification shown to the user.</li>
+    </ul>
+    <p><strong>Note:</strong> Alias map is defined as a named constant in the tool script. Engineering can extend it without touching validation logic.</p>
+    <p>US-25 — Upload a file that has a metadata preamble above the header row</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-4-cap">
+    <table>
+    <caption id="user-stories-table-4-cap" class="sr-only">EP-01 — File Ingestion</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v2.3</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want a file whose header row sits below several rows of metadata to be read correctly, so that I do not have to delete rows by hand before uploading.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> The header row is located automatically within the first 25 rows of the sheet.</li>
+    <li><strong>AC-02:</strong> The row scoring the most recognised column names is chosen as the header.</li>
+    <li><strong>AC-03:</strong> Rows above the detected header are ignored and do not become data rows.</li>
+    <li><strong>AC-04:</strong> The detected header row number is reported back on the upload confirmation.</li>
+    <li><strong>AC-05:</strong> A file whose header is on row 1 is unaffected.</li>
+    </ul>
+    <p><strong>Note:</strong> Before v2.3 the tool assumed row 1 was the header, so any export carrying a preamble failed at ingestion.</p>
+    <h2>EP-02 — Validation</h2>
+    <p><em>Checking datasets against the Platform A upload specification.</em></p>
+    <p>US-03 — See which required columns are missing</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-5-cap">
+    <table>
+    <caption id="user-stories-table-5-cap" class="sr-only">EP-02 — Validation</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v1.0</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want the tool to tell me which required columns are missing from my dataset, so that I can fix the file before attempting an upload.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> Tool checks for all 18 required column headers after alias normalisation.</li>
+    <li><strong>AC-02:</strong> Missing required columns are displayed as individual cards showing field name and description.</li>
+    <li><strong>AC-03:</strong> Missing conditional columns (Serial Number, BladeChamber, Chord(%), Recommendation) are shown as informational — they do not block the export.</li>
+    <li><strong>AC-04:</strong> Column name matching is case-sensitive.</li>
+    <li><strong>AC-05:</strong> Missing column cards appear before the row-level issues table.</li>
+    </ul>
+    <p>US-04 — See which rows have field errors</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-6-cap">
+    <table>
+    <caption id="user-stories-table-6-cap" class="sr-only">EP-02 — Validation</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v1.0</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want to see exactly which rows have missing or incorrectly formatted required fields, so that I know what needs to be fixed before the dataset can be uploaded.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> Every data row is validated against all required field rules after normalisation and conversion.</li>
+    <li><strong>AC-02:</strong> Each issue is shown with: Row number, Anomaly ID, Field name, Status badge, and detail message.</li>
+    <li><strong>AC-03:</strong> Severity must be an integer between 1 and 5 inclusive.</li>
+    <li><strong>AC-04:</strong> Critical must be "Yes" or "No" (case-insensitive).</li>
+    <li><strong>AC-05:</strong> Inspection Date must match YYYY-MM-DD format exactly.</li>
+    <li><strong>AC-06:</strong> "Damage Location" must be "Internal" or "External" (case-insensitive).</li>
+    <li><strong>AC-07:</strong> Distance (m), Length (m), Width (m) must be numeric values.</li>
+    <li><strong>AC-08:</strong> Coordinates must contain at least three [x,y] bracketed pairs.</li>
+    <li><strong>AC-09:</strong> Empty required fields raise an Error, except for Asset and Coordinates (see US-06).</li>
+    </ul>
+    <p>US-05 — Validate Blade Side using full descriptive names</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-7-cap">
+    <table>
+    <caption id="user-stories-table-7-cap" class="sr-only">EP-02 — Validation</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v1.2</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want the tool to accept both abbreviated codes and full descriptive names for Blade Side values, so that datasets using either naming convention pass validation without manual editing.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> "Code 1" and "Value 1" are both accepted.</li>
+    <li><strong>AC-02:</strong> "Code 2" and "Value 2" are both accepted.</li>
+    <li><strong>AC-03:</strong> "Code 3" and "Value 3" are both accepted.</li>
+    <li><strong>AC-04:</strong> "Code 4" and "Value 4" are both accepted.</li>
+    <li><strong>AC-05:</strong> Matching is case-insensitive.</li>
+    <li><strong>AC-06:</strong> Any value not in the above list raises an Error.</li>
+    </ul>
+    <p><strong>Note:</strong> Expanded in v1.2. Original v1.0 accepted two-character codes only.</p>
+    <p>US-06 — See conditional field warnings separately from hard errors</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-8-cap">
+    <table>
+    <caption id="user-stories-table-8-cap" class="sr-only">EP-02 — Validation</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Engineering / Data Lead</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v1.2</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Engineering / Data Lead, I want conditional field format issues to appear as Warnings rather than Errors, so that they don't inflate the error count or block the export.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> Conditional fields are validated for format only when present and populated.</li>
+    <li><strong>AC-02:</strong> Format violations in conditional fields raise a Warning — not an Error.</li>
+    <li><strong>AC-03:</strong> Warning rows are included in the issues table but excluded from the Error count.</li>
+    <li><strong>AC-04:</strong> Serial Number is fully optional — no flag raised whether absent, empty, or populated.</li>
+    <li><strong>AC-05:</strong> Warnings do not block the Export Converted XLSX button.</li>
+    </ul>
+    <p><strong>Note:</strong> Serial Number demoted from Required to Conditional in v1.2.</p>
+    <h2>EP-03 — Status &amp; Compliance</h2>
+    <p><em>Understanding dataset health at a glance.</em></p>
+    <p>US-07 — See an overall compliance score</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-9-cap">
+    <table>
+    <caption id="user-stories-table-9-cap" class="sr-only">EP-03 — Status &amp; Compliance</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Operations Manager</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v1.1</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As an Operations Manager, I want to see a single compliance score for the dataset, so that I can quickly understand its overall readiness for upload without reviewing every row.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> Compliance score is displayed as a percentage.</li>
+    <li><strong>AC-02:</strong> Score = clean rows / (total rows − check-internally rows) × 100.</li>
+    <li><strong>AC-03:</strong> Check Internally rows are excluded from the denominator.</li>
+    <li><strong>AC-04:</strong> Score bar is green ≥80%, amber 50–79%, red &lt;50%.</li>
+    <li><strong>AC-05:</strong> Score updates automatically after each Manual Review resolution.</li>
+    </ul>
+    <p>US-08 — Distinguish between hard errors and check-internally flags</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-10-cap">
+    <table>
+    <caption id="user-stories-table-10-cap" class="sr-only">EP-03 — Status &amp; Compliance</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v1.1</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want empty Asset and Coordinates fields to be flagged differently from hard errors, so that I'm not penalised for information that may already exist in our internal records.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> When Asset field is empty, the row is flagged as "Check Internally" — not as an Error.</li>
+    <li><strong>AC-02:</strong> When Coordinates field is empty, the row is flagged as "Check Internally" — not as an Error.</li>
+    <li><strong>AC-03:</strong> Check Internally rows are counted in a dedicated summary card.</li>
+    <li><strong>AC-04:</strong> Check Internally rows are excluded from the compliance score denominator.</li>
+    <li><strong>AC-05:</strong> The issues table includes a "Check Internally" filter tab.</li>
+    <li><strong>AC-06:</strong> Check Internally rows do not block the Export Converted XLSX button.</li>
+    </ul>
+    <p>US-09 — Filter the issues table by status type</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-11-cap">
+    <table>
+    <caption id="user-stories-table-11-cap" class="sr-only">EP-03 — Status &amp; Compliance</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v1.0</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want to filter the issues table by status type, so that I can focus on one category of issue at a time.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> Issues table includes five filter tabs: All, Errors, Manual Review, Check Internally, Warnings.</li>
+    <li><strong>AC-02:</strong> "All" tab is selected by default on load.</li>
+    <li><strong>AC-03:</strong> Selecting a tab hides rows that do not match that status.</li>
+    <li><strong>AC-04:</strong> "Manual Review" filter shows both unresolved and Resolved rows.</li>
+    <li><strong>AC-05:</strong> Active tab is visually highlighted.</li>
+    <li><strong>AC-06:</strong> Filter state does not affect the compliance score or export.</li>
+    </ul>
+    <h2>EP-04 — Conversion Engine</h2>
+    <p><em>Transforming Input Source field values across three nomenclature systems.</em></p>
+    <p>US-10 — Have Element values derived and converted automatically</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-12-cap">
+    <table>
+    <caption id="user-stories-table-12-cap" class="sr-only">EP-04 — Conversion Engine</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v2.0 / v2.1</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want the tool to automatically build the Input Source Component value from the raw data columns and look up its Platform A and Platform B equivalents, so that I don't have to manually apply conversion formulas.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> If Material column is present and non-empty: Input Source Component = Component + " - " + Material.</li>
+    <li><strong>AC-02:</strong> If Material is absent/empty but Element column is present: Input Source Component = Component + " - " + Element.</li>
+    <li><strong>AC-03:</strong> If neither suffix column is present/populated: Input Source Component = Component alone.</li>
+    <li><strong>AC-04:</strong> Concatenation uses a LEN()=0 guard — not ISBLANK() — to correctly handle empty-string cells.</li>
+    <li><strong>AC-05:</strong> If found in conversion table, Platform A Element and Platform B Element are populated from columns B and C.</li>
+    <li><strong>AC-06:</strong> If not found, both columns show "MANUAL REVIEW: [original value]" and the row is flagged.</li>
+    </ul>
+    <p><strong>Note:</strong> Multi-format support (Material vs Element fallback) and ISBLANK→LEN fix added in v2.1.</p>
+    <p>US-11 — Have Anomaly Type values derived and converted automatically</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-13-cap">
+    <table>
+    <caption id="user-stories-table-13-cap" class="sr-only">EP-04 — Conversion Engine</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v2.0 / v2.1</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want the tool to automatically build the Input Source Damage Type value and look up its Platform A and Platform B equivalents, so that damage type conversion happens without any manual steps.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> If Type column is present, it is used as the base value.</li>
+    <li><strong>AC-02:</strong> If Type is absent but Anomaly Type column is present, it is used as the base value.</li>
+    <li><strong>AC-03:</strong> If Subtype is present and non-empty: Input Source Damage Type = base + " - " + Subtype.</li>
+    <li><strong>AC-04:</strong> If Subtype is absent or empty: Input Source Damage Type = base value alone (no trailing " - ").</li>
+    <li><strong>AC-05:</strong> Concatenation uses a LEN()=0 guard — not ISBLANK().</li>
+    <li><strong>AC-06:</strong> If found in conversion table, Platform A Anomaly Type and Platform B Anomaly Type are populated.</li>
+    <li><strong>AC-07:</strong> If not found, both columns show "MANUAL REVIEW: [original value]".</li>
+    </ul>
+    <p><strong>Note:</strong> Type vs Anomaly Type column fallback added in v2.1. Fixes the trailing dash bug.</p>
+    <p>US-12 — Have Blade Side values translated automatically</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-14-cap">
+    <table>
+    <caption id="user-stories-table-14-cap" class="sr-only">EP-04 — Conversion Engine</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v2.0</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want Blade Side values to be translated to Platform A and Platform B equivalents automatically, so that source values are correctly mapped without manual intervention.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> "Value 1" maps to Platform A and Platform B equivalents. [Values withheld.]</li>
+    <li><strong>AC-02:</strong> "Value 2" maps to Platform A and Platform B equivalents. [Values withheld.]</li>
+    <li><strong>AC-03:</strong> "Value 3" maps to Platform A and Platform B equivalents. [Values withheld.]</li>
+    <li><strong>AC-04:</strong> "Value 4" maps to Platform A and Platform B equivalents. [Values withheld.]</li>
+    <li><strong>AC-05:</strong> Values not found in the Blade Side conversion table are flagged as Manual Review.</li>
+    </ul>
+    <p>US-13 — Process datasets from multiple source platform export formats</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-15-cap">
+    <table>
+    <caption id="user-stories-table-15-cap" class="sr-only">EP-04 — Conversion Engine</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v2.1</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want the tool to correctly process datasets from different clients even when the column structure varies, so that I don't have to manually reformat files before uploading.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> Format A format (Component + Material columns) is processed correctly.</li>
+    <li><strong>AC-02:</strong> Format B format (Component + Element columns) is processed correctly.</li>
+    <li><strong>AC-03:</strong> Format A format (Type + Subtype columns) is processed correctly.</li>
+    <li><strong>AC-04:</strong> Format B format (Anomaly Type + Subtype columns) is processed correctly.</li>
+    <li><strong>AC-05:</strong> Format B full Blade label (e.g. "Blade A") is normalized to just the letter.</li>
+    <li><strong>AC-06:</strong> Blade letter is extracted from Asset column when Blade column is empty.</li>
+    <li><strong>AC-07:</strong> Format detection is automatic — no user configuration required.</li>
+    </ul>
+    <p><strong>Note:</strong> Added in v2.1 following Format B dataset testing.</p>
+    <h2>EP-05 — Manual Review Resolution</h2>
+    <p><em>Human-in-the-loop handling of unmatched conversion values.</em></p>
+    <p>US-14 — Resolve unmatched conversion values inline</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-16-cap">
+    <table>
+    <caption id="user-stories-table-16-cap" class="sr-only">EP-05 — Manual Review Resolution</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v2.0</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want to resolve Manual Review flags directly in the tool using a dropdown, so that I can correct unmatched values without leaving the browser or editing the source file.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> Each Manual Review row displays the original unmatched value.</li>
+    <li><strong>AC-02:</strong> A dropdown presents all valid Platform A platform values for the affected field.</li>
+    <li><strong>AC-03:</strong> On selection, the row status immediately updates to "Resolved" with a green badge.</li>
+    <li><strong>AC-04:</strong> The resolved value is applied to the converted dataset in memory.</li>
+    <li><strong>AC-05:</strong> A progress counter shows "X / Y manual reviews resolved".</li>
+    <li><strong>AC-06:</strong> Resolved rows remain visible under the Manual Review filter tab.</li>
+    </ul>
+    <p>US-15 — Be prevented from exporting until all Manual Reviews are resolved</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-17-cap">
+    <table>
+    <caption id="user-stories-table-17-cap" class="sr-only">EP-05 — Manual Review Resolution</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v2.0</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want the Export Converted XLSX button to be locked until all Manual Review flags are resolved, so that I can't accidentally export a file with unresolved values.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> Export Converted XLSX button is disabled on initial load.</li>
+    <li><strong>AC-02:</strong> Button remains disabled while any Manual Review rows are unresolved.</li>
+    <li><strong>AC-03:</strong> Button enables automatically when all Manual Reviews are resolved.</li>
+    <li><strong>AC-04:</strong> When all resolved, counter shows "All X resolved — ready to export" in green.</li>
+    <li><strong>AC-05:</strong> If zero Manual Review rows, button is enabled immediately after validation.</li>
+    <li><strong>AC-06:</strong> Export Validation Report CSV is always available after validation — not blocked by Manual Reviews.</li>
+    </ul>
+    <h2>EP-06 — Results Dashboard</h2>
+    <p><em>Operational visibility into dataset health and content.</em></p>
+    <p>US-16 — See a summary of dataset statistics</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-18-cap">
+    <table>
+    <caption id="user-stories-table-18-cap" class="sr-only">EP-06 — Results Dashboard</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Operations Manager</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v1.0</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As an Operations Manager, I want to see a summary of the dataset's content alongside validation results, so that I can confirm the scope of data being processed without opening the source file.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> Total anomaly count (data rows excluding header) is displayed.</li>
+    <li><strong>AC-02:</strong> Unique turbine count is displayed.</li>
+    <li><strong>AC-03:</strong> Total site count is displayed.</li>
+    <li><strong>AC-04:</strong> A per-site breakdown table shows: Site name, Anomaly count, Unique turbine count.</li>
+    <li><strong>AC-05:</strong> Site breakdown table is sorted by anomaly count descending.</li>
+    <li><strong>AC-06:</strong> Stats are derived from raw source data before conversion.</li>
+    </ul>
+    <p>US-17 — See conversion statistics alongside validation results</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-19-cap">
+    <table>
+    <caption id="user-stories-table-19-cap" class="sr-only">EP-06 — Results Dashboard</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v2.0</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want to see how many fields were auto-converted and how many need manual review at a glance, so that I know immediately how much work is required before I can export.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> A "Fields Auto-Converted" card shows the total count of fields successfully matched.</li>
+    <li><strong>AC-02:</strong> A "Rows Need Manual Review" card shows count of rows with at least one unresolved flag.</li>
+    <li><strong>AC-03:</strong> Both cards are displayed immediately after validation completes.</li>
+    <li><strong>AC-04:</strong> Auto-conversion count reflects only automatic matches — not dropdown resolutions.</li>
+    </ul>
+    <h2>EP-07 — Export</h2>
+    <p><em>Producing outputs for upload and internal records.</em></p>
+    <p>US-18 — Export a validation issues report</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-20-cap">
+    <table>
+    <caption id="user-stories-table-20-cap" class="sr-only">EP-07 — Export</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v1.0</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want to download a CSV report of all validation issues, so that I can share it with the data team or keep it as a record.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> Export Validation Report button is available after validation has run.</li>
+    <li><strong>AC-02:</strong> Report is a CSV with columns: Row Number, Anomaly ID, Field, Status, Detail.</li>
+    <li><strong>AC-03:</strong> Status column uses: Error, Manual Review, Check Internally, Warning.</li>
+    <li><strong>AC-04:</strong> File is named "validation_report_YYYY-MM-DD.csv".</li>
+    <li><strong>AC-05:</strong> Report includes all issues regardless of current filter tab.</li>
+    <li><strong>AC-06:</strong> Rows with no issues are not included.</li>
+    </ul>
+    <p>US-19 — Export a converted XLSX working document</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-21-cap">
+    <table>
+    <caption id="user-stories-table-21-cap" class="sr-only">EP-07 — Export</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v2.0</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want to download a formatted XLSX file with all three nomenclature columns populated, so that I have a working document ready for Platform A upload and Platform B submission.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> Exported XLSX contains two tabs: "Damages Report" and "Conversions".</li>
+    <li><strong>AC-02:</strong> "Damages Report" tab matches the column order of the approved reference file exactly.</li>
+    <li><strong>AC-03:</strong> Derived columns use live VLOOKUP formulas referencing the Conversions tab.</li>
+    <li><strong>AC-04:</strong> VLOOKUP formulas use LEN()=0 guards to handle empty-string cells correctly.</li>
+    <li><strong>AC-05:</strong> Resolved Manual Review values are written as static values in the output.</li>
+    <li><strong>AC-06:</strong> Output filename incorporates source filename and export date.</li>
+    <li><strong>AC-07:</strong> Exported file header row is frozen at row 1.</li>
+    </ul>
+    <p>US-20 — Have the Conversions tab be editable and extensible</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-22-cap">
+    <table>
+    <caption id="user-stories-table-22-cap" class="sr-only">EP-07 — Export</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Engineering / Data Lead</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Should Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v2.0</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Engineering / Data Lead, I want the Conversions tab in the exported XLSX to be structured and editable, so that I can add new mapping rows when new damage types or component combinations appear.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> Conversions tab contains three clearly labeled sections: Element / Component, Anomaly Type, Blade Side.</li>
+    <li><strong>AC-02:</strong> Each section has column headers: Input Source, Platform A, Platform B.</li>
+    <li><strong>AC-03:</strong> A note instructs Engineering how to add new rows.</li>
+    <li><strong>AC-04:</strong> VLOOKUP formulas reference defined row ranges in the Conversions tab.</li>
+    <li><strong>AC-05:</strong> Adding a row within the existing range causes VLOOKUPs to pick it up automatically.</li>
+    <li><strong>AC-06:</strong> Known limitation: adding rows beyond the current range requires manual formula range updates.</li>
+    </ul>
+    <p>US-26 — Open image links directly from the exported report</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-23-cap">
+    <table>
+    <caption id="user-stories-table-23-cap" class="sr-only">EP-07 — Export</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Should Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v2.6–v2.7</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want the image links in the exported report to be clickable, so that I can open a referenced image without copying a URL out of a cell.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> Cells in the Links and Source Images columns holding an http or https value carry a real hyperlink.</li>
+    <li><strong>AC-02:</strong> The URL remains visible as the cell's display text.</li>
+    <li><strong>AC-03:</strong> Source Image Reference is left as plain text, being an identifier rather than a URL.</li>
+    <li><strong>AC-04:</strong> The exported URL is byte-for-byte identical to the URL in the source file.</li>
+    <li><strong>AC-05:</strong> Where the source cell shows a friendly label but carries a hyperlink, the underlying URL is used rather than the label.</li>
+    </ul>
+    <p><strong>Note:</strong> AC-04 is the v2.7 fix. Reading a hyperlink returns its XML entities still encoded, and writing it back encodes them a second time; the resulting URL failed signature matching at the storage provider. Entities are now decoded on ingestion. Links are time-limited by the source system, roughly a 30 day window, which the tool does not yet warn about.</p>
+    <p>US-27 — Distinguish the blade from the two serial numbers in the output</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-24-cap">
+    <table>
+    <caption id="user-stories-table-24-cap" class="sr-only">EP-07 — Export</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Engineering / Data Lead</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v2.5</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As an Engineering / Data Lead, I want the blade identifier and the two serial numbers to occupy separate output columns, so that the Asset field means one thing and the upload is not carrying a turbine number where a blade letter belongs.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> <code>Asset</code> (D) carries the blade letter, A to C, and nothing else.</li>
+    <li><strong>AC-02:</strong> <code>Turbine Serial Number</code> (E) carries the value the input supplies in its Asset column.</li>
+    <li><strong>AC-03:</strong> <code>Asset Serial Number</code> (F) carries the value the input supplies as a serial number.</li>
+    <li><strong>AC-04:</strong> The blade letter resolves from a dedicated Blade column, a Blade Position column, a full label such as "Blade A: (No Serial Number)", or a bare letter.</li>
+    <li><strong>AC-05:</strong> <code>Blade</code> no longer exists as a separate output column; <code>Asset</code> represents it.</li>
+    </ul>
+    <p><strong>Note:</strong> Before v2.5 the output <code>Asset</code> column carried turbine numbers rather than blade letters. The v2.5 insertion shifted every column after D by one position, which is the root of the width misalignment later fixed at v3.1.1.</p>
+    <h2>EP-08 — Output Fidelity</h2>
+    <p>Four stories covering defects where the tool produced output that looked correct and was not. Each was found after v2.1 and fixed between v2.7.1 and v3.1.4.</p>
+    <p>US-21 — Read output headers that spell both company names correctly</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-25-cap">
+    <table>
+    <caption id="user-stories-table-25-cap" class="sr-only">EP-08 — Output Fidelity</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Engineering / Data Lead</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v2.7.1</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As an Engineering / Data Lead, I want the derived output column headers to render both company names as those companies write them, so that a downstream consumer matching on header text does not have to match two spellings of the same name.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> All four previously misrendered headers (columns P, Q, U, Y) render their company name correctly.</li>
+    <li><strong>AC-02:</strong> The four headers that were already correct (R, V, W, Z) are unchanged.</li>
+    <li><strong>AC-03:</strong> Output column count and order are identical to the previous release.</li>
+    <li><strong>AC-04:</strong> The export formulas still resolve to the correct column letters, since the corrected strings are also the keys the formula builder reads.</li>
+    <li><strong>AC-05:</strong> Files exported before this release still ingest unchanged; no input alias was added or removed.</li>
+    <li><strong>AC-06:</strong> Verification reads the header row from the raw exported file, not from a summary or a description of it.</li>
+    </ul>
+    <p><strong>Note:</strong> The misrendered strings were a single namespace inside the tool — output header, row key, conversion-field label, Manual Review dropdown key and formula lookup key at once. Correcting only the header text would have broken the formulas. LIM-07 is closed by this story.</p>
+    <p>US-22 — Have dates arrive intact regardless of my timezone</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-26-cap">
+    <table>
+    <caption id="user-stories-table-26-cap" class="sr-only">EP-08 — Output Fidelity</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v3.0</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want an inspection date to reach the export as the date the file actually contains, so that I am neither shipping the wrong day nor clearing a validation error on every dated row.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> A date read from a CSV produces the same calendar date in every timezone.</li>
+    <li><strong>AC-02:</strong> A date read from an XLSX date cell produces the same calendar date in every timezone.</li>
+    <li><strong>AC-03:</strong> An ingested date is normalised to YYYY-MM-DD, so it satisfies the date rule the validator applies to it.</li>
+    <li><strong>AC-04:</strong> No row raises a date-format error solely because of how the date was parsed.</li>
+    <li><strong>AC-05:</strong> A cell carrying a real time of day retains it rather than being truncated to a bare date.</li>
+    <li><strong>AC-06:</strong> Verified across seven timezones spanning UTC-10 to UTC+14, against both CSV and XLSX inputs.</li>
+    </ul>
+    <p><strong>Note:</strong> Two faults with one cause: the ingestion path preferred the parser's display formatting over the underlying value. The timezone shift affected CSV inputs only; the format fault affected both input kinds everywhere, including UTC.</p>
+    <p>US-23 — Have every column I supply reach the export</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-27-cap">
+    <table>
+    <caption id="user-stories-table-27-cap" class="sr-only">EP-08 — Output Fidelity</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Must Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v3.1</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want a column I supplied to carry its values into the export, so that a blank column means the data was absent rather than lost.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> <code>Blade Chamber</code> carries its values into the export when the input supplies them.</li>
+    <li><strong>AC-02:</strong> <code>Chord (%)</code> carries its values into the export when the input supplies them.</li>
+    <li><strong>AC-03:</strong> <code>Chord (%)</code> is written as a number, consistent with the other numeric measurement columns.</li>
+    <li><strong>AC-04:</strong> Output header text is unchanged, so anything downstream matching on it is unaffected.</li>
+    <li><strong>AC-05:</strong> Every other output column is unaffected; only the two previously empty columns change.</li>
+    </ul>
+    <p><strong>Note:</strong> The alias map normalises <code>Blade Chamber</code> to <code>BladeChamber</code> and <code>Chord (%)</code> to <code>Chord(%)</code> on ingestion; the export then looked them up by header text, which retains the space, and both lookups missed. All 39 output columns were audited for the same mismatch — these two were the whole set.</p>
+    <p>US-24 — Read the exported report without resizing columns</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="user-stories-table-28-cap">
+    <table>
+    <caption id="user-stories-table-28-cap" class="sr-only">EP-08 — Output Fidelity</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row"><strong>Persona</strong></th><td>Data Coordinator</td></tr>
+    <tr><th scope="row"><strong>Priority</strong></th><td>Should Have</td></tr>
+    <tr><th scope="row"><strong>Status</strong></th><td>Done</td></tr>
+    <tr><th scope="row"><strong>Version</strong></th><td>v3.1.1–v3.1.4</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>User Story:</strong></p>
+    <p><em>As a Data Coordinator, I want each column in the exported report to be wide enough for what it holds, so that I can read a delivered file without resizing columns by hand.</em></p>
+    <p>Acceptance Criteria</p>
+    <ul>
+    <li><strong>AC-01:</strong> The width list holds exactly one entry per output column.</li>
+    <li><strong>AC-02:</strong> Each width applies to the column it was written for, not to its neighbour.</li>
+    <li><strong>AC-03:</strong> Every conversion-driven column seats its widest possible value without clipping.</li>
+    <li><strong>AC-04:</strong> Columns whose content the tool never sees keep their existing widths rather than being guessed at.</li>
+    <li><strong>AC-05:</strong> Cell values and formulas are byte-identical to the previous release; only the width declarations change.</li>
+    </ul>
+    <p><strong>Note:</strong> The width list had been one entry short since the v2.5 column insertion, so every column from E onward wore its right-hand neighbour's width. <code>Input Source Component</code> carries a deliberate exception to the general width ceiling, because it is the lookup key the Platform A and Platform B formulas read.</p>
+    <p><em>Anomaly Upload Validator  ·  Platform A  ·  Internal Use Only  ·  v3.1.4  ·  September 2026  ·  27 Stories across 8 Epics</em></p>
+  </div>
+
+  <p class="doc-return"><a href="../anomaly-upload-validator.html">← Back to the Anomaly Upload Validator case study</a></p>
+</main>
+
+<footer class="site-footer container">
+  <div class="footer-panel" id="contact">
+    <div>
+      <h2 class="footer-title">Say hello.</h2>
+      <p>Open to product and customer success engineer roles in renewable energy, climate, and AI-native software.</p>
+      <a class="footer-email" href="mailto:kiley@kileysullivan.com">kiley@kileysullivan.com</a>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="https://www.linkedin.com/in/kiley-sullivan-87133480/">LinkedIn ↗</a>
+      <a href="../kiley-sullivan-resume.pdf">Résumé ↓</a>
+      <a href="../case-studies.html">Case studies</a>
+      <a href="../writing.html">Writing</a>
+      <a href="../metrics.html">Metrics</a>
+    </nav>
+  </div>
+  <p class="colophon"><span>Kiley Sullivan · Hawaiʻi</span><span>Built with Claude Code</span></p>
+</footer>
+</body>
+</html>

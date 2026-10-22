@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<!-- ============================================================
+  RENDERED ARTIFACT: Release notes, Anomaly Upload Validator.
+
+  GENERATED, NOT HAND WRITTEN. Rendered from release_notes_sanitised.docx in
+  the sanitized source set, which is also the file the download
+  link serves, so the page and the download are the same
+  document. Structure is read from the WordprocessingML: heading
+  rank from run size and color, tables from w:tbl with
+  w:tblHeader marking the header row.
+
+  The document text is reproduced as written. Em dashes, double
+  spaces and the sanitization placeholders ("the organization",
+  "the Source Platform", "the OEM") are the source document's
+  own. Do not copy-edit this page. To change it, change the
+  DOCX and re-render.
+============================================================ -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Release notes · Anomaly Upload Validator · Kiley Sullivan</title>
+<meta name="description" content="Release notes for the Anomaly Upload Validator across five versions, including the known issues carried at each release and the bugs the next version fixed.">
+<link rel="canonical" href="https://kileysullivan.com/artifacts/release-notes">
+<meta property="og:title" content="Release notes · Anomaly Upload Validator · Kiley Sullivan">
+<meta property="og:description" content="Release notes for the Anomaly Upload Validator across five versions, including the known issues carried at each release and the bugs the next version fixed.">
+<meta property="og:url" content="https://kileysullivan.com/artifacts/release-notes">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kiley Sullivan">
+<meta property="og:image" content="https://kileysullivan.com/assets/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kiley Sullivan, product manager for AI-native software">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kileysullivan.com/assets/og-default.png">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=Barlow:ital,wght@0,500;0,600;1,500&family=Overpass+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script src="https://cdn.amplitude.com/libs/analytics-browser-2.45.8-min.js.gz" defer></script>
+<script src="../analytics.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="116 76 140 166" width="19" height="22" focusable="false"><path fill="currentColor" d="M127.9 82.5C132.1 82.7 136.3 82.7 140.5 82.6C140.4 101.6 140.8 121.1 140.4 140.1C146.3 134.3 152.1 127.8 157.9 122.3C163.3 122 169.2 122.2 174.6 122.1C166.9 129.4 159.2 137 151.5 144.4L244.2 237L224.1 237L141.3 154.2L140.9 154.5C140.2 157.1 140.5 172.3 140.5 176L127.8 176C128.3 167.4 127.8 155.5 127.9 146.7C128.1 125.3 127.7 103.9 127.9 82.5Z"/></svg></span>
+      <span class="brand-name">Kiley Sullivan</span>
+    </a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="../about.html">About</a>
+      <a href="../case-studies.html">Case studies</a>
+      <a href="../process.html">Process</a>
+      <a href="../writing.html">Writing</a>
+      <a class="nav-contact" href="#contact">Contact</a>
+      <a class="btn btn-primary btn-sm" href="../kiley-sullivan-resume.pdf">Résumé</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="container">
+  <a class="breadcrumb" href="../anomaly-upload-validator.html">← Anomaly Upload Validator</a>
+
+  <div class="page-hero">
+    <p class="label">Anomaly Upload Validator · Specification artifact</p>
+    <h1 class="display">Release Notes &amp; Changelog</h1>
+    <p class="lede">What actually shipped.</p>
+    <div class="hero-actions">
+      <a class="btn btn-ghost" href="../assets/artifacts/release_notes_sanitised.docx" download>Download the release notes (DOCX) ↓</a>
+    </div>
+    <p class="media-note">This page is rendered from that DOCX. Same document, same words.</p>
+  </div>
+
+  <div class="doc">
+    <p>Anomaly Upload Validator: Release Notes &amp; Changelog</p>
+    <p><strong>Internal Tool  ·  v3.1.4  ·  September 2026</strong></p>
+    <h2>Document Overview</h2>
+    <p>This document provides a versioned history of the Anomaly Upload Validator, a browser-based tool that ingests raw inspection data exports from Input Source, validates them against Platform A upload specification, converts field values across three nomenclature systems (Input Source, then Platform A, then Platform B), enables human-in-the-loop resolution of unmatched values, and exports a formatted multi-tab XLSX working document.</p>
+    <h2>Version Summary</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-1-cap">
+    <table>
+    <caption id="release-notes-table-1-cap" class="sr-only">Version Summary</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Version</strong></th><td><strong>Release Date</strong></td><td><strong>Status</strong></td><td><strong>Key Milestone</strong></td></tr>
+    <tr><th scope="row">v1.0</th><td>May 2026</td><td>Released</td><td>Core validator, field presence + format checks</td></tr>
+    <tr><th scope="row">v1.1</th><td>May 2026</td><td>Released</td><td>Three-tier status system: Error / Check Internally / Warning</td></tr>
+    <tr><th scope="row">v1.2</th><td>May 2026</td><td>Released</td><td>Blade Side expanded values; Serial Number made optional</td></tr>
+    <tr><th scope="row">v2.0</th><td>May 2026</td><td>Released</td><td>Full conversion engine + XLSX export with live formulas</td></tr>
+    <tr><th scope="row">v2.1</th><td>May 2026</td><td>Released</td><td>Multi-format support (Format A and Format B); ISBLANK bug fix</td></tr>
+    <tr><th scope="row">v2.2</th><td>May 2026</td><td>Released</td><td>Bulk resolution of Manual Review flags</td></tr>
+    <tr><th scope="row">v2.3</th><td>May 2026</td><td>Released</td><td>Content-based column matcher; header detection; 3 bugs fixed</td></tr>
+    <tr><th scope="row">v2.4</th><td>June 2026</td><td>Released</td><td>Pass-through field signatures; sheet order; 3 bugs fixed</td></tr>
+    <tr><th scope="row">v2.5</th><td>June 2026</td><td>Released</td><td>Output schema change: Asset, Turbine SN, Asset SN split</td></tr>
+    <tr><th scope="row">v2.6</th><td>June 2026</td><td>Released</td><td>Clickable image hyperlinks in the exported report</td></tr>
+    <tr><th scope="row">v2.7</th><td>June 2026</td><td>Released</td><td>URL entity double-encoding fix</td></tr>
+    <tr><th scope="row">v2.7.1</th><td>September 2026</td><td>Released</td><td>Four derived output header names corrected; LIM-07 closed</td></tr>
+    <tr><th scope="row">v3.0</th><td>September 2026</td><td>Released</td><td>Date handling: timezone shift and format fault corrected</td></tr>
+    <tr><th scope="row">v3.1</th><td>September 2026</td><td>Released</td><td>Two output columns that wrote empty cells under correct headers</td></tr>
+    <tr><th scope="row">v3.1.1</th><td>September 2026</td><td>Released</td><td>Export column widths realigned; two field descriptions corrected</td></tr>
+    <tr><th scope="row">v3.1.2</th><td>September 2026</td><td>Released</td><td>Asset column width reduced to suit the v2.5 schema</td></tr>
+    <tr><th scope="row">v3.1.3</th><td>September 2026</td><td>Released</td><td>Column widths fitted to content across 14 columns</td></tr>
+    <tr><th scope="row">v3.1.4</th><td>September 2026</td><td>Released</td><td>Input Source Component width set to an exact fit</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>On the v2.2 to v2.7 dates.</strong> These were reconstructed in September 2026, not recorded at the time. v2.3 through v2.7 each anchor to a dated artefact the tool itself produced — converted files carrying an export date in their name, and input files named by working date — which come from the machine clock and are dependable.</p>
+    <p><strong>v2.2 was dated separately, and later.</strong> It produced no such artefact, and was first recorded here as inference from the releases either side of it. It has since been bracketed against the retained working files instead: bulk resolution is present in the build immediately preceding the column-matcher work and absent from the one before that, and those two builds are dated 1 May and 23 May 2026. That places v2.2 inside May on file evidence rather than on position in the sequence. The bracketing is sound in both directions; the residual weakness is that it rests on file modification times, which can record a later re-save. A Drive or chat timestamp from when bulk resolution shipped would still be the stronger record.</p>
+    <p><strong>The June to September gap is real, not a lost record.</strong> No release occupies the span between v2.7 and v2.7.1, and no artefact has been found in it. Whether the work paused or simply went unreleased is not something this document can settle, but nothing is missing from the sequence.</p>
+    <h2>v1.0: Core Validator</h2>
+    <p><strong>Release Date:</strong> May 2026  <strong>·  Status:</strong> Released</p>
+    <p>Background</p>
+    <p>Wind farm asset owners use Input Source to conduct blade inspections. Datasets exported from Input Source as CSV or XLSX must be imported into Platform A before onward submission to Platform B. Prior to this tool, data coordinators manually checked each upload file, a time-consuming, error-prone process with no standardized output.</p>
+    <p>What Was Built</p>
+    <p>A self-contained HTML file deployable via shared Google Drive with no installation required. Accepts CSV and XLSX uploads, parses them client-side, and validates every row and column against Platform A upload specification.</p>
+    <p>Changes</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-2-cap">
+    <table>
+    <caption id="release-notes-table-2-cap" class="sr-only">v1.0: Core Validator</caption>
+    <tbody>
+    <tr><td><strong>Type</strong></td><td><strong>Feature / Fix</strong></td><td><strong>Description</strong></td></tr>
+    <tr><td>Feature</td><td>File ingestion</td><td>Drag-and-drop or browse for CSV / XLSX. Parsed client-side via SheetJS, with no data transmitted externally.</td></tr>
+    <tr><td>Feature</td><td>Column-level validation</td><td>Checks all 19 required column headers present (case-sensitive). Flags missing columns with description.</td></tr>
+    <tr><td>Feature</td><td>Row-level validation</td><td>Validates every required field: presence, format (date, severity range, Yes/No, blade side codes, coordinate pairs, numerics).</td></tr>
+    <tr><td>Feature</td><td>Compliance score</td><td>Percentage clean rows with color indicator (green 80% or above, amber 50% or above, red below 50%).</td></tr>
+    <tr><td>Feature</td><td>Issues table</td><td>Tabular view: Row #, Anomaly ID, Field, Status, Detail.</td></tr>
+    <tr><td>Feature</td><td>Filter tabs</td><td>Filter by All / Errors / Warnings.</td></tr>
+    <tr><td>Feature</td><td>Validation report export</td><td>Download issues as dated CSV.</td></tr>
+    <tr><td>Feature</td><td>Dataset summary</td><td>Total anomaly count, unique turbine count, unique site count with per-site breakdown.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>Known Issues at Release</p>
+    <ul>
+    <li>Serial Number treated as required, demoted to conditional in v1.2.</li>
+    <li>Blade Side validation limited to two-character codes only.</li>
+    <li>No conversion logic; field values validated as-is.</li>
+    </ul>
+    <h2>v1.1: Three-Tier Status System</h2>
+    <p><strong>Release Date:</strong> May 2026  <strong>·  Status:</strong> Released</p>
+    <p>Background</p>
+    <p>During initial testing it became clear that empty Asset and Coordinates fields may exist in internal historical records and simply weren't included in the Input Source export. Flagging these as hard errors created false positives and undermined trust in the compliance score.</p>
+    <p>Changes</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-3-cap">
+    <table>
+    <caption id="release-notes-table-3-cap" class="sr-only">v1.1: Three-Tier Status System</caption>
+    <tbody>
+    <tr><td><strong>Type</strong></td><td><strong>Feature / Fix</strong></td><td><strong>Description</strong></td></tr>
+    <tr><td>Feature</td><td>Check Internally status</td><td>New third status (blue) for Asset and Coordinates when empty. Rows excluded from compliance score.</td></tr>
+    <tr><td>Enhancement</td><td>Compliance score denominator</td><td>Score = clean rows / (total - check-internally rows).</td></tr>
+    <tr><td>Enhancement</td><td>Check Internally filter tab</td><td>Dedicated filter tab added to issues table.</td></tr>
+    <tr><td>Enhancement</td><td>CSV export labels</td><td>Three-label Status column: Error / Check Internally / Warning.</td></tr>
+    <tr><td>Enhancement</td><td>Summary stats card</td><td>Fifth card added for Check Internally row count.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>v1.2: Field Spec Refinements</h2>
+    <p><strong>Release Date:</strong> May 2026  <strong>·  Status:</strong> Released</p>
+    <p>Background</p>
+    <p>Real Input Source exports revealed Blade Side uses full descriptive names, and Serial Number is not consistently available and should not block uploads.</p>
+    <p>Changes</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-4-cap">
+    <table>
+    <caption id="release-notes-table-4-cap" class="sr-only">v1.2: Field Spec Refinements</caption>
+    <tbody>
+    <tr><td><strong>Type</strong></td><td><strong>Feature / Fix</strong></td><td><strong>Description</strong></td></tr>
+    <tr><td>Enhancement</td><td>Blade Side expanded values</td><td>Accepts full names: Value 1, Value 2, Value 3, Value 4 alongside Code 1/Code 2/Code 3/Code 4 codes. Case-insensitive.</td></tr>
+    <tr><td>Enhancement</td><td>Serial Number made optional</td><td>Serial Number demoted from Required to Conditional. Empty value raises no flag.</td></tr>
+    <tr><td>Enhancement</td><td>Field counts corrected</td><td>Required 19 to 18. Conditional 3 to 4.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>v2.0: Conversion Engine &amp; XLSX Export</h2>
+    <p><strong>Release Date:</strong> May 2026  <strong>·  Status:</strong> Released</p>
+    <p>Background</p>
+    <p>Data coordinators still needed to manually convert field values across three nomenclature systems using a separate Excel spreadsheet. This release embedded the conversion logic directly and produced a properly formatted output XLSX, eliminating the manual conversion step.</p>
+    <p>Conversion Flow</p>
+    <p><strong>Input Source, then Platform A, then Platform B</strong></p>
+    <p>Changes</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-5-cap">
+    <table>
+    <caption id="release-notes-table-5-cap" class="sr-only">v2.0: Conversion Engine &amp; XLSX Export</caption>
+    <tbody>
+    <tr><td><strong>Type</strong></td><td><strong>Feature / Fix</strong></td><td><strong>Description</strong></td></tr>
+    <tr><td>Feature</td><td>Input Source Component derivation</td><td>Concatenates Component + Material (if present) using LEN() guard against empty strings.</td></tr>
+    <tr><td>Feature</td><td>Input Source Damage Type derivation</td><td>Concatenates Type + Subtype (if present) using LEN() guard.</td></tr>
+    <tr><td>Feature</td><td>Element conversion</td><td>Three-column output: Input Source Component to Platform A Element and Platform B Element via lookup.</td></tr>
+    <tr><td>Feature</td><td>Anomaly Type conversion</td><td>Three-column output: Input Source Damage Type to Platform A Anomaly Type and Platform B Anomaly Type via lookup.</td></tr>
+    <tr><td>Feature</td><td>Blade Side conversion</td><td>Blade Side to Platform A Blade Side and Platform B Blade Side.</td></tr>
+    <tr><td>Feature</td><td>Manual Review status</td><td>Amber status when concatenated value not in conversion table. Original value preserved. Blocks XLSX export until resolved.</td></tr>
+    <tr><td>Feature</td><td>Human-in-the-loop resolution</td><td>Dropdown on each Manual Review row. Export unlocks when all resolved.</td></tr>
+    <tr><td>Feature</td><td>Export Converted XLSX</td><td>Two-tab output: Damages Report (all columns, live VLOOKUPs) + Conversions (editable mapping table for Engineering).</td></tr>
+    <tr><td>Feature</td><td>Live VLOOKUP formulas</td><td>Derived columns reference Conversions tab. Engineering adds rows; formulas update automatically.</td></tr>
+    <tr><td>Feature</td><td>Column normalisation</td><td>Alias map handles variants: Date to Inspection Date, Turbine Serial Number to Serial Number, Links to Source Images, etc.</td></tr>
+    <tr><td>Enhancement</td><td>Floating point cleanup</td><td>Numeric fields cleaned of floating-point noise on import.</td></tr>
+    <tr><td>Enhancement</td><td>Blade letter extraction</td><td>Blade field populated from Asset column when empty.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>Known Issues at Release</p>
+    <ul>
+    <li>VLOOKUP row ranges hardcoded in exported XLSX. Engineering adding rows beyond existing ranges requires manual formula updates.</li>
+    <li>ISBLANK() formula limitation, fixed in v2.1.</li>
+    <li>Single dataset format supported at release (Format A structure). Multi-format added in v2.1.</li>
+    </ul>
+    <h2>v2.1: Multi-Format Support &amp; Formula Fix</h2>
+    <p><strong>Release Date:</strong> May 2026  <strong>·  Status:</strong> Released</p>
+    <p>Background</p>
+    <p>Testing with the Format B dataset revealed: (1) Format B exports use Component + Element rather than Component + Material, and Anomaly Type + Subtype rather than Type + Subtype. (2) Excel's ISBLANK() returns FALSE for empty string cells, causing a trailing ' - ' on the derived value instead of the base value alone when Subtype is empty.</p>
+    <p>Changes</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-6-cap">
+    <table>
+    <caption id="release-notes-table-6-cap" class="sr-only">v2.1: Multi-Format Support &amp; Formula Fix</caption>
+    <tbody>
+    <tr><td><strong>Type</strong></td><td><strong>Feature / Fix</strong></td><td><strong>Description</strong></td></tr>
+    <tr><td>Fix</td><td>ISBLANK to LEN() fix</td><td>Excel formulas changed from IF(ISBLANK(Subtype),...) to IF(LEN(Subtype)=0,...). Handles both truly blank and empty-string cells.</td></tr>
+    <tr><td>Fix</td><td>Format B Element column</td><td>Detects whether Material column is present. Falls back to Element column as component suffix if absent.</td></tr>
+    <tr><td>Fix</td><td>Format B Anomaly Type column</td><td>Reads Type column when present; falls back to Anomaly Type column when absent.</td></tr>
+    <tr><td>Fix</td><td>Blade field normalisation</td><td>Format B stores 'Blade A' in Blade column. Tool strips label prefix and retains letter for both formats.</td></tr>
+    <tr><td>Enhancement</td><td>Column alias expansion</td><td>COL_ALIASES extended with additional pass-through variants.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>Datasets Validated</p>
+    <ul>
+    <li>Format A, Input Source export (Component + Material, Type + Subtype structure)</li>
+    <li>Format B, Input Source export (Component + Element, Anomaly Type + Subtype structure)</li>
+    </ul>
+    <h2>v2.2: Bulk Manual Review Resolution</h2>
+    <p><strong>Release Date:</strong> May 2026  <strong>·  Status:</strong> Released</p>
+    <p>Background</p>
+    <p>Manual Review flags were cleared one row at a time. On a dataset carrying many unmapped values that is slow and repetitive, and it does not match how a data coordinator actually works: they recognise an unmapped value once, then want that decision applied everywhere it appears in the batch.</p>
+    <p>Changes</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-7-cap">
+    <table>
+    <caption id="release-notes-table-7-cap" class="sr-only">v2.2: Bulk Manual Review Resolution</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Type</strong></th><td><strong>Feature / Fix</strong></td><td><strong>Description</strong></td></tr>
+    <tr><th scope="row">Feature</th><td>Bulk resolution</td><td>Multiple unmapped values resolved at once through dropdown selection rather than row by row.</td></tr>
+    <tr><th scope="row">Unchanged</th><td>Export gate</td><td>Export Converted XLSX remains disabled until every Manual Review flag is cleared. Bulk resolution reduces the cost of clearing them, it does not remove the gate.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>Documentation note</p>
+    <p>The sanitized SDLC document set was built at <strong>v2.1, not v2.2</strong>. This release was therefore the first one those documents never covered, which put the undocumented range at six versions rather than five.</p>
+    <p><strong>That range was closed on 2026-09-18.</strong> The data dictionary, this document, the PRD, the user stories and the test cases were all brought current to v3.1.4. The note is kept because the six-version gap explains why several of those documents needed substantial revision rather than a version bump, and why the dates above had to be reconstructed rather than read off a record.</p>
+    <h2>v2.3: Content-Based Column Matcher</h2>
+    <p><strong>Release Date:</strong> May 2026  <strong>·  Status:</strong> Released</p>
+    <p>Background</p>
+    <p>Real files vary in column order, in column names, and in sheet structure. The fixed-layout assumption held only for files matching the canonical structure exactly, and broke on everything else. Three specific failures drove this release: the header row is not always row 1, because some files carry a work-order preamble block above it; two columns in the same file can share a name while meaning different things at different levels of the record; and the blade letter appears in at least four different shapes across sources.</p>
+    <p>Changes</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-8-cap">
+    <table>
+    <caption id="release-notes-table-8-cap" class="sr-only">v2.3: Content-Based Column Matcher</caption>
+    <tbody>
+    <tr><td><strong>Type</strong></td><td><strong>Feature / Fix</strong></td><td><strong>Description</strong></td></tr>
+    <tr><td>Feature</td><td>Content-based column matcher</td><td>Two passes. A header-alias match first, then a data-shape fingerprint comparing each candidate column's values against the expected shape of the field. Handles renamed and reordered columns.</td></tr>
+    <tr><td>Feature</td><td>Automatic header-row detection</td><td>Up to 25 rows of metadata preamble above the header are scanned and skipped.</td></tr>
+    <tr><td>Feature</td><td>Priority-ordered alias matching</td><td>A more specific alias wins over a general one for the same canonical field.</td></tr>
+    <tr><td>Feature</td><td>Duplicate-name disambiguation</td><td>Where two columns share a name, the closer data-shape match wins.</td></tr>
+    <tr><td>Feature</td><td>Distinct-value tiebreaker</td><td>Where shape scores tie, the column with more distinct values wins, which separates a constant-value column from the varying one that carries the real data.</td></tr>
+    <tr><td>Feature</td><td>View detected columns</td><td>Collapsible confirmation panel in the file-info line showing which input column was bound to each canonical field.</td></tr>
+    <tr><td>Fix (bug 1)</td><td>Bare-letter blade extraction</td><td>The extraction pattern matched only full labels such as "Blade A" and missed files carrying a bare "A", "B" or "C". Now accepts both forms, plus dedicated Blade and Blade Position columns. Closes decision item D-1.</td></tr>
+    <tr><td>Fix (bug 2)</td><td>Duplicate Component column collision</td><td>A file carrying two columns named Component, one at inspection level holding a constant value and one at anomaly level holding the real component, tied on shape scoring because both held valid components. The distinct-value tiebreaker resolves it in favour of the anomaly-level column.</td></tr>
+    <tr><td>Fix (bug 3)</td><td>Duplicate Type column collision</td><td>The same file carried two columns named Type, one a task type and one a damage type. Shape scoring selected the damage type correctly without needing the tiebreaker.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>Provenance note</p>
+    <p>Bugs 2 and 3 were found in a file later confirmed to be a <strong>reconstructed illustrative example rather than a genuine export</strong>. The disambiguation logic is sound regardless, but whether duplicate column names occur in real delivered files is not established. Treat this behaviour as defensive until a genuine file exercises it.</p>
+    <h2>v2.4: Pass-Through Field Signatures, Sheet Order, Conversion Key</h2>
+    <p><strong>Release Date:</strong> June 2026  <strong>·  Status:</strong> Released</p>
+    <p>Background</p>
+    <p>Several output columns were writing a header with nothing beneath it. The cause was not the export and not the specification: the matcher held no field signature for those fields, so it never bound the input column to the canonical name, and the export lookup returned nothing. The field definitions had been correct since v2.1. This is the same failure pattern as an earlier Links and Source Images issue, and it is worth naming as a class: <strong>an unmapped field loses its values silently</strong>, with no error and no flag, because nothing in the pipeline knows the value was supposed to be there.</p>
+    <p>Changes</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-9-cap">
+    <table>
+    <caption id="release-notes-table-9-cap" class="sr-only">v2.4: Pass-Through Field Signatures, Sheet Order, Conversion Key</caption>
+    <tbody>
+    <tr><td><strong>Type</strong></td><td><strong>Feature / Fix</strong></td><td><strong>Description</strong></td></tr>
+    <tr><td>Fix</td><td>Missing field signatures</td><td>Signatures added for Propagation Type, OpSeverity, Monitoring Recommendation and Tasks. These fields were already defined and already expected; they were simply never bound.</td></tr>
+    <tr><td>Fix</td><td>Inspection Date bridge</td><td>The export cell writer now bridges the input field name to the output field name, which differ.</td></tr>
+    <tr><td>Enhancement</td><td>Sheet order</td><td>Damages Report moved to the first sheet position and Conversions to the second, matching the convention of amended files received from Engineering.</td></tr>
+    <tr><td>Enhancement</td><td>Conversion table key added</td><td>One value present in a test file had no key in the conversion table and fell through to Manual Review on every occurrence. Added as its own key rather than treated as a subtype collapsing to its base value.</td></tr>
+    <tr><td>Fix (bug 4)</td><td>Format B export produced bare row numbers</td><td>Where the input carried an Element column rather than a Material column, the export formula referenced an output column that does not exist in that format. The column-letter lookup returned empty and the formula collapsed to a bare row number, producing values such as "Blade - 2" and "Blade - 3". None match any conversion key, so every affected row fell through to Manual Review.</td></tr>
+    <tr><td>Fix (bug 5)</td><td>Double concatenation</td><td>After the row-number fix, some rows produced a doubled value such as "&lt;Component&gt; - &lt;Component&gt; - &lt;Material&gt;". Row processing overwrites the input field with the concatenated result, and the export writer was reading that already-transformed value and concatenating it a second time.</td></tr>
+    <tr><td>Fix (bug 6)</td><td>Element section polluted by Blade Side rows</td><td>Four Blade Side entries were wrongly embedded at the top of the Element conversion array. Removed, with section-range arithmetic recalculating automatically.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>Decisions</p>
+    <ul>
+    <li><strong>Formulas reference the output slots, never the raw input columns.</strong> The output Material slot carries the effective suffix, Material for Format A and Element for Format B. The output Type slot carries the damage base, Type for Format A and Anomaly Type for Format B. One formula path therefore serves both input formats.</li>
+    <li><strong>Any raw input value the export needs is read from the untouched input row, never from the working row.</strong> Row processing mutates the working row during derivation, so reading a value back from it after processing returns the transformed value. This is the general rule behind bug 5 and it applies to every future export field.</li>
+    </ul>
+    <h2>v2.5: Output Schema Change, Asset and the Two Serial Numbers</h2>
+    <p><strong>Release Date:</strong> June 2026  <strong>·  Status:</strong> Released</p>
+    <p>Background</p>
+    <p>The output Asset column had been carrying turbine identifiers while the tool's own blade-validation logic assumed Asset meant the blade. The two had disagreed since the conversion engine shipped, without surfacing as an error, because nothing in the pipeline compared them. This release separates the three concepts that had been sharing two columns.</p>
+    <p>Changes</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-10-cap">
+    <table>
+    <caption id="release-notes-table-10-cap" class="sr-only">v2.5: Output Schema Change, Asset and the Two Serial Numbers</caption>
+    <tbody>
+    <tr><td><strong>Type</strong></td><td><strong>Feature / Fix</strong></td><td><strong>Description</strong></td></tr>
+    <tr><td>Schema</td><td>Output column D, Asset</td><td>Now carries the blade letter, A, B or C.</td></tr>
+    <tr><td>Schema</td><td>Output column E, Turbine Serial Number</td><td>New. Carries the value previously written to the output Asset column.</td></tr>
+    <tr><td>Schema</td><td>Output column F, Asset Serial Number</td><td>New. Carries the value previously written to the output Serial Number column.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>Verification:</strong> 73 of 73 rows on the test file matched the amended target exactly across all three columns.</p>
+    <p>Known Issues at Release</p>
+    <ul>
+    <li><strong>A column was inserted, so every output column to the right of F has shifted by one position.</strong> Formula column references and any downstream consumer matching on column position are affected. See the data dictionary's open verification items.</li>
+    <li><strong>Semantic mismatch on the input side, accepted deliberately.</strong> The matcher's canonical Asset field still binds by name to the input Asset column, which now carries turbine numbers. The field is therefore named Asset and means turbine number on the way in, while meaning blade letter on the way out. Renaming it was judged a larger change than this release warranted.</li>
+    </ul>
+    <h2>v2.6: Clickable Image Links</h2>
+    <p><strong>Release Date:</strong> June 2026  <strong>·  Status:</strong> Released</p>
+    <p>Background</p>
+    <p>The exported report carried image URLs as plain text. Opening one meant selecting the cell, copying the string and pasting it into a browser, for every image a reviewer wanted to see.</p>
+    <p>Changes</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-11-cap">
+    <table>
+    <caption id="release-notes-table-11-cap" class="sr-only">v2.6: Clickable Image Links</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Type</strong></th><td><strong>Feature / Fix</strong></td><td><strong>Description</strong></td></tr>
+    <tr><th scope="row">Feature</th><td>Hyperlink attachment</td><td>A post-pass over the exported Damages Report walks the link-bearing cells and attaches any http or https value as a real Excel hyperlink, with target and tooltip. The URL stays visible as the cell's display text and Excel renders it as clickable.</td></tr>
+    <tr><th scope="row">Correctness</th><td>Non-URL values left alone</td><td>Source Image Reference holds an identifier rather than a URL, and correctly remains plain text.</td></tr>
+    <tr><th scope="row">Fix (bug 8, unnumbered in the change log)</th><td>Literal "None" leaking into output</td><td>Some source exports use the literal string "None" to denote a missing value. That string was passing through to the output as the word "None" rather than as an empty cell. Now normalized to empty at ingestion.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>v2.7: URL Entity Double-Encoding Fix</h2>
+    <p><strong>Release Date:</strong> June 2026  <strong>·  Status:</strong> Released</p>
+    <p>Background</p>
+    <p>The hyperlinks shipped in v2.6 opened a browser and then failed. The storage provider returned a not-found error for URLs that were, to the eye, correct.</p>
+    <p>Changes</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-12-cap">
+    <table>
+    <caption id="release-notes-table-12-cap" class="sr-only">v2.7: URL Entity Double-Encoding Fix</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Type</strong></th><td><strong>Feature / Fix</strong></td><td><strong>Description</strong></td></tr>
+    <tr><th scope="row">Fix (bug 7)</th><td>Ampersands double-encoded in URLs</td><td>When the XLSX library reads a hyperlink from an input file it returns the URL with XML entities still encoded, so an ampersand arrives as <code>&amp;amp;</code> rather than as <code>&amp;</code>. Passing that value back to the same library to write encodes it a second time, producing <code>&amp;amp;amp;</code> in the output file. The signed URLs used for image storage depend on exact character matching of the query-string signature, so any encoding drift invalidates the signature and the storage provider returns not-found. Fixed by decoding XML entities on ingestion, before the value moves downstream.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>Verification:</strong> the output hyperlink is byte-for-byte identical to the input URL. 1355 characters, 6 ampersands, exact match at both ends.</p>
+    <p>Known Issues at Release</p>
+    <ul>
+    <li><strong>Image links expire, and the tool does not warn about it.</strong> The signed URLs are time-limited by the source system, typically around a 30 day window, after which the storage provider returns the same not-found error this release fixed. That is an upstream constraint rather than a tool defect, and the two failures are indistinguishable to a user clicking a dead link. A file exported and then left unprocessed past the window will produce a report whose links fail silently. An expiry warning at ingest is a candidate for a future release.</li>
+    </ul>
+    <h2>v2.7.1: Output Header Name Corrections</h2>
+    <p><strong>Release Date:</strong> September 2026  <strong>·  Status:</strong> Released</p>
+    <p>Background</p>
+    <p>Four of the eight derived output columns carried a wrong rendering of a company name: two lower-cased a name mid-word, two transposed a pair of letters in another. Neither error was applied consistently, and one name appeared correct in one column and wrong in another within the same sheet. The v2.1 limitation log had recorded one of the two as <em>preserved intentionally</em>, which implied something downstream matched on the misrendered string.</p>
+    <p>Changes</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-13-cap">
+    <table>
+    <caption id="release-notes-table-13-cap" class="sr-only">v2.7.1: Output Header Name Corrections</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Type</strong></th><td><strong>Feature / Fix</strong></td><td><strong>Description</strong></td></tr>
+    <tr><th scope="row">Fix (bug 9)</th><td>Four derived output headers misrendered</td><td>Columns P, Q, U and Y corrected. The strings were a single namespace inside the tool, serving simultaneously as the output header, the row-object key, the conversion-field label, the Manual Review dropdown key and the lookup key for the column letters the export formulas are built from, so the correction had to be applied across all of them at once. Changing the header text alone would have left the formula builder resolving a key that no longer existed and emitting broken lookups.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>On the "preserved intentionally" note.</strong> Before the change the tool was searched for every occurrence of all four strings. All were on the output side. The input-side column matcher — both its alias map and its field signatures — contained neither spelling, so no ingestion path had ever depended on a misrendered form. The intended asymmetry, correct on the way out and tolerant on the way in, turned out to be unnecessary: nothing needed tolerating. Files exported before this release ingest exactly as they did before.</p>
+    <p><strong>Verification:</strong> the header row was read from the raw exported file rather than from a summary, because transcription normalises spelling silently, which is how the defect survived an earlier review. All four corrected, the four already-correct headers unchanged, column count and order identical.</p>
+    <p><strong>LIM-07 is closed by this release</strong>, as copy error rather than convention. The casing error was never tracked and needed no entry of its own, having been found and fixed in the same change.</p>
+    <p>Known Issues at Release</p>
+    <ul>
+    <li><strong>Exports produced before this release still carry the old headers.</strong> A consumer matching those files by header string still has to match two spellings of one name to catch all three of its columns.</li>
+    </ul>
+    <h2>v3.0: Date Handling Correction</h2>
+    <p><strong>Release Date:</strong> September 2026  <strong>·  Status:</strong> Released</p>
+    <p>Background</p>
+    <p>Two faults in one line of the ingestion path, which preferred the library's display-formatted value over the underlying one for every cell.</p>
+    <p>Changes</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-14-cap">
+    <table>
+    <caption id="release-notes-table-14-cap" class="sr-only">v3.0: Date Handling Correction</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Type</strong></th><td><strong>Feature / Fix</strong></td><td><strong>Description</strong></td></tr>
+    <tr><th scope="row">Fix (bug 10)</th><td>Dates from CSV shifted back one day west of UTC</td><td>The XLSX library uses opposite conventions for the two input kinds: a date parsed out of CSV text becomes a timestamp at UTC midnight, while a date cell read from a real XLSX becomes one at local midnight. The display value is built with local accessors, so it was correct for the XLSX case and wrong for the CSV one. A 2026-04-12 inspection read from CSV displayed as 4/11/26 anywhere west of UTC. Fixed by stopping the CSV parser coercing text into dates at all, so CSV dates stay the literal strings the file contained.</td></tr>
+    <tr><th scope="row">Fix (bug 11)</th><td>Every dated row failed its own date-format check</td><td>The display value renders as 4/12/26 in every timezone, which never satisfied the YYYY-MM-DD rule that both the date field signature and its validator test. Every row carrying a date raised a hard error, in every timezone and on both input kinds, and the shape-based fallback for a renamed date column could never match either. Genuine XLSX date cells are now rendered from their components as ISO.</td></tr>
+    <tr><th scope="row">Fix</th><td>Timestamps silently truncated</td><td>A cell carrying a real time of day lost it: a 14:30 expiry exported as a bare date. The time is now preserved.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>A detail worth recording.</strong> The serial-to-date conversion carries a sub-minute per-zone skew, because the library builds its epoch from a pre-1900 date and zones then sat on odd historical offsets. In one zone a 2026-04-12 cell lands on 23:59:50 the day <em>before</em>. Reading the components naively would have lost a whole day to ten seconds, so the value is rounded to the nearest minute first.</p>
+    <p><strong>Verification:</strong> seven timezones spanning UTC-10 to UTC+14, against both CSV and XLSX inputs, with date-related errors going from four per four-row file to zero in all fourteen combinations.</p>
+    <p>Scope note</p>
+    <p>The original report of this defect over-generalised: it described the shift as affecting all exports. It affects <strong>CSV inputs only</strong>. Date cells in real XLSX exports were never shifted, because their display value is formatted from the stored serial rather than from a timestamp. The format fault, by contrast, affected both input kinds in every timezone.</p>
+    <h2>v3.1: Two Output Columns Written Empty</h2>
+    <p><strong>Release Date:</strong> September 2026  <strong>·  Status:</strong> Released</p>
+    <p>Background</p>
+    <p><code>Blade Chamber</code> and <code>Chord (%)</code> appeared in every export with correct headers and no values beneath them, for any dataset that supplied them.</p>
+    <p>Changes</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-15-cap">
+    <table>
+    <caption id="release-notes-table-15-cap" class="sr-only">v3.1: Two Output Columns Written Empty</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Type</strong></th><td><strong>Feature / Fix</strong></td><td><strong>Description</strong></td></tr>
+    <tr><th scope="row">Fix (bug 12)</th><td>Two output columns wrote empty cells under correct headers</td><td>The alias map deliberately normalises <code>Blade Chamber</code> to <code>BladeChamber</code> and <code>Chord (%)</code> to <code>Chord(%)</code> on ingestion. The export then looked those values up by the <em>output header text</em>, which retains the space, so both lookups missed and both cells were written empty. The values were read correctly, matched correctly, validated correctly, and then not written. Fixed by pointing the export's source key at the canonical field name; the header text itself is unchanged, so anything downstream matching on it is unaffected.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>Why it went unnoticed.</strong> There was no signal of any kind: no error, no warning, no Manual Review flag. Validation reads the value under its canonical name, where it is present and correct, so the field passes. Only the write missed. In the export the result is indistinguishable from a dataset that never supplied the column. This is the failure class already named at v2.4 — an unmapped field loses its values silently — but one link further down the chain: there the field signature was missing, here the signature works and the output lookup key is wrong.</p>
+    <p><strong>Audit.</strong> All 39 output columns were checked for the same mismatch. Three other headers are not canonical field names: <code>Date</code>, which has a working bridge, and <code>Action</code> and <code>Rule</code>, which have no input field at all and are intentionally blank. These two were the whole set.</p>
+    <p>Known Issues at Release</p>
+    <ul>
+    <li><strong>Exports produced before this release cannot be repaired from the converted copy.</strong> The values are not in it. Any file needing those two columns has to be re-run from the original Input Source export.</li>
+    </ul>
+    <h2>v3.1.1: Export Column Width Realignment</h2>
+    <p><strong>Release Date:</strong> September 2026  <strong>·  Status:</strong> Released</p>
+    <p>Background</p>
+    <p>The exported Damages Report set 38 column widths for 39 columns.</p>
+    <p>Changes</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-16-cap">
+    <table>
+    <caption id="release-notes-table-16-cap" class="sr-only">v3.1.1: Export Column Width Realignment</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Type</strong></th><td><strong>Feature / Fix</strong></td><td><strong>Description</strong></td></tr>
+    <tr><th scope="row">Fix (bug 13)</th><td>Column widths shifted one position from column E onward</td><td>The width list was authored against the pre-v2.5 layout. The v2.5 split of <code>Asset</code> into <code>Asset</code>, <code>Turbine Serial Number</code> and <code>Asset Serial Number</code> inserted a column at position 5 and the list was never realigned, so every column from E onward wore its right-hand neighbour's width and the last column had none. This was not a missing final entry: a single-letter column rendered 28 wide, a two-character one 26, and a short code 40, while a 36-character identifier was squeezed to 10. Fixed by inserting the one missing entry, which realigns everything after it.</td></tr>
+    <tr><th scope="row">Fix</th><td>Two field descriptions misrendered a company name</td><td>The same casing error corrected in the output headers at v2.7.1, in two display-only field descriptions. No occurrence of the misrendered form now remains anywhere in the tool.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>Verification:</strong> the two candidate readings were scored against the widest value each column can actually hold. The shipped alignment mis-sized 24 of 39 columns; the shifted reading, 14. Every implausible width resolves under the shift, which is what identified it.</p>
+    <h2>v3.1.2 to v3.1.4: Column Width Fitting</h2>
+    <p><strong>Release Date:</strong> September 2026  <strong>·  Status:</strong> Released</p>
+    <p>Background</p>
+    <p>With the alignment corrected, the widths themselves were still those authored for an earlier schema.</p>
+    <p>Changes</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-17-cap">
+    <table>
+    <caption id="release-notes-table-17-cap" class="sr-only">v3.1.2 to v3.1.4: Column Width Fitting</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Type</strong></th><td><strong>Feature / Fix</strong></td><td><strong>Description</strong></td></tr>
+    <tr><th scope="row">Change (v3.1.2)</th><td><code>Asset</code> column narrowed</td><td>28 to 8. The old width suited the pre-v2.5 schema, where the column held a full label rather than a single blade letter.</td></tr>
+    <tr><th scope="row">Change (v3.1.3)</th><td>Widths fitted to content, 14 columns</td><td>Fitted to the widest value each column can actually hold. For the nine conversion-driven columns that maximum is exact, computed from the conversion tables themselves. Columns whose content is free text the tool never sees were left alone rather than guessed at. A first pass changed 28 of 39 columns, but a third of those were single-character adjustments to columns that already fitted, so the rule was tightened to touch only widths that are genuinely deficient or oversized by more than ten.</td></tr>
+    <tr><th scope="row">Change (v3.1.4)</th><td><code>Input Source Component</code> set to an exact fit</td><td>The one column whose longest real value exceeds the general 45 ceiling. Raised to 51 by deliberate exception: it is the lookup key the Platform A and Platform B formulas read, and a clipped key is the first thing anyone checks when a lookup misses.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>Verification:</strong> every conversion-driven column now seats its widest possible value with no clipping. Across all three releases the exported cell data is byte-identical; only the width declarations change.</p>
+    <h2>Bug Index, v2.2 to v3.1.4</h2>
+    <p>Thirteen defects were found and fixed across this range. Seven carry numbers in the internal change log; the rest were recorded without one and are numbered here for completeness.</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-18-cap">
+    <table>
+    <caption id="release-notes-table-18-cap" class="sr-only">Bug Index, v2.2 to v3.1.4</caption>
+    <tbody>
+    <tr><th scope="row"><strong>#</strong></th><td><strong>Version</strong></td><td><strong>Defect</strong></td><td><strong>Root cause class</strong></td></tr>
+    <tr><th scope="row">1</th><td>v2.3</td><td>Bare-letter blade values not extracted</td><td>Pattern too narrow for real input variation</td></tr>
+    <tr><th scope="row">2</th><td>v2.3</td><td>Duplicate Component column collision</td><td>Ambiguous match with no tiebreaker</td></tr>
+    <tr><th scope="row">3</th><td>v2.3</td><td>Duplicate Type column collision</td><td>Ambiguous match with no tiebreaker</td></tr>
+    <tr><th scope="row">4</th><td>v2.4</td><td>Format B export produced bare row numbers</td><td>Formula referenced a column absent in that format</td></tr>
+    <tr><th scope="row">5</th><td>v2.4</td><td>Derived component doubled</td><td>Transformed value read back as though raw</td></tr>
+    <tr><th scope="row">6</th><td>v2.4</td><td>Element section polluted by Blade Side rows</td><td>Lookup array contents misfiled</td></tr>
+    <tr><th scope="row">7</th><td>v2.7</td><td>Ampersands double-encoded in URLs</td><td>Library decodes on read differently than it encodes on write</td></tr>
+    <tr><th scope="row">8</th><td>v2.6</td><td>Literal "None" leaking into output</td><td>Sentinel value not normalized at ingestion</td></tr>
+    <tr><th scope="row">9</th><td>v2.7.1</td><td>Four derived output headers misrendered</td><td>Copy error propagated by duplication, never by a matching consumer</td></tr>
+    <tr><th scope="row">10</th><td>v3.0</td><td>CSV dates shifted back one day west of UTC</td><td>Library formats a UTC-midnight value with local accessors</td></tr>
+    <tr><th scope="row">11</th><td>v3.0</td><td>Every dated row failed its own date-format check</td><td>Display-formatted value used where the underlying value was required</td></tr>
+    <tr><th scope="row">12</th><td>v3.1</td><td>Two output columns wrote empty cells under correct headers</td><td>Export keyed its lookup on header text, not canonical field name</td></tr>
+    <tr><th scope="row">13</th><td>v3.1.1</td><td>Column widths shifted one position from column E onward</td><td>Positional list never realigned after a column was inserted at v2.5</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>The pattern worth noting across them.</strong> Four of the first eight (1, 2, 3, 8) are the same class of failure: the tool assumed input data was more uniform than it is. Two more (4, 5) come from the derivation pipeline transforming a value and then reading it back as though untouched. Only bug 7 originates outside the tool's own logic. Every one of the first eight surfaced through contact with real data rather than through review, which is the argument for validating against genuine delivered files rather than reconstructed examples.</p>
+    <p><strong>The later five sharpen a different point: silence.</strong> Bugs 9, 12 and 13 all produced output that looked plausible. A misrendered header, an empty cell under a correct header, and a column sized for its neighbour all render as a normal-looking spreadsheet, and none raises an error. Bug 12 is the starkest — the value is read, matched and validated correctly, and only the write misses, so the export is indistinguishable from a dataset that never supplied the column. Bug 11 is the opposite and was louder than it looked: it raised a hard error on every dated row in every timezone, which is the kind of noise that gets worked around rather than investigated. Three of the five (12, 13, and the shift in 11) trace to a positional or naming assumption left behind when a schema changed underneath it, which is the argument for checking the fixed-layout artefacts — output column lists, width arrays, lookup keys — whenever a column is inserted.</p>
+    <h2>Archive note: v3.0 to v3.1.3 working files are reconstructions</h2>
+    <p><strong>Recorded 2026-09-18.</strong></p>
+    <p>The working files for v3.0, v3.1, v3.1.1, v3.1.2 and v3.1.3 were not retained when those releases were made. Each release was produced by renaming the previous working file rather than copying it, so at any moment only the newest build existed on disk. The gap was noticed when the intermediate builds were called for.</p>
+    <p>They have been reconstructed and archived. The method was to replay each change forward from the <strong>retained v2.7.1 working file</strong>, in the order the changes were originally made, rather than to unpick them backward from v3.1.4 — a backward reconstruction produces files that cannot be checked against anything.</p>
+    <p><strong>What validates them.</strong> Replaying every step lands on a v3.1.4 working file that is byte-for-byte identical to the real one, SHA-256 <code>c37973f8…</code>. Since the endpoint reproduces exactly, each intermediate state on the path to it is also correct. Independently, every reconstructed build was run through the export path and shows exactly the defect profile its release entry describes and no other: v3.0 still writes two columns empty, the width count first reaches one-per-column at v3.1.1, and the <code>Input Source Component</code> width moves 26 → 32 → 45 → 51 across the releases that changed it. Each build differs from its predecessor by that release's change alone.</p>
+    <p><strong>What is not identical.</strong> These are faithful reconstructions of the file contents, not the original files. Their filesystem timestamps are the reconstruction date, not the original build dates. Anything relying on file modification time to date a build should treat v3.0 to v3.1.3 as undated and use this document instead.</p>
+    <p><strong>Practice change.</strong> Releases are now produced by copying the working file rather than renaming it, so each version persists on its own.</p>
+    <h2>Deployment</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="release-notes-table-19-cap">
+    <table>
+    <caption id="release-notes-table-19-cap" class="sr-only">Deployment</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Property</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row">Distribution</th><td>Shared Google Drive folder: download and open in any modern browser</td></tr>
+    <tr><th scope="row">Dependencies</th><td>SheetJS (XLSX library) loaded from CDN on first use</td></tr>
+    <tr><th scope="row">Browser support</th><td>Chrome, Edge, Firefox, Safari</td></tr>
+    <tr><th scope="row">Data privacy</th><td>All processing client-side. No data uploaded or transmitted.</td></tr>
+    <tr><th scope="row">File formats</th><td>CSV (UTF-8), XLSX, XLS</td></tr>
+    <tr><th scope="row">Typical dataset size</th><td>50 to 500 rows per upload; tested up to ~400 rows</td></tr>
+    <tr><th scope="row">Output</th><td>XLSX (two-tab working document) + optional CSV validation report</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><em>Anomaly Upload Validator  ·  Internal Use Only  ·  v3.1.4  ·  September 2026</em></p>
+  </div>
+
+  <p class="doc-return"><a href="../anomaly-upload-validator.html">← Back to the Anomaly Upload Validator case study</a></p>
+</main>
+
+<footer class="site-footer container">
+  <div class="footer-panel" id="contact">
+    <div>
+      <h2 class="footer-title">Say hello.</h2>
+      <p>Open to product and customer success engineer roles in renewable energy, climate, and AI-native software.</p>
+      <a class="footer-email" href="mailto:kiley@kileysullivan.com">kiley@kileysullivan.com</a>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="https://www.linkedin.com/in/kiley-sullivan-87133480/">LinkedIn ↗</a>
+      <a href="../kiley-sullivan-resume.pdf">Résumé ↓</a>
+      <a href="../case-studies.html">Case studies</a>
+      <a href="../writing.html">Writing</a>
+      <a href="../metrics.html">Metrics</a>
+    </nav>
+  </div>
+  <p class="colophon"><span>Kiley Sullivan · Hawaiʻi</span><span>Built with Claude Code</span></p>
+</footer>
+</body>
+</html>

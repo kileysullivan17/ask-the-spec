@@ -1,0 +1,10 @@
+{
+  "name": "ask-the-spec",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-index.mjs",
+    "eval": "node scripts/eval.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<!-- ============================================================
+  RENDERED ARTIFACT: Test cases, Anomaly Upload Validator.
+
+  GENERATED, NOT HAND WRITTEN. Rendered from test_cases_sanitised.docx in
+  the sanitized source set, which is also the file the download
+  link serves, so the page and the download are the same
+  document. Structure is read from the WordprocessingML: heading
+  rank from run size and color, tables from w:tbl with
+  w:tblHeader marking the header row.
+
+  The document text is reproduced as written. Em dashes, double
+  spaces and the sanitization placeholders ("the organization",
+  "the Source Platform", "the OEM") are the source document's
+  own. Do not copy-edit this page. To change it, change the
+  DOCX and re-render.
+============================================================ -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test cases · Anomaly Upload Validator · Kiley Sullivan</title>
+<meta name="description" content="Seventy-two test cases for the Anomaly Upload Validator, derived from acceptance criteria, bugs fixed during development, and the regression set run on every release.">
+<link rel="canonical" href="https://kileysullivan.com/artifacts/test-cases">
+<meta property="og:title" content="Test cases · Anomaly Upload Validator · Kiley Sullivan">
+<meta property="og:description" content="Seventy-two test cases for the Anomaly Upload Validator, derived from acceptance criteria, bugs fixed during development, and the regression set run on every release.">
+<meta property="og:url" content="https://kileysullivan.com/artifacts/test-cases">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kiley Sullivan">
+<meta property="og:image" content="https://kileysullivan.com/assets/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kiley Sullivan, product manager for AI-native software">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kileysullivan.com/assets/og-default.png">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=Barlow:ital,wght@0,500;0,600;1,500&family=Overpass+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script src="https://cdn.amplitude.com/libs/analytics-browser-2.45.8-min.js.gz" defer></script>
+<script src="../analytics.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="116 76 140 166" width="19" height="22" focusable="false"><path fill="currentColor" d="M127.9 82.5C132.1 82.7 136.3 82.7 140.5 82.6C140.4 101.6 140.8 121.1 140.4 140.1C146.3 134.3 152.1 127.8 157.9 122.3C163.3 122 169.2 122.2 174.6 122.1C166.9 129.4 159.2 137 151.5 144.4L244.2 237L224.1 237L141.3 154.2L140.9 154.5C140.2 157.1 140.5 172.3 140.5 176L127.8 176C128.3 167.4 127.8 155.5 127.9 146.7C128.1 125.3 127.7 103.9 127.9 82.5Z"/></svg></span>
+      <span class="brand-name">Kiley Sullivan</span>
+    </a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="../about.html">About</a>
+      <a href="../case-studies.html">Case studies</a>
+      <a href="../process.html">Process</a>
+      <a href="../writing.html">Writing</a>
+      <a class="nav-contact" href="#contact">Contact</a>
+      <a class="btn btn-primary btn-sm" href="../kiley-sullivan-resume.pdf">Résumé</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="container">
+  <a class="breadcrumb" href="../anomaly-upload-validator.html">← Anomaly Upload Validator</a>
+
+  <div class="page-hero">
+    <p class="label">Anomaly Upload Validator · Specification artifact</p>
+    <h1 class="display">Test Cases &amp; QA Checklist</h1>
+    <p class="lede">What had to pass before release.</p>
+    <div class="hero-actions">
+      <a class="btn btn-ghost" href="../assets/artifacts/test_cases_sanitised.docx" download>Download the test cases (DOCX) ↓</a>
+    </div>
+    <p class="media-note">This page is rendered from that DOCX. Same document, same words.</p>
+  </div>
+
+  <div class="doc">
+    <p>Anomaly Upload Validator — Test Cases &amp; QA Checklist</p>
+    <p><strong>Platform A  ·  Internal Tool  ·  v3.1.4  ·  September 2026</strong></p>
+    <h2>Overview</h2>
+    <p>This document contains 98 test cases covering all functional areas of the Anomaly Upload Validator as of v3.1.4. Test cases are derived from user story acceptance criteria, known bugs fixed during development, and regression tests. All cases are manually executable in any modern browser.</p>
+    <h2>Priority Legend</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="test-cases-table-1-cap">
+    <table>
+    <caption id="test-cases-table-1-cap" class="sr-only">Priority Legend</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Priority</strong></th><td><strong>Definition</strong></td></tr>
+    <tr><th scope="row"><strong>P1 - Critical</strong></th><td>Core functional requirement. Failure blocks upload workflow or produces incorrect output data.</td></tr>
+    <tr><th scope="row"><strong>P2 - High</strong></th><td>Important feature. Failure degrades user experience significantly or causes data quality issues.</td></tr>
+    <tr><th scope="row"><strong>P3 - Medium</strong></th><td>Quality of life feature. Failure is noticeable but does not block core workflow.</td></tr>
+    <tr><th scope="row"><strong>P4 - Low</strong></th><td>Minor enhancement. Failure is cosmetic or very low impact.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>Section 1 — File Ingestion  (TC-01 to TC-11)</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="test-cases-table-2-cap">
+    <table>
+    <caption id="test-cases-table-2-cap" class="sr-only">Section 1 — File Ingestion  (TC-01 to TC-11)</caption>
+    <tbody>
+    <tr><th scope="row"><strong>TC ID</strong></th><td><strong>Description</strong></td><td><strong>Preconditions</strong></td><td><strong>Test Steps</strong></td><td><strong>Expected Result</strong></td><td><strong>Result</strong></td><td><strong>Priority</strong></td><td><strong>Story Ref</strong></td></tr>
+    <tr><th scope="row">TC-01</th><td>Upload valid CSV</td><td>Tool open in browser</td><td>Drag valid UTF-8 CSV onto drop zone</td><td>Filename + row count shown. Run Validation enables.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-01</td></tr>
+    <tr><th scope="row">TC-02</th><td>Upload valid XLSX</td><td>Tool open in browser</td><td>Click drop zone, browse to XLSX, select it</td><td>Filename + row count shown. Run Validation enables.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-01</td></tr>
+    <tr><th scope="row">TC-03</th><td>Upload empty file</td><td>Tool open in browser</td><td>Upload XLSX with header row but no data</td><td>Error: 'File appears empty.' No validation runs.</td><td>✅ Pass</td><td>P2 - High</td><td>US-01</td></tr>
+    <tr><th scope="row">TC-04</th><td>Upload unsupported type</td><td>Tool open in browser</td><td>Drag .pdf or .txt file onto drop zone</td><td>File rejected. Error shown. No state change.</td><td>✅ Pass</td><td>P2 - High</td><td>US-01</td></tr>
+    <tr><th scope="row">TC-05</th><td>Alias: Date → Inspection Date</td><td>CSV with 'Date' column (no 'Inspection Date')</td><td>Upload file, run validation</td><td>'Date' treated as 'Inspection Date'. No missing column error.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-02</td></tr>
+    <tr><th scope="row">TC-06</th><td>Alias: Turbine Serial Number → Serial Number</td><td>CSV with 'Turbine Serial Number' column</td><td>Upload file, run validation</td><td>Treated as 'Serial Number'. No missing column warning.</td><td>✅ Pass</td><td>P2 - High</td><td>US-02</td></tr>
+    <tr><th scope="row">TC-07</th><td>Alias: Links → Source Images</td><td>CSV with 'Links' column</td><td>Upload file, run validation</td><td>'Links' treated as 'Source Images'. No required field error.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-02</td></tr>
+    <tr><th scope="row">TC-08</th><td>Missing required column: ID</td><td>Dataset with ID column removed</td><td>Upload file, run validation</td><td>Missing column card shown for ID. All rows show Error.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-03</td></tr>
+    <tr><th scope="row">TC-09</th><td>Missing required column: Coordinates</td><td>Dataset with Coordinates column removed</td><td>Upload file, run validation</td><td>Missing column card shown. All rows get Check Internally flag.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-03</td></tr>
+    <tr><th scope="row">TC-10</th><td>Missing conditional column: BladeChamber</td><td>Dataset without BladeChamber</td><td>Upload file, run validation</td><td>Shown as informational only. No rows flagged.</td><td>✅ Pass</td><td>P3 - Medium</td><td>US-03</td></tr>
+    <tr><th scope="row">TC-11</th><td>Column name case-sensitive</td><td>Dataset with 'blade side' (lowercase)</td><td>Upload file, run validation</td><td>'Blade Side' shown as missing required. Lowercase not accepted.</td><td>✅ Pass</td><td>P2 - High</td><td>US-03</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>Section 2 — Row-Level Validation  (TC-12 to TC-26)</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="test-cases-table-3-cap">
+    <table>
+    <caption id="test-cases-table-3-cap" class="sr-only">Section 2 — Row-Level Validation  (TC-12 to TC-26)</caption>
+    <tbody>
+    <tr><th scope="row"><strong>TC ID</strong></th><td><strong>Description</strong></td><td><strong>Preconditions</strong></td><td><strong>Test Steps</strong></td><td><strong>Expected Result</strong></td><td><strong>Result</strong></td><td><strong>Priority</strong></td><td><strong>Story Ref</strong></td></tr>
+    <tr><th scope="row">TC-12</th><td>Severity: valid 1–5</td><td>Dataset with Severity 1,2,3,4,5</td><td>Upload file, run validation</td><td>All rows pass. No Severity errors.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-04</td></tr>
+    <tr><th scope="row">TC-13</th><td>Severity: invalid (0, 6, text)</td><td>Dataset with Severity 0, 6, 'High'</td><td>Upload file, run validation</td><td>Each invalid value raises Error: 'Must be 1–5'.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-04</td></tr>
+    <tr><th scope="row">TC-14</th><td>Critical: valid (Yes/yes/YES/No)</td><td>Dataset with all case variants</td><td>Upload file, run validation</td><td>All case variants accepted. No errors.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-04</td></tr>
+    <tr><th scope="row">TC-15</th><td>Critical: invalid (True, Y, 1)</td><td>Dataset with invalid Critical values</td><td>Upload file, run validation</td><td>Each raises Error: 'Must be Yes or No'.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-04</td></tr>
+    <tr><th scope="row">TC-16</th><td>Inspection Date: valid YYYY-MM-DD</td><td>Dataset with correctly formatted dates</td><td>Upload file, run validation</td><td>All dates pass. No date errors.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-04</td></tr>
+    <tr><th scope="row">TC-17</th><td>Inspection Date: invalid DD/MM/YYYY</td><td>Dataset with dates as '06/09/2024'</td><td>Upload file, run validation</td><td>Error: 'Must be YYYY-MM-DD format' for each.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-04</td></tr>
+    <tr><th scope="row">TC-18</th><td>Blade Side: abbreviated codes Code 1/Code 2/Code 3/Code 4</td><td>Dataset with 2-char codes</td><td>Upload file, run validation</td><td>All four codes accepted as valid.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-05</td></tr>
+    <tr><th scope="row">TC-19</th><td>Blade Side: full descriptive names</td><td>Dataset with 'Value 1', 'Value 2' etc.</td><td>Upload file, run validation</td><td>All full names accepted as valid.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-05</td></tr>
+    <tr><th scope="row">TC-20</th><td>Blade Side: invalid value ('[withheld]')</td><td>Dataset with an unrecognized pre-conversion value in Blade Side</td><td>Upload file, run validation</td><td>Error raised: 'Must be a valid Blade Side value'.</td><td>✅ Pass</td><td>P2 - High</td><td>US-05</td></tr>
+    <tr><th scope="row">TC-21</th><td>Coordinates: valid ≥3 pairs</td><td>Coordinates = '[123,456], [234,567], [345,678]'</td><td>Upload file, run validation</td><td>Row passes Coordinates check.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-04</td></tr>
+    <tr><th scope="row">TC-22</th><td>Coordinates: only 2 pairs</td><td>Coordinates = '[123,456], [234,567]'</td><td>Upload file, run validation</td><td>Error: 'Requires ≥3 [x,y] coordinate pairs'.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-04</td></tr>
+    <tr><th scope="row">TC-23</th><td>Coordinates: empty</td><td>Dataset with empty Coordinates field</td><td>Upload file, run validation</td><td>Flagged as Check Internally. NOT flagged as Error.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-08</td></tr>
+    <tr><th scope="row">TC-24</th><td>Asset: empty</td><td>Dataset with some empty Asset rows</td><td>Upload file, run validation</td><td>Check Internally flag raised. Not Error. Compliance score unaffected.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-08</td></tr>
+    <tr><th scope="row">TC-25</th><td>Serial Number: empty or absent</td><td>Dataset with Serial Number missing entirely</td><td>Upload file, run validation</td><td>No flag raised. Not shown as missing column.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-06</td></tr>
+    <tr><th scope="row">TC-26</th><td>Numeric fields: floating point noise</td><td>Distance (m) = '7.0000000000000007E-2'</td><td>Upload file, run validation + export XLSX</td><td>Value cleaned to 0.07 in output. No validation error.</td><td>✅ Pass</td><td>P2 - High</td><td>US-04</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>Section 3 — Status System &amp; Compliance Score  (TC-27 to TC-32)</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="test-cases-table-4-cap">
+    <table>
+    <caption id="test-cases-table-4-cap" class="sr-only">Section 3 — Status System &amp; Compliance Score  (TC-27 to TC-32)</caption>
+    <tbody>
+    <tr><th scope="row"><strong>TC ID</strong></th><td><strong>Description</strong></td><td><strong>Preconditions</strong></td><td><strong>Test Steps</strong></td><td><strong>Expected Result</strong></td><td><strong>Result</strong></td><td><strong>Priority</strong></td><td><strong>Story Ref</strong></td></tr>
+    <tr><th scope="row">TC-27</th><td>Compliance: all clean</td><td>All required fields valid</td><td>Upload file, run validation</td><td>Score = 100%. Bar is green.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-07</td></tr>
+    <tr><th scope="row">TC-28</th><td>Compliance: check-internally excluded from denominator</td><td>10 rows: 8 clean, 2 empty Coordinates</td><td>Upload file, run validation</td><td>Score = 100% (8/8). Check Internally rows excluded.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-07</td></tr>
+    <tr><th scope="row">TC-29</th><td>Compliance: errors present</td><td>10 rows: 5 clean, 5 with Severity errors</td><td>Upload file, run validation</td><td>Score = 50%. Bar is amber.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-07</td></tr>
+    <tr><th scope="row">TC-30</th><td>Filter: Errors only</td><td>Dataset with mixed status types</td><td>Run validation → click Errors tab</td><td>Only Error rows visible. Others hidden.</td><td>✅ Pass</td><td>P2 - High</td><td>US-09</td></tr>
+    <tr><th scope="row">TC-31</th><td>Filter: Manual Review shows Resolved</td><td>Dataset with resolved Manual Reviews</td><td>Click Manual Review filter tab</td><td>Both unresolved and Resolved rows visible.</td><td>✅ Pass</td><td>P2 - High</td><td>US-09</td></tr>
+    <tr><th scope="row">TC-32</th><td>Summary cards: correct counts</td><td>Known distribution of status types</td><td>Upload file, run validation</td><td>All five cards show correct counts.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-07</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>Section 4 — Conversion Engine  (TC-33 to TC-44)</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="test-cases-table-5-cap">
+    <table>
+    <caption id="test-cases-table-5-cap" class="sr-only">Section 4 — Conversion Engine  (TC-33 to TC-44)</caption>
+    <tbody>
+    <tr><th scope="row"><strong>TC ID</strong></th><td><strong>Description</strong></td><td><strong>Preconditions</strong></td><td><strong>Test Steps</strong></td><td><strong>Expected Result</strong></td><td><strong>Result</strong></td><td><strong>Priority</strong></td><td><strong>Story Ref</strong></td></tr>
+    <tr><th scope="row">TC-33</th><td>Format A: Element derivation (Format A)</td><td>Format A dataset with Component + Material</td><td>Upload file, run validation</td><td>'&lt;Component&gt;'+'&lt;Material&gt;' → '&lt;Component&gt; - &lt;Material&gt;'. Correct output.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-10</td></tr>
+    <tr><th scope="row">TC-34</th><td>Format B: Element derivation (Format B)</td><td>Format B dataset with Component + Element (no Material)</td><td>Upload file, run validation</td><td>'&lt;Component&gt;'+'&lt;Element&gt;' (from Element col) → '&lt;Component&gt; - &lt;Element&gt;'.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-10,US-13</td></tr>
+    <tr><th scope="row">TC-35</th><td>Element: empty Material and Element suffix</td><td>Component populated, Material = empty</td><td>Upload file, run validation</td><td>Input Source Component = '&lt;Component&gt;'. No trailing ' - '.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-10</td></tr>
+    <tr><th scope="row">TC-36</th><td>Anomaly Type: Subtype present</td><td>Type and Subtype both populated</td><td>Upload file, run validation</td><td>Input Source Damage Type='&lt;Type&gt; - &lt;Subtype&gt;'. Platform A='[withheld]'. Platform B='[withheld]'.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-11</td></tr>
+    <tr><th scope="row">TC-37</th><td>REGRESSION: Trailing dash (Subtype empty)</td><td>Type populated, Subtype='' (empty string)</td><td>Upload file, run validation + export XLSX</td><td>Input Source Damage Type='&lt;Type&gt;' (no trailing ' - '). Platform A='[withheld]'. Platform B='[withheld]'. v2.1 fix.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-11</td></tr>
+    <tr><th scope="row">TC-38</th><td>Format B: Anomaly Type column (Format B)</td><td>Format B dataset with 'Anomaly Type' column (no 'Type')</td><td>Upload file, run validation</td><td>'&lt;Anomaly Type&gt;'+'&lt;Subtype&gt;' → '&lt;Anomaly Type&gt; - &lt;Subtype&gt;'. Correctly resolved.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-11,US-13</td></tr>
+    <tr><th scope="row">TC-39</th><td>Blade Side: Value 3</td><td>Blade Side = 'Value 3'</td><td>Upload file, run validation</td><td>Platform A = '[withheld]'. Platform B = '[withheld]'.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-12</td></tr>
+    <tr><th scope="row">TC-40</th><td>Blade Side: Value 4</td><td>Blade Side = 'Value 4'</td><td>Upload file, run validation</td><td>Platform A = '[withheld]'. Platform B = '[withheld]'.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-12</td></tr>
+    <tr><th scope="row">TC-41</th><td>Blade Side: unrecognized value</td><td>Blade Side = 'Rotor Side'</td><td>Upload file, run validation</td><td>Manual Review raised. Shows 'MANUAL REVIEW: Rotor Side'.</td><td>✅ Pass</td><td>P2 - High</td><td>US-12</td></tr>
+    <tr><th scope="row">TC-42</th><td>Blade extraction from Asset (Format A)</td><td>Format A: Blade empty, Asset='Blade A: (No Serial Number)'</td><td>Upload file, run validation</td><td>Blade field populated as 'A'. No missing field error.</td><td>✅ Pass</td><td>P2 - High</td><td>US-13</td></tr>
+    <tr><th scope="row">TC-43</th><td>Blade extraction from Blade col (Format B)</td><td>Format B: Blade column = 'Blade A'</td><td>Upload file, run validation</td><td>Blade normalized to 'A'. No missing field error.</td><td>✅ Pass</td><td>P2 - High</td><td>US-13</td></tr>
+    <tr><th scope="row">TC-44</th><td>Unknown Input Source Component</td><td>Component and Material pair not in the conversion table</td><td>Upload file, run validation</td><td>Manual Review raised. Platform A Element = 'MANUAL REVIEW: &lt;derived value&gt;'.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-10</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>Section 5 — Manual Review Resolution  (TC-45 to TC-50)</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="test-cases-table-6-cap">
+    <table>
+    <caption id="test-cases-table-6-cap" class="sr-only">Section 5 — Manual Review Resolution  (TC-45 to TC-50)</caption>
+    <tbody>
+    <tr><th scope="row"><strong>TC ID</strong></th><td><strong>Description</strong></td><td><strong>Preconditions</strong></td><td><strong>Test Steps</strong></td><td><strong>Expected Result</strong></td><td><strong>Result</strong></td><td><strong>Priority</strong></td><td><strong>Story Ref</strong></td></tr>
+    <tr><th scope="row">TC-45</th><td>Resolve via dropdown</td><td>Dataset with unmatched Input Source Component</td><td>Run validation → Manual Review tab → select dropdown value</td><td>Row updates to Resolved (green). Counter increments.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-14</td></tr>
+    <tr><th scope="row">TC-46</th><td>Resolved value in output</td><td>Manual Review resolved with a valid Input Source Component value</td><td>Resolve row → export XLSX → check column in output</td><td>XLSX shows the resolved value. Platform A/Platform B columns show correct values.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-14</td></tr>
+    <tr><th scope="row">TC-47</th><td>Export blocked by unresolved reviews</td><td>3 Manual Reviews, 2 resolved</td><td>Resolve 2 of 3 → check export button</td><td>Button disabled. Counter shows '2 / 3 resolved'.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-15</td></tr>
+    <tr><th scope="row">TC-48</th><td>Export unlocks when all resolved</td><td>3 Manual Reviews, all resolved</td><td>Resolve all 3 → check export button</td><td>Button enables. Counter shows 'All 3 resolved — ready to export'.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-15</td></tr>
+    <tr><th scope="row">TC-49</th><td>Validation Report always available</td><td>Unresolved Manual Reviews present</td><td>Run validation → click Export Validation Report</td><td>CSV downloads. Not blocked by Manual Reviews.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-15</td></tr>
+    <tr><th scope="row">TC-50</th><td>Zero Manual Reviews: export immediate</td><td>All values in conversion tables</td><td>Upload file, run validation</td><td>Export Converted XLSX enabled immediately. No progress counter.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-15</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>Section 6 — Export  (TC-51 to TC-59)</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="test-cases-table-7-cap">
+    <table>
+    <caption id="test-cases-table-7-cap" class="sr-only">Section 6 — Export  (TC-51 to TC-59)</caption>
+    <tbody>
+    <tr><th scope="row"><strong>TC ID</strong></th><td><strong>Description</strong></td><td><strong>Preconditions</strong></td><td><strong>Test Steps</strong></td><td><strong>Expected Result</strong></td><td><strong>Result</strong></td><td><strong>Priority</strong></td><td><strong>Story Ref</strong></td></tr>
+    <tr><th scope="row">TC-51</th><td>Validation Report: correct columns</td><td>Any dataset with issues</td><td>Run validation → Export Validation Report</td><td>CSV has columns: Row Number, Anomaly ID, Field, Status, Detail.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-18</td></tr>
+    <tr><th scope="row">TC-52</th><td>Validation Report: status labels</td><td>Dataset with all four status types</td><td>Export report → open CSV</td><td>Status column has exactly: Error, Manual Review, Check Internally, Warning.</td><td>✅ Pass</td><td>P2 - High</td><td>US-18</td></tr>
+    <tr><th scope="row">TC-53</th><td>Converted XLSX: two tabs</td><td>Valid dataset, all reviews resolved</td><td>Export Converted XLSX → open file</td><td>File has exactly two sheets: 'Damages Report' and 'Conversions'.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-19</td></tr>
+    <tr><th scope="row">TC-54</th><td>Converted XLSX: header frozen</td><td>Exported XLSX</td><td>Open XLSX → scroll down past row 1</td><td>Header row remains visible (frozen).</td><td>✅ Pass</td><td>P3 - Medium</td><td>US-19</td></tr>
+    <tr><th scope="row">TC-55</th><td>Converted XLSX: VLOOKUP formulas present</td><td>Exported XLSX</td><td>Click Platform A Element column for any data row</td><td>Formula bar shows IFERROR(VLOOKUP(...)) — not a static value.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-19</td></tr>
+    <tr><th scope="row">TC-56</th><td>REGRESSION: LEN not ISBLANK in formula</td><td>Exported XLSX</td><td>Click Input Source Component for row with empty Material</td><td>Formula shows IF(LEN(...)&gt;0,...) — not IF(ISBLANK(...),...). v2.1 fix.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-19</td></tr>
+    <tr><th scope="row">TC-57</th><td>Conversions tab editable</td><td>Exported XLSX</td><td>Open Conversions tab → add a new mapping row</td><td>New row visible and editable. VLOOKUP picks it up if within range.</td><td>✅ Pass</td><td>P2 - High</td><td>US-20</td></tr>
+    <tr><th scope="row">TC-58</th><td>Exported filename format</td><td>Source file: 'source_dataset.xlsx'. Date: 2026-05-01</td><td>Export Converted XLSX</td><td>Filename: 'source_dataset_converted_2026-05-01.xlsx'.</td><td>✅ Pass</td><td>P3 - Medium</td><td>US-19</td></tr>
+    <tr><th scope="row">TC-59</th><td>MANUAL REVIEW fallback string</td><td>Unresolved row (if present in report)</td><td>Check Platform A Element for unresolved row</td><td>Shows 'MANUAL REVIEW: [original value]'.</td><td>✅ Pass</td><td>P2 - High</td><td>US-14</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>Section 7 — Dataset Statistics &amp; Edge Cases  (TC-60 to TC-67)</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="test-cases-table-8-cap">
+    <table>
+    <caption id="test-cases-table-8-cap" class="sr-only">Section 7 — Dataset Statistics &amp; Edge Cases  (TC-60 to TC-67)</caption>
+    <tbody>
+    <tr><th scope="row"><strong>TC ID</strong></th><td><strong>Description</strong></td><td><strong>Preconditions</strong></td><td><strong>Test Steps</strong></td><td><strong>Expected Result</strong></td><td><strong>Result</strong></td><td><strong>Priority</strong></td><td><strong>Story Ref</strong></td></tr>
+    <tr><th scope="row">TC-60</th><td>Anomaly count</td><td>Dataset with 115 data rows</td><td>Upload file, run validation</td><td>Total Anomalies card shows 115.</td><td>✅ Pass</td><td>P2 - High</td><td>US-16</td></tr>
+    <tr><th scope="row">TC-61</th><td>Unique turbine count</td><td>Dataset with 40 unique turbine IDs</td><td>Upload file, run validation</td><td>Unique Turbines card shows 40.</td><td>✅ Pass</td><td>P2 - High</td><td>US-16</td></tr>
+    <tr><th scope="row">TC-62</th><td>Site breakdown table</td><td>Dataset with two distinct sites</td><td>Upload file, run validation</td><td>Both sites shown. Counts correct. Sorted by anomaly count desc.</td><td>✅ Pass</td><td>P2 - High</td><td>US-16</td></tr>
+    <tr><th scope="row">TC-63</th><td>Auto-conversion count</td><td>100 fields successfully auto-converted</td><td>Upload file, run validation</td><td>Fields Auto-Converted card shows 100.</td><td>✅ Pass</td><td>P3 - Medium</td><td>US-17</td></tr>
+    <tr><th scope="row">TC-64</th><td>Reset clears all state</td><td>Dataset loaded and validated</td><td>Click Reset button</td><td>All cleared. Drop zone ready. Resolved values discarded.</td><td>✅ Pass</td><td>P2 - High</td><td>US-01</td></tr>
+    <tr><th scope="row">TC-65</th><td>No data transmitted externally</td><td>Any dataset. Network monitor open</td><td>Upload, validate, export. Monitor all network requests.</td><td>No outbound requests except CDN load for SheetJS.</td><td>✅ Pass</td><td>P1 - Critical</td><td>US-01</td></tr>
+    <tr><th scope="row">TC-66</th><td>Large dataset performance</td><td>Dataset with 500+ rows</td><td>Upload file, run validation</td><td>Completes within 5 seconds. No browser freeze.</td><td>✅ Pass</td><td>P2 - High</td><td>N/A</td></tr>
+    <tr><th scope="row">TC-67</th><td>Multi-site dataset</td><td>Dataset with rows from two sites</td><td>Upload file, run validation</td><td>All rows processed correctly. Both sites in breakdown table.</td><td>✅ Pass</td><td>P2 - High</td><td>US-16</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>Section 8 — Regression Tests  (TC-68 to TC-72)</h2>
+    <p>⚠ <strong>These tests must be executed on every new version release.</strong> Regression failures indicate a previously fixed bug has been reintroduced.</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="test-cases-table-9-cap">
+    <table>
+    <caption id="test-cases-table-9-cap" class="sr-only">Section 8 — Regression Tests  (TC-68 to TC-72)</caption>
+    <tbody>
+    <tr><th scope="row"><strong>TC ID</strong></th><td><strong>Description</strong></td><td><strong>Preconditions</strong></td><td><strong>Test Steps</strong></td><td><strong>Expected Result</strong></td><td><strong>Result</strong></td><td><strong>Priority</strong></td><td><strong>Story Ref</strong></td></tr>
+    <tr><th scope="row">TC-68</th><td>REGRESSION: Trailing dash bug</td><td>Any dataset where Subtype is empty for some rows</td><td>Upload file, run validation. Check Input Source Damage Type for empty-Subtype rows</td><td>Input Source Damage Type = '&lt;Type&gt;' not '&lt;Type&gt; - '. Correct conversion output. <em>(Bug fixed v2.1)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-11</td></tr>
+    <tr><th scope="row">TC-69</th><td>REGRESSION: Format B Component+Element</td><td>Format B format dataset (no Material column)</td><td>Upload Format B file, run validation. Check Input Source Component.</td><td>Correct derivation using Element col as suffix. No false Manual Reviews. <em>(Bug fixed v2.1)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-10,US-13</td></tr>
+    <tr><th scope="row">TC-70</th><td>REGRESSION: Format B Anomaly Type col</td><td>Format B dataset with 'Anomaly Type' column (no 'Type')</td><td>Upload Format B file. Check Input Source Damage Type derivation.</td><td>Anomaly Type column used correctly as base. <em>(Bug fixed v2.1)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-11,US-13</td></tr>
+    <tr><th scope="row">TC-71</th><td>REGRESSION: ISBLANK vs LEN in XLSX</td><td>Exported XLSX from any dataset</td><td>Inspect Input Source Component formula for empty-Material row</td><td>Formula shows IF(LEN(...)&gt;0,...) not IF(ISBLANK(...),...). <em>(Bug fixed v2.1)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-10,US-11</td></tr>
+    <tr><th scope="row">TC-72</th><td>REGRESSION: Blade Side codes accepted</td><td>Dataset with Code 1, Code 2, Code 3, Code 4 values</td><td>Upload file, run validation</td><td>Codes accepted as valid. No Blade Side errors. <em>(Fix from v1.2)</em></td><td>✅ Pass</td><td>P2 - High</td><td>US-05</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>Section 9 — Output Fidelity  (TC-73 to TC-82)</h2>
+    <p>Covers the four defects fixed between v2.7.1 and v3.1.4, where the tool produced output that looked correct and was not.</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="test-cases-table-10-cap">
+    <table>
+    <caption id="test-cases-table-10-cap" class="sr-only">Section 9 — Output Fidelity  (TC-73 to TC-82)</caption>
+    <tbody>
+    <tr><th scope="row"><strong>TC ID</strong></th><td><strong>Description</strong></td><td><strong>Preconditions</strong></td><td><strong>Test Steps</strong></td><td><strong>Expected Result</strong></td><td><strong>Result</strong></td><td><strong>Priority</strong></td><td><strong>Story Ref</strong></td></tr>
+    <tr><th scope="row">TC-73</th><td>Derived output headers spell both company names correctly</td><td>Any valid dataset</td><td>Export converted XLSX. Read the header row <strong>from the raw file</strong>, not from a preview or summary</td><td>Columns P, Q, U, Y each render their company name as that company writes it. Columns R, V, W, Z unchanged. <em>(Fix from v2.7.1)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-21</td></tr>
+    <tr><th scope="row">TC-74</th><td>Header correction did not break the export formulas</td><td>Any valid dataset</td><td>Export converted XLSX. Inspect the lookup formulas in Q, R, V, W, Y, Z</td><td>Each formula references the correct column letter. No formula references an empty or malformed cell address. <em>(Fix from v2.7.1)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-21</td></tr>
+    <tr><th scope="row">TC-75</th><td>A file exported before v2.7.1 still ingests</td><td>An export produced at v2.7 or earlier</td><td>Upload that file, run validation</td><td>Ingests exactly as before. Column matching is unaffected by the header spelling. <em>(Fix from v2.7.1)</em></td><td>✅ Pass</td><td>P2 - High</td><td>US-21</td></tr>
+    <tr><th scope="row">TC-76</th><td>CSV date is not shifted by machine timezone</td><td>CSV dataset with a known inspection date</td><td>Set the machine timezone west of UTC. Upload, run validation, export</td><td>The exported date is the date in the file, not the day before. <em>(Fix from v3.0)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-22</td></tr>
+    <tr><th scope="row">TC-77</th><td>XLSX date cell is not shifted by machine timezone</td><td>XLSX dataset with genuine date cells</td><td>Repeat TC-76 with the XLSX input</td><td>The exported date matches the source cell in every timezone tested. <em>(Fix from v3.0)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-22</td></tr>
+    <tr><th scope="row">TC-78</th><td>Dated rows raise no spurious date-format error</td><td>Any dataset with a populated date column</td><td>Upload, run validation. Count date-related errors</td><td>Zero date-format errors. Before v3.0 every dated row raised one, in every timezone. <em>(Fix from v3.0)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-22</td></tr>
+    <tr><th scope="row">TC-79</th><td>A date carrying a time of day retains it</td><td>Dataset with a date cell holding a real time, e.g. 14:30</td><td>Upload, run validation, export</td><td>The time is preserved rather than truncated to a bare date. <em>(Fix from v3.0)</em></td><td>✅ Pass</td><td>P2 - High</td><td>US-22</td></tr>
+    <tr><th scope="row">TC-80</th><td>Blade Chamber reaches the export</td><td>Dataset supplying a populated Blade Chamber column</td><td>Upload, run validation, export. Inspect column AA</td><td>Every row carries its Blade Chamber value. Column is not blank. <em>(Fix from v3.1)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-23</td></tr>
+    <tr><th scope="row">TC-81</th><td>Chord (%) reaches the export, as a number</td><td>Dataset supplying a populated Chord (%) column</td><td>Upload, run validation, export. Inspect column AE and its cell type</td><td>Every row carries its value, written as a number rather than text, consistent with Distance / Length / Width. <em>(Fix from v3.1)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-23</td></tr>
+    <tr><th scope="row">TC-82</th><td>Column widths match the columns they were written for</td><td>Any valid dataset</td><td>Export converted XLSX. Compare the width declarations against the header row</td><td>One width entry per output column, 39 of each. No column wears its neighbour's width. <em>(Fix from v3.1.1)</em></td><td>✅ Pass</td><td>P2 - High</td><td>US-24</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>Section 10 — Regression: Output Fidelity  (TC-83 to TC-87)</h2>
+    <p>⚠ <strong>These tests must be executed on every new version release</strong>, alongside Section 8. Each guards a defect that produced plausible-looking output and raised no error of its own.</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="test-cases-table-11-cap">
+    <table>
+    <caption id="test-cases-table-11-cap" class="sr-only">Section 10 — Regression: Output Fidelity  (TC-83 to TC-87)</caption>
+    <tbody>
+    <tr><th scope="row"><strong>TC ID</strong></th><td><strong>Description</strong></td><td><strong>Preconditions</strong></td><td><strong>Test Steps</strong></td><td><strong>Expected Result</strong></td><td><strong>Result</strong></td><td><strong>Priority</strong></td><td><strong>Story Ref</strong></td></tr>
+    <tr><th scope="row">TC-83</th><td>REGRESSION: no misrendered company name anywhere in the tool</td><td>Tool source file</td><td>Search the tool for the misrendered spellings of both company names</td><td>No occurrence, in output headers, row keys, dropdown keys, field descriptions or comments. <em>(Bug fixed v2.7.1)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-21</td></tr>
+    <tr><th scope="row">TC-84</th><td>REGRESSION: timezone matrix for dates</td><td>CSV and XLSX datasets with known dates</td><td>Run both inputs at several timezones spanning UTC-10 to UTC+14, including one with a historical sub-minute offset</td><td>Identical calendar date in every combination. Zero date errors. <em>(Bug fixed v3.0)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-22</td></tr>
+    <tr><th scope="row">TC-85</th><td>REGRESSION: no output column silently empty</td><td>Dataset supplying every optional column</td><td>Export, then compare each output column against the input that feeds it</td><td>No column is blank where the input supplied a value. Blank means absent, not lost. <em>(Bug fixed v3.1)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-23</td></tr>
+    <tr><th scope="row">TC-86</th><td>REGRESSION: width list length matches column count</td><td>Tool source file</td><td>Count the entries in the column-width list and the entries in the output column list</td><td>The two counts are equal. A mismatch means widths have shifted onto the wrong columns. <em>(Bug fixed v3.1.1)</em></td><td>✅ Pass</td><td>P2 - High</td><td>US-24</td></tr>
+    <tr><th scope="row">TC-87</th><td>REGRESSION: conversion-driven columns do not clip</td><td>Tool source file and conversion tables</td><td>For each conversion-driven column, compare its width against the longest value in its conversion table</td><td>Every such column seats its widest possible value. <em>(Bug fixed v3.1.4)</em></td><td>✅ Pass</td><td>P3 - Medium</td><td>US-24</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>Section 11 — Regression: v2.3 to v2.7 Defects  (TC-88 to TC-98)</h2>
+    <p>⚠ <strong>Run with Sections 8 and 10 on every release.</strong> These guard bugs 1 to 8, which had no regression case until this section was added. Each surfaced through contact with a real delivered file rather than through review.</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="test-cases-table-12-cap">
+    <table>
+    <caption id="test-cases-table-12-cap" class="sr-only">Section 11 — Regression: v2.3 to v2.7 Defects  (TC-88 to TC-98)</caption>
+    <tbody>
+    <tr><th scope="row"><strong>TC ID</strong></th><td><strong>Description</strong></td><td><strong>Preconditions</strong></td><td><strong>Test Steps</strong></td><td><strong>Expected Result</strong></td><td><strong>Result</strong></td><td><strong>Priority</strong></td><td><strong>Story Ref</strong></td></tr>
+    <tr><th scope="row">TC-88</th><td>REGRESSION: bare-letter blade extracted</td><td>Dataset where the blade is a bare letter (A / B / C) rather than a full label</td><td>Upload, run validation. Inspect output column D</td><td>Blade letter resolved. No empty Asset, no Check Internally flag for it. <em>(Bug 1, fixed v2.3)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-27</td></tr>
+    <tr><th scope="row">TC-89</th><td>REGRESSION: duplicate Component columns disambiguated</td><td>Dataset carrying two columns both named "Component" — one constant at inspection level, one the anomaly component</td><td>Upload, run validation. Open the detected-columns panel</td><td>The anomaly-level column is bound, not the constant one. The panel names which column was chosen. <em>(Bug 2, fixed v2.3)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-02</td></tr>
+    <tr><th scope="row">TC-90</th><td>REGRESSION: duplicate Type columns disambiguated</td><td>Dataset carrying two columns both named "Type" — a task type and the damage type</td><td>Upload, run validation. Check the derived damage type</td><td>The damage-type column is bound. Derivation is correct and raises no false Manual Review. <em>(Bug 3, fixed v2.3)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-02</td></tr>
+    <tr><th scope="row">TC-91</th><td>REGRESSION: Format B does not emit bare row numbers</td><td>Format B dataset (Element column, no Material column)</td><td>Export converted XLSX. Inspect Input Source Component for several rows</td><td>Values read "Component - Element". No bare row number, no cascade of MANUAL REVIEW. <em>(Bug 4, fixed v2.4)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-10</td></tr>
+    <tr><th scope="row">TC-92</th><td>REGRESSION: derived component not doubled</td><td>Any dataset that exercises the component derivation</td><td>Export. Inspect Input Source Component</td><td>Value reads "&lt;Component&gt; - &lt;Material&gt;", not "&lt;Component&gt; - &lt;Component&gt; - &lt;Material&gt;". Raw input values are read from the untouched input row. <em>(Bug 5, fixed v2.4)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-10</td></tr>
+    <tr><th scope="row">TC-93</th><td>REGRESSION: Element lookup free of Blade Side rows</td><td>Exported XLSX, Conversions tab</td><td>Inspect the Element / Component section of the Conversions tab</td><td>Section contains element mappings only. No Blade Side rows are present in it. <em>(Bug 6, fixed v2.4)</em></td><td>✅ Pass</td><td>P2 - High</td><td>US-20</td></tr>
+    <tr><th scope="row">TC-94</th><td>REGRESSION: URL entity round-trip</td><td>Input file whose image URL contains one or more ampersands</td><td>Export. Compare the output hyperlink target against the input URL, character by character</td><td>Byte-for-byte identical. No <code>&amp;amp;amp;</code> in the output. Link resolves rather than returning not-found. <em>(Bug 7, fixed v2.7)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-26</td></tr>
+    <tr><th scope="row">TC-95</th><td>REGRESSION: literal "None" not carried through</td><td>Dataset where an optional column holds the literal string "None"</td><td>Upload, run validation, export</td><td>The cell is empty in the output. The word "None" does not appear as a value. <em>(Bug 8, fixed v2.6)</em></td><td>✅ Pass</td><td>P2 - High</td><td>US-02</td></tr>
+    <tr><th scope="row">TC-96</th><td>Header row detected beneath a metadata preamble</td><td>Dataset with several rows of metadata above the real header row</td><td>Upload the file</td><td>Header located automatically, preamble rows excluded from the data, detected row number reported on the confirmation line. <em>(Feature, v2.3)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-25</td></tr>
+    <tr><th scope="row">TC-97</th><td>&lt;Type&gt; - &lt;Subtype&gt; converts correctly</td><td>Dataset containing a &lt;Type&gt; anomaly with &lt;Subtype&gt; as its subtype</td><td>Upload, run validation, export. Inspect the derived anomaly type columns</td><td>Resolves through the conversion table to its Platform A and Platform B equivalents. No Manual Review flag. <em>(Table entry added v2.4)</em></td><td>✅ Pass</td><td>P2 - High</td><td>US-11</td></tr>
+    <tr><th scope="row">TC-98</th><td>D/E/F columns populated per the v2.5 schema</td><td>Dataset supplying a blade identifier, a turbine identifier and a blade serial number</td><td>Export. Inspect columns D, E and F</td><td>D holds the blade letter only; E holds the turbine identifier; F holds the blade serial. No column carries another's value. <em>(Schema change, v2.5)</em></td><td>✅ Pass</td><td>P1 - Critical</td><td>US-27</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>QA Sign-off</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="test-cases-table-13-cap">
+    <table>
+    <caption id="test-cases-table-13-cap" class="sr-only">QA Sign-off</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Role</strong></th><td><strong>Name</strong></td><td><strong>Date</strong></td><td><strong>Sign-off</strong></td></tr>
+    <tr><th scope="row">QA / Tester</th><td></td><td>May 2026</td><td>⬜ Pending</td></tr>
+    <tr><th scope="row">Data Operations Lead</th><td></td><td>May 2026</td><td>⬜ Pending</td></tr>
+    <tr><th scope="row">Engineering Lead</th><td></td><td>May 2026</td><td>⬜ Pending</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>Sign-off above covers TC-01 to TC-72 at the v2.1 scope. TC-73 to TC-98 have not been through a separate sign-off.</p>
+    <p><em>Anomaly Upload Validator  ·  Platform A  ·  Internal Use Only  ·  v3.1.4  ·  September 2026  ·  98 Test Cases</em></p>
+  </div>
+
+  <p class="doc-return"><a href="../anomaly-upload-validator.html">← Back to the Anomaly Upload Validator case study</a></p>
+</main>
+
+<footer class="site-footer container">
+  <div class="footer-panel" id="contact">
+    <div>
+      <h2 class="footer-title">Say hello.</h2>
+      <p>Open to product and customer success engineer roles in renewable energy, climate, and AI-native software.</p>
+      <a class="footer-email" href="mailto:kiley@kileysullivan.com">kiley@kileysullivan.com</a>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="https://www.linkedin.com/in/kiley-sullivan-87133480/">LinkedIn ↗</a>
+      <a href="../kiley-sullivan-resume.pdf">Résumé ↓</a>
+      <a href="../case-studies.html">Case studies</a>
+      <a href="../writing.html">Writing</a>
+      <a href="../metrics.html">Metrics</a>
+    </nav>
+  </div>
+  <p class="colophon"><span>Kiley Sullivan · Hawaiʻi</span><span>Built with Claude Code</span></p>
+</footer>
+</body>
+</html>

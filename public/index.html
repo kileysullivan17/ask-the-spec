@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ask the Spec</title>
+<meta name="description" content="Ask a question about the Anomaly Upload Validator's published specification and get a short answer that cites the exact section.">
+<link rel="canonical" href="https://ask.kileysullivan.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=Barlow:ital,wght@0,500;0,600;1,500&family=Overpass+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0b; --surface: #101013; --border: #1c1c1f; --border-strong: #2a2a2e;
+    --text-primary: #f2f2f0; --text-secondary: #a8a8ad; --text-tertiary: #949499; --text-faint: #7e7e83;
+    --accent: #3d63ff; --accent-light: #9db8ff; --accent-line: rgba(61, 99, 255, .32);
+    --radius: 16px; --radius-pill: 100px;
+    --font-display: "Barlow Semi Condensed", "Barlow", system-ui, sans-serif;
+    --font-body: "Barlow", system-ui, sans-serif;
+    --font-mono: "Overpass Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text-primary); font: 500 17px/1.6 var(--font-body); }
+  main { max-width: 760px; margin: 0 auto; padding: 56px 16px 80px; }
+  .crumb { font: 400 12px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--text-tertiary); }
+  .crumb a { color: var(--text-secondary); }
+  h1 { font: 600 clamp(36px, 7vw, 56px)/1.05 var(--font-display); margin: 18px 0 12px; }
+  .lede { color: var(--text-secondary); margin: 0 0 32px; max-width: 62ch; }
+  a { color: var(--accent-light); }
+  form { display: flex; gap: 10px; flex-wrap: wrap; }
+  label.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  input[type=text] {
+    flex: 1 1 320px; min-width: 0; padding: 14px 18px; border-radius: var(--radius-pill);
+    border: 1px solid var(--border-strong); background: var(--surface); color: var(--text-primary); font: inherit;
+  }
+  input[type=text]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-line); }
+  button {
+    padding: 14px 24px; border-radius: var(--radius-pill); border: 1px solid var(--text-primary);
+    background: var(--text-primary); color: var(--bg); font: 600 16px var(--font-body); cursor: pointer;
+  }
+  button:focus-visible { outline: 3px solid var(--accent-light); outline-offset: 2px; }
+  button[disabled] { opacity: .6; cursor: wait; }
+  .examples { margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .examples button {
+    background: transparent; color: var(--text-secondary); border-color: var(--border-strong);
+    font: 400 12.5px/1.3 var(--font-mono); padding: 8px 14px;
+  }
+  .examples button:hover { border-color: var(--accent); color: var(--text-primary); }
+  .answer { margin-top: 36px; padding: 24px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+  .answer[hidden] { display: none; }
+  .label { font: 400 11px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--text-tertiary); margin: 0 0 12px; }
+  .answer p { margin: 0; }
+  .sources { margin: 20px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--border); }
+  .sources li { padding: 10px 0 0; font: 400 14px/1.5 var(--font-mono); color: var(--text-secondary); }
+  .note { margin-top: 48px; color: var(--text-faint); font-size: 15px; }
+  footer { margin-top: 40px; font: 400 11px/1.6 var(--font-mono); letter-spacing: .08em; color: var(--text-faint); }
+</style>
+</head>
+<body>
+<main>
+  <p class="crumb"><a href="https://kileysullivan.com/">kileysullivan.com</a> / Ask the Spec</p>
+  <h1>Ask the spec.</h1>
+  <p class="lede">Ask a question about the Anomaly Upload Validator's published specification: requirements, user stories, fields, test cases and release history. Every answer links to the section it came from. If the documents don't say, it tells you so.</p>
+
+  <form id="ask">
+    <label class="sr" for="q">Your question</label>
+    <input id="q" name="q" type="text" maxlength="300" autocomplete="off" placeholder="What happens when a required column is missing?" required>
+    <button id="go" type="submit">Ask</button>
+  </form>
+
+  <div class="examples" aria-label="Example questions">
+    <button type="button">What did TC-38 test?</button>
+    <button type="button">Why was a field demoted in v1.2?</button>
+    <button type="button">What does Manual Review mean?</button>
+    <button type="button">What are the conversion table values?</button>
+  </div>
+
+  <section class="answer" id="out" hidden aria-live="polite">
+    <p class="label" id="out-label">Answer</p>
+    <p id="out-text"></p>
+    <ul class="sources" id="out-sources"></ul>
+  </section>
+
+  <p class="note">Some values in these documents are withheld because the conversion tables are proprietary. Ask for one and the answer will say so instead of guessing. Questions aren't stored.</p>
+
+  <footer>Built with Claude Code</footer>
+</main>
+<script>
+  const form = document.getElementById("ask");
+  const input = document.getElementById("q");
+  const go = document.getElementById("go");
+  const out = document.getElementById("out");
+  const label = document.getElementById("out-label");
+  const text = document.getElementById("out-text");
+  const sources = document.getElementById("out-sources");
+
+  document.querySelectorAll(".examples button").forEach((b) =>
+    b.addEventListener("click", () => { input.value = b.textContent; form.requestSubmit(); })
+  );
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const question = input.value.trim();
+    if (!question) return;
+    go.disabled = true;
+    go.textContent = "Asking";
+    out.hidden = false;
+    label.textContent = "Answer";
+    text.textContent = "Searching the spec.";
+    sources.replaceChildren();
+    try {
+      const res = await fetch("/api/ask", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ question }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+      label.textContent = data.status === "answered" ? "Answer" : "Not in the spec";
+      text.textContent = data.answer;
+      for (const c of data.citations || []) {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = c.url;
+        a.textContent = `[${c.n}] ${c.doc}, ${c.label}`;
+        li.append(a);
+        sources.append(li);
+      }
+    } catch (err) {
+      label.textContent = "Error";
+      text.textContent = err.message;
+    } finally {
+      go.disabled = false;
+      go.textContent = "Ask";
+    }
+  });
+</script>
+</body>
+</html>

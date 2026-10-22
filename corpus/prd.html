@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<!-- ============================================================
+  RENDERED ARTIFACT: Product requirements, Anomaly Upload Validator.
+
+  GENERATED, NOT HAND WRITTEN. Rendered from prd_sanitised.docx in
+  the sanitized source set, which is also the file the download
+  link serves, so the page and the download are the same
+  document. Structure is read from the WordprocessingML: heading
+  rank from run size and color, tables from w:tbl with
+  w:tblHeader marking the header row.
+
+  The document text is reproduced as written. Em dashes, double
+  spaces and the sanitization placeholders ("the organization",
+  "the Source Platform", "the OEM") are the source document's
+  own. Do not copy-edit this page. To change it, change the
+  DOCX and re-render.
+============================================================ -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product requirements · Anomaly Upload Validator · Kiley Sullivan</title>
+<meta name="description" content="The product requirements document for the Anomaly Upload Validator: functional and non-functional requirements, scope, and the conversion mapping across three nomenclature systems.">
+<link rel="canonical" href="https://kileysullivan.com/artifacts/prd">
+<meta property="og:title" content="Product requirements · Anomaly Upload Validator · Kiley Sullivan">
+<meta property="og:description" content="The product requirements document for the Anomaly Upload Validator: functional and non-functional requirements, scope, and the conversion mapping across three nomenclature systems.">
+<meta property="og:url" content="https://kileysullivan.com/artifacts/prd">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kiley Sullivan">
+<meta property="og:image" content="https://kileysullivan.com/assets/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kiley Sullivan, product manager for AI-native software">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kileysullivan.com/assets/og-default.png">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=Barlow:ital,wght@0,500;0,600;1,500&family=Overpass+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script src="https://cdn.amplitude.com/libs/analytics-browser-2.45.8-min.js.gz" defer></script>
+<script src="../analytics.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="116 76 140 166" width="19" height="22" focusable="false"><path fill="currentColor" d="M127.9 82.5C132.1 82.7 136.3 82.7 140.5 82.6C140.4 101.6 140.8 121.1 140.4 140.1C146.3 134.3 152.1 127.8 157.9 122.3C163.3 122 169.2 122.2 174.6 122.1C166.9 129.4 159.2 137 151.5 144.4L244.2 237L224.1 237L141.3 154.2L140.9 154.5C140.2 157.1 140.5 172.3 140.5 176L127.8 176C128.3 167.4 127.8 155.5 127.9 146.7C128.1 125.3 127.7 103.9 127.9 82.5Z"/></svg></span>
+      <span class="brand-name">Kiley Sullivan</span>
+    </a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="../about.html">About</a>
+      <a href="../case-studies.html">Case studies</a>
+      <a href="../process.html">Process</a>
+      <a href="../writing.html">Writing</a>
+      <a class="nav-contact" href="#contact">Contact</a>
+      <a class="btn btn-primary btn-sm" href="../kiley-sullivan-resume.pdf">Résumé</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="container">
+  <a class="breadcrumb" href="../anomaly-upload-validator.html">← Anomaly Upload Validator</a>
+
+  <div class="page-hero">
+    <p class="label">Anomaly Upload Validator · Specification artifact</p>
+    <h1 class="display">Product Requirements Document</h1>
+    <p class="lede">What the tool had to do and the constraints it worked inside.</p>
+    <div class="hero-actions">
+      <a class="btn btn-ghost" href="../assets/artifacts/prd_sanitised.docx" download>Download the product requirements (DOCX) ↓</a>
+    </div>
+    <p class="media-note">This page is rendered from that DOCX. Same document, same words.</p>
+  </div>
+
+  <div class="doc">
+    <p>Anomaly Upload Validator — Product Requirements Document</p>
+    <p><strong>Platform A  ·  Internal Tool  ·  v3.1.4  ·  September 2026</strong></p>
+    <h2>Document Information</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="prd-table-1-cap">
+    <table>
+    <caption id="prd-table-1-cap" class="sr-only">Document Information</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Property</strong></th><td><strong>Detail</strong></td></tr>
+    <tr><th scope="row">Product Name</th><td>Anomaly Upload Validator</td></tr>
+    <tr><th scope="row">Version</th><td>v3.1.4 (current; working file v9.1.4)</td></tr>
+    <tr><th scope="row">Document Status</th><td>Current — reflects delivered functionality through v3.1.4</td></tr>
+    <tr><th scope="row">Author</th><td>Engineering</td></tr>
+    <tr><th scope="row">Last Updated</th><td>September 2026</td></tr>
+    <tr><th scope="row">Distribution</th><td>data coordinators and engineering staff</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>Executive Summary</h2>
+    <p>The Anomaly Upload Validator is a browser-based internal tool that automates the pre-upload preparation of inspection datasets for Platform A. It accepts raw Input Source exports in CSV or XLSX format, validates them against the Platform A upload specification, converts field values across three nomenclature systems (Input Source → Platform A → Platform B), enables human-in-the-loop resolution of unmatched values, and produces a formatted multi-tab XLSX working document ready for upload.</p>
+    <p>The tool is distributed as a single self-contained HTML file requiring no installation, no server, and no authentication. All data processing runs client-side — no inspection data is transmitted externally.</p>
+    <h2>Problem Statement</h2>
+    <p>Background</p>
+    <p>Platform B wind farm asset owners engage both Platform A and third-party inspector Input Source for blade inspections. When third-party-sourced data needs to be ingested into Platform A and submitted to Platform B, it must pass through two conversion layers and conform to the Platform A upload specification.</p>
+    <p>Problems Identified</p>
+    <ul>
+    <li>Manual pre-upload checking was performed in spreadsheets with no standardized process, leading to inconsistent results and occasional failed uploads.</li>
+    <li>Field value conversion across three nomenclature systems was performed manually using a reference spreadsheet, requiring significant coordinator time per dataset.</li>
+    <li>Unrecognized field values had no structured resolution workflow — they were either missed or required escalation to Engineering via email.</li>
+    <li>Multiple Input Source export formats exist across different client datasets, causing conversion failures when the wrong template was applied.</li>
+    </ul>
+    <p><strong>Impact:</strong> Each failed upload or conversion error requires manual rework estimated at 30–90 minutes per dataset.</p>
+    <h2>Goals &amp; Success Metrics</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="prd-table-2-cap">
+    <table>
+    <caption id="prd-table-2-cap" class="sr-only">Goals &amp; Success Metrics</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Goal</strong></th><td><strong>Success Metric</strong></td><td><strong>Priority</strong></td></tr>
+    <tr><th scope="row">Eliminate manual pre-upload field checking</th><td>100% of required fields validated automatically</td><td>Must Have</td></tr>
+    <tr><th scope="row">Automate field value conversion</th><td>Zero manual conversion steps for known field values</td><td>Must Have</td></tr>
+    <tr><th scope="row">Structured resolution for unknown values</th><td>All unmatched values surfaced with dropdown resolution</td><td>Must Have</td></tr>
+    <tr><th scope="row">Support multiple source dataset formats</th><td>Handles all known Input Source export structures</td><td>Must Have</td></tr>
+    <tr><th scope="row">Zero installation / zero IT dependency</th><td>Runs in any modern browser from a shared Drive link</td><td>Must Have</td></tr>
+    <tr><th scope="row">Keep data internal</th><td>No inspection data transmitted outside local machine</td><td>Must Have</td></tr>
+    <tr><th scope="row">Engineering can extend conversion mappings</th><td>New rows in Conversions tab update formulas automatically</td><td>Should Have</td></tr>
+    <tr><th scope="row">Operational visibility</th><td>Compliance score, anomaly count, turbine count, site breakdown per run</td><td>Should Have</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>Users &amp; Personas</h2>
+    <p>Data Coordinator (Primary User)</p>
+    <p>Receives raw Input Source exports from clients and prepares them for upload to Platform A. Non-technical. Needs clear pass/fail feedback without reading code or formulas.</p>
+    <p>Engineering / Data Lead (Secondary User)</p>
+    <p>Owns the conversion mapping tables and is responsible for extending them when new damage types or component combinations appear. Comfortable with spreadsheets. Needs to update the Conversions tab without breaking the output.</p>
+    <p>Operations Manager (Stakeholder)</p>
+    <p>Needs confidence that data being uploaded to Platform A and onward to Platform B is accurate and complete. Reviews compliance scores and flags for escalation.</p>
+    <h2>Scope</h2>
+    <p>In Scope — v3.1.4</p>
+    <ul>
+    <li>File ingestion: CSV and XLSX from Input Source</li>
+    <li>Column-level validation: presence and naming of all required and conditional fields</li>
+    <li>Row-level validation: field format rules (date, severity, Yes/No, blade side, numerics, coordinate pairs)</li>
+    <li>Four-tier status system: Error, Manual Review, Check Internally, Warning</li>
+    <li>Conversion engine: Input Source → Platform A → Platform B</li>
+    <li>Three converted field groups: Element/Component, Anomaly Type, Blade Side</li>
+    <li>Human-in-the-loop Manual Review resolution with dropdown selectors</li>
+    <li>Dataset summary: anomaly count, unique turbines, site breakdown</li>
+    <li>Export: Validation Report CSV + Converted XLSX (Damages Report + Conversions tabs)</li>
+    <li>Multi-format support: Format A (Component + Material) and Format B (Component + Element) structures</li>
+    </ul>
+    <p>Added since v2.1:</p>
+    <ul>
+    <li>Content-based column matching: a header-alias pass plus data-shape fingerprinting, so renamed or reordered columns resolve by what their values look like (v2.3)</li>
+    <li>Automatic header-row detection beneath up to 25 rows of metadata preamble (v2.3)</li>
+    <li>Bulk resolution of Manual Review flags across rows sharing a value (v2.2)</li>
+    <li>Pass-through of Propagation Type, OpSeverity, Monitoring Recommendation and Tasks (v2.4)</li>
+    <li>Revised output schema: <code>Asset</code> carries the blade letter, with turbine and asset serial numbers as separate fields (v2.5)</li>
+    <li>Clickable image hyperlinks in the exported report, with source URLs preserved exactly (v2.6, v2.7)</li>
+    </ul>
+    <p>Out of Scope — v3.1.4</p>
+    <ul>
+    <li>Cross-field conditional validation (e.g. BladeChamber required when Damage Location = Internal)</li>
+    <li>Duplicate anomaly ID detection</li>
+    <li>Direct upload to either platform from the tool</li>
+    <li>User authentication or access control</li>
+    <li>Audit logging of validation runs (deferred — requires Apps Script or API access)</li>
+    <li>Persistent storage of resolved manual review mappings across sessions</li>
+    <li>Automated extension of VLOOKUP ranges when Engineering adds rows to Conversions tab</li>
+    <li>Warning at ingest when image links are close to or past expiry (deferred; see v2.7 known issues)</li>
+    <li>Severity-aware conversion, where severity forms part of the lookup key alongside size thresholds. One client's model requires it, and the flat three-column lookup cannot represent it.</li>
+    </ul>
+    <h2>Functional Requirements</h2>
+    <p>FR-01  File Ingestion</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="prd-table-3-cap">
+    <table>
+    <caption id="prd-table-3-cap" class="sr-only">Functional Requirements</caption>
+    <tbody>
+    <tr><th scope="row"><strong>#</strong></th><td><strong>Requirement</strong></td><td><strong>Priority</strong></td></tr>
+    <tr><th scope="row">FR-01.1</th><td>Accept CSV (UTF-8) and XLSX / XLS file formats</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-01.2</th><td>Files may be submitted via drag-and-drop or file browser dialog</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-01.3</th><td>First sheet of any XLSX file shall be used as the data source</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-01.4</th><td>Filename and row count shall be displayed on successful load</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-01.5</th><td>Error message shall be displayed if file is empty or unparseable</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-01.6</th><td>No file data shall be transmitted to any external server</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-01.7</th><td>A date shall be ingested from its underlying value rather than from the parser's display formatting, so that the calendar date is identical in every timezone (v3.0)</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-01.8</th><td>An ingested date shall be normalised to YYYY-MM-DD, retaining a time of day only where the source cell carries one (v3.0)</td><td>Must Have</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>FR-02  Column Normalisation</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="prd-table-4-cap">
+    <table>
+    <caption id="prd-table-4-cap" class="sr-only">Functional Requirements</caption>
+    <tbody>
+    <tr><th scope="row"><strong>#</strong></th><td><strong>Requirement</strong></td><td><strong>Priority</strong></td></tr>
+    <tr><th scope="row">FR-02.1</th><td>Apply a column alias map to normalize variant column names before validation</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-02.2</th><td>Aliases shall include: Date→Inspection Date, Blade Chamber→BladeChamber, Chord (%)→Chord(%), Turbine Serial Number→Serial Number, Links→Source Images</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-02.3</th><td>Unrecognized column names shall be passed through unchanged</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-02.4</th><td>Columns shall be matched by content as well as by name. The alias map is a fallback, not the primary mechanism (v2.3)</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-02.5</th><td>Matching shall run two passes: header alias first, in priority order, then a data-shape fingerprint for any field still unmatched</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-02.6</th><td>A field shall bind by data shape when at least 70% of sampled values in a candidate column match that field's expected shape</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-02.7</th><td>Where one alias matches several columns, the candidate whose values best fit the field shall win; where shape cannot separate them, the column with more distinct values shall win</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-02.8</th><td>The header row shall be detected automatically within the first 25 rows, so a file carrying a metadata preamble above its header is ingested without manual editing</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-02.9</th><td>A confirmation panel shall show which input column bound to each canonical field, and whether it bound by name or by shape</td><td>Should Have</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>FR-03  Column-Level Validation</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="prd-table-5-cap">
+    <table>
+    <caption id="prd-table-5-cap" class="sr-only">Functional Requirements</caption>
+    <tbody>
+    <tr><th scope="row"><strong>#</strong></th><td><strong>Requirement</strong></td><td><strong>Priority</strong></td></tr>
+    <tr><th scope="row">FR-03.1</th><td>Verify all 18 required field column headers are present (case-sensitive)</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-03.2</th><td>Missing required columns shall be flagged with field name and description</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-03.3</th><td>Missing conditional columns shall be reported as informational (non-blocking)</td><td>Must Have</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>FR-04  Row-Level Validation</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="prd-table-6-cap">
+    <table>
+    <caption id="prd-table-6-cap" class="sr-only">Functional Requirements</caption>
+    <tbody>
+    <tr><th scope="row"><strong>#</strong></th><td><strong>Requirement</strong></td><td><strong>Priority</strong></td></tr>
+    <tr><th scope="row">FR-04.1</th><td>Every data row shall be validated against all required field rules</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-04.2</th><td>Severity: integer value 1–5 only</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-04.3</th><td>Critical: 'Yes' or 'No' (case-insensitive)</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-04.4</th><td>Inspection Date: YYYY-MM-DD format strictly enforced</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-04.5</th><td>Damage Location: 'Internal' or 'External' (case-insensitive)</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-04.6</th><td>Blade Side: Code 1 / Value 1 / Code 2 / Value 2 / Code 3 / Value 3 / Code 4 / Value 4</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-04.7</th><td>Distance (m), Length (m), Width (m): numeric values</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-04.8</th><td>Coordinates: must contain at least three [x,y] bracketed pairs</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-04.9</th><td>Asset and Coordinates: when empty, flag as Check Internally rather than Error</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-04.10</th><td>Serial Number: when empty or absent, raise no flag of any kind</td><td>Must Have</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>FR-05  Conversion Engine</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="prd-table-7-cap">
+    <table>
+    <caption id="prd-table-7-cap" class="sr-only">Functional Requirements</caption>
+    <tbody>
+    <tr><th scope="row"><strong>#</strong></th><td><strong>Requirement</strong></td><td><strong>Priority</strong></td></tr>
+    <tr><th scope="row">FR-05.1</th><td>Detect Component+Material vs Component+Element column structure and apply appropriate concatenation</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-05.2</th><td>Detect Type+Subtype vs AnomalyType+Subtype column structure and apply appropriate concatenation</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-05.3</th><td>Concatenation shall use LEN()=0 guard (not ISBLANK) to handle empty string cells correctly</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-05.4</th><td>Element conversion: Input Source Component → Platform A Element + Platform B Element via lookup</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-05.5</th><td>Anomaly Type conversion: Input Source Damage Type → Platform A Anomaly Type + Platform B Anomaly Type via lookup</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-05.6</th><td>Blade Side conversion: Blade Side → Platform A Blade Side + Platform B Blade Side via lookup</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-05.7</th><td>Floating-point noise in numeric fields shall be cleaned to 4 decimal places on import</td><td>Should Have</td></tr>
+    <tr><th scope="row">FR-05.8</th><td>Blade letter shall be extracted from Asset field when Blade column is empty or contains full label</td><td>Should Have</td></tr>
+    <tr><th scope="row">FR-05.9</th><td>Derived column headers shall render both company names as those companies write them (v2.7.1)</td><td>Must Have</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>FR-06  Status System</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="prd-table-8-cap">
+    <table>
+    <caption id="prd-table-8-cap" class="sr-only">Functional Requirements</caption>
+    <tbody>
+    <tr><th scope="row"><strong>#</strong></th><td><strong>Requirement</strong></td><td><strong>Priority</strong></td></tr>
+    <tr><th scope="row">FR-06.1</th><td>Each row issue shall be assigned one of four statuses: Error, Manual Review, Check Internally, Warning</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-06.2</th><td>Error: required field absent or format invalid</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-06.3</th><td>Manual Review: concatenated value not found in conversion lookup table</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-06.4</th><td>Check Internally: Asset or Coordinates empty — value may exist in internal records</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-06.5</th><td>Warning: conditional field populated but format invalid</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-06.6</th><td>Check Internally rows shall be excluded from compliance score denominator</td><td>Must Have</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>FR-07  Manual Review Resolution</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="prd-table-9-cap">
+    <table>
+    <caption id="prd-table-9-cap" class="sr-only">Functional Requirements</caption>
+    <tbody>
+    <tr><th scope="row"><strong>#</strong></th><td><strong>Requirement</strong></td><td><strong>Priority</strong></td></tr>
+    <tr><th scope="row">FR-07.1</th><td>Each Manual Review row shall display the original unmatched value</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-07.2</th><td>A dropdown shall present all valid target-platform values for the affected field</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-07.3</th><td>On selection, row status updates to Resolved and correct value written to converted dataset</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-07.4</th><td>A progress counter shall show resolved / total Manual Review count</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-07.5</th><td>Export Converted XLSX shall remain disabled until all Manual Reviews are resolved</td><td>Must Have</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>FR-08  Results Dashboard</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="prd-table-10-cap">
+    <table>
+    <caption id="prd-table-10-cap" class="sr-only">Functional Requirements</caption>
+    <tbody>
+    <tr><th scope="row"><strong>#</strong></th><td><strong>Requirement</strong></td><td><strong>Priority</strong></td></tr>
+    <tr><th scope="row">FR-08.1</th><td>Summary cards: Total Rows, Clean, Errors, Manual Review, Check Internally, Warnings</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-08.2</th><td>Compliance score as percentage with green/amber/red threshold coloring</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-08.3</th><td>Auto-conversion count and Manual Review count as secondary cards</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-08.4</th><td>Dataset summary: total anomalies, unique turbine count, site count, per-site breakdown</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-08.5</th><td>Issues table filter tabs: All / Errors / Manual Review / Check Internally / Warnings</td><td>Must Have</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>FR-09  Exports</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="prd-table-11-cap">
+    <table>
+    <caption id="prd-table-11-cap" class="sr-only">Functional Requirements</caption>
+    <tbody>
+    <tr><th scope="row"><strong>#</strong></th><td><strong>Requirement</strong></td><td><strong>Priority</strong></td></tr>
+    <tr><th scope="row">FR-09.1</th><td>Validation Report: dated CSV with columns Row, Anomaly ID, Field, Status, Detail</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-09.2</th><td>Converted XLSX: two-tab workbook — Damages Report + Conversions</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-09.3</th><td>Damages Report tab shall match column order of the amended Format A file exactly</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-09.4</th><td>Derived columns shall use live VLOOKUP formulas referencing the Conversions tab</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-09.5</th><td>Conversions tab structured in three editable sections: Element/Component, Anomaly Type, Blade Side</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-09.6</th><td>Exported XLSX filename shall incorporate source filename and export date</td><td>Should Have</td></tr>
+    <tr><th scope="row">FR-09.7</th><td>Every column carrying a value on input shall carry it on output. A column whose output header differs from its canonical field name shall still resolve (v3.1)</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-09.8</th><td>The column-width list shall hold exactly one entry per output column, and shall be revised whenever a column is added, removed or inserted (v3.1.1)</td><td>Must Have</td></tr>
+    <tr><th scope="row">FR-09.9</th><td>Column widths shall seat the widest value each column can hold, computed from the conversion tables where those define it (v3.1.3, v3.1.4)</td><td>Should Have</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>Non-Functional Requirements</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="prd-table-12-cap">
+    <table>
+    <caption id="prd-table-12-cap" class="sr-only">Non-Functional Requirements</caption>
+    <tbody>
+    <tr><th scope="row"><strong>ID</strong></th><td><strong>Category</strong></td><td><strong>Requirement</strong></td></tr>
+    <tr><th scope="row">NFR-01</th><td>Deployment</td><td>Single self-contained HTML file. No server, no installation, no authentication.</td></tr>
+    <tr><th scope="row">NFR-02</th><td>Compatibility</td><td>Chrome, Edge, Firefox, Safari — any version released in the last 3 years.</td></tr>
+    <tr><th scope="row">NFR-03</th><td>Data Privacy</td><td>All processing client-side. No data transmitted to any external endpoint.</td></tr>
+    <tr><th scope="row">NFR-04</th><td>Performance</td><td>Must handle up to 10,000 rows without browser freezing.</td></tr>
+    <tr><th scope="row">NFR-05</th><td>Dependencies</td><td>SheetJS is the only runtime dependency. Loaded from CDN; cacheable for offline use.</td></tr>
+    <tr><th scope="row">NFR-06</th><td>Portability</td><td>Distributable via shared Drive folder with no configuration required by recipients.</td></tr>
+    <tr><th scope="row">NFR-07</th><td>Maintainability</td><td>Conversion tables, field definitions, and aliases defined as named constants at top of script.</td></tr>
+    <tr><th scope="row">NFR-08</th><td>Output fidelity</td><td>Exported XLSX formulas must use LEN()=0 guards rather than ISBLANK() for empty-string cells.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>Conversion Mapping Summary</h2>
+    <p>Element / Component</p>
+    <p><strong>Source:</strong> Component + Material column (falls back to Component + Element if Material absent)</p>
+    <p><strong>Derivation:</strong> <code>IF(LEN(Material)&gt;0, Component &amp; " - " &amp; Material, IF(LEN(Element)&gt;0, Component &amp; " - " &amp; Element, Component))</code></p>
+    <p><strong>Output:</strong> Input Source Component → Platform A Element → Platform B Element</p>
+    <p><em>[Conversion table removed. The mapping across vendor, platform and client schemas is proprietary and is not distributed with this document.]</em></p>
+    <p>Anomaly Type</p>
+    <p><strong>Source:</strong> Type + Subtype column (falls back to Anomaly Type + Subtype if Type absent)</p>
+    <p><strong>Derivation:</strong> <code>IF(LEN(Subtype)&gt;0, Type &amp; " - " &amp; Subtype, Type)</code></p>
+    <p><strong>Output:</strong> Input Source Damage Type → Platform A Anomaly Type → Platform B Anomaly Type</p>
+    <p><em>[Conversion table removed. The mapping across vendor, platform and client schemas is proprietary and is not distributed with this document.]</em></p>
+    <p>Blade Side</p>
+    <p><strong>Source:</strong> Blade Side column (direct lookup — no concatenation)</p>
+    <p><strong>Output:</strong> Blade Side → Platform A Blade Side → Platform B Blade Side</p>
+    <p><em>[Conversion table removed. The mapping across vendor, platform and client schemas is proprietary and is not distributed with this document.]</em></p>
+    <h2>Supported Dataset Formats</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="prd-table-13-cap">
+    <table>
+    <caption id="prd-table-13-cap" class="sr-only">Supported Dataset Formats</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Format</strong></th><td><strong>Known Source</strong></td><td><strong>Element Columns</strong></td><td><strong>Anomaly Type Columns</strong></td><td><strong>Blade Column</strong></td></tr>
+    <tr><th scope="row">Format A</th><td>Format A (Input Source)</td><td>Component + Material</td><td>Type + Subtype</td><td>Empty — extracted from Asset</td></tr>
+    <tr><th scope="row">Format B</th><td>Format B (Input Source)</td><td>Component + Element</td><td>Anomaly Type + Subtype</td><td>"Blade A" — letter extracted</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>Assumptions &amp; Constraints</h2>
+    <p>Assumptions</p>
+    <ul>
+    <li>All source files are Input Source exports. Tool is not designed for other inspection platform formats.</li>
+    <li>The first sheet of any XLSX file contains the inspection data.</li>
+    <li>Column names are consistent within a given client's export format.</li>
+    <li>Engineering is responsible for maintaining and extending the Conversions tab.</li>
+    <li>Platform A upload specification does not change between tool versions without a corresponding tool update.</li>
+    </ul>
+    <p>Constraints</p>
+    <ul>
+    <li>No server infrastructure available — tool must run entirely client-side.</li>
+    <li>Google Apps Script deployment is restricted by company IT policy for user-facing web apps. Distribution via shared Google Drive is the approved method.</li>
+    <li>SheetJS is the only permitted third-party dependency.</li>
+    <li>VLOOKUP row ranges in exported XLSX are calculated at export time. Engineering adding rows beyond the current range requires manual formula updates.</li>
+    </ul>
+    <h2>Future Considerations</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="prd-table-14-cap">
+    <table>
+    <caption id="prd-table-14-cap" class="sr-only">Future Considerations</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Feature</strong></th><td><strong>Description</strong></td><td><strong>Priority</strong></td></tr>
+    <tr><th scope="row">Persistent manual review mappings</th><td>Save resolved mappings to localStorage for reuse on future runs</td><td>High</td></tr>
+    <tr><th scope="row">Cross-field conditional validation</th><td>BladeChamber required when Damage Location = Internal</td><td>High</td></tr>
+    <tr><th scope="row">Duplicate anomaly ID detection</th><td>Flag rows where ID appears more than once</td><td>Medium</td></tr>
+    <tr><th scope="row">Dynamic VLOOKUP range expansion</th><td>Auto-extend formula ranges when Engineering adds rows</td><td>Medium</td></tr>
+    <tr><th scope="row">Audit logging</th><td>Write run summary to a shared Sheet — pending IT approval for API access</td><td>Medium</td></tr>
+    <tr><th scope="row">Direct platform upload</th><td>Submit directly to Platform A upload endpoint</td><td>Low</td></tr>
+    <tr><th scope="row">Additional source platform support</th><td>Extend alias map and format detection beyond Input Source</td><td>Low</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>Sign-off</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="prd-table-15-cap">
+    <table>
+    <caption id="prd-table-15-cap" class="sr-only">Sign-off</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Role</strong></th><td><strong>Name</strong></td><td><strong>Date</strong></td><td><strong>Status</strong></td></tr>
+    <tr><th scope="row">Product Owner</th><td></td><td>May 2026</td><td>Pending</td></tr>
+    <tr><th scope="row">Engineering Lead</th><td></td><td>May 2026</td><td>Pending</td></tr>
+    <tr><th scope="row">Data Operations</th><td></td><td>May 2026</td><td>Pending</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>Sign-off above covers the v2.1 scope. Versions v2.2 to v3.1.4 have not been through a separate sign-off.</p>
+    <p><em>Anomaly Upload Validator  ·  Platform A  ·  Internal Use Only  ·  v3.1.4  ·  September 2026</em></p>
+  </div>
+
+  <p class="doc-return"><a href="../anomaly-upload-validator.html">← Back to the Anomaly Upload Validator case study</a></p>
+</main>
+
+<footer class="site-footer container">
+  <div class="footer-panel" id="contact">
+    <div>
+      <h2 class="footer-title">Say hello.</h2>
+      <p>Open to product and customer success engineer roles in renewable energy, climate, and AI-native software.</p>
+      <a class="footer-email" href="mailto:kiley@kileysullivan.com">kiley@kileysullivan.com</a>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="https://www.linkedin.com/in/kiley-sullivan-87133480/">LinkedIn ↗</a>
+      <a href="../kiley-sullivan-resume.pdf">Résumé ↓</a>
+      <a href="../case-studies.html">Case studies</a>
+      <a href="../writing.html">Writing</a>
+      <a href="../metrics.html">Metrics</a>
+    </nav>
+  </div>
+  <p class="colophon"><span>Kiley Sullivan · Hawaiʻi</span><span>Built with Claude Code</span></p>
+</footer>
+</body>
+</html>

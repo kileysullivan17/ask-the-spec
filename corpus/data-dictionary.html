@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<!-- ============================================================
+  RENDERED ARTIFACT: Data dictionary, Anomaly Upload Validator.
+
+  GENERATED, NOT HAND WRITTEN. Rendered from data_dictionary_sanitised.docx in
+  the sanitized source set, which is also the file the download
+  link serves, so the page and the download are the same
+  document. Structure is read from the WordprocessingML: heading
+  rank from run size and color, tables from w:tbl with
+  w:tblHeader marking the header row.
+
+  The document text is reproduced as written. Em dashes, double
+  spaces and the sanitization placeholders ("the organization",
+  "the Source Platform", "the OEM") are the source document's
+  own. Do not copy-edit this page. To change it, change the
+  DOCX and re-render.
+============================================================ -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data dictionary · Anomaly Upload Validator · Kiley Sullivan</title>
+<meta name="description" content="The data dictionary for the Anomaly Upload Validator: every field, its source column, classification, validation rule, and conversion target, with the full lookup tables.">
+<link rel="canonical" href="https://kileysullivan.com/artifacts/data-dictionary">
+<meta property="og:title" content="Data dictionary · Anomaly Upload Validator · Kiley Sullivan">
+<meta property="og:description" content="The data dictionary for the Anomaly Upload Validator: every field, its source column, classification, validation rule, and conversion target, with the full lookup tables.">
+<meta property="og:url" content="https://kileysullivan.com/artifacts/data-dictionary">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kiley Sullivan">
+<meta property="og:image" content="https://kileysullivan.com/assets/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kiley Sullivan, product manager for AI-native software">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kileysullivan.com/assets/og-default.png">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=Barlow:ital,wght@0,500;0,600;1,500&family=Overpass+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script src="https://cdn.amplitude.com/libs/analytics-browser-2.45.8-min.js.gz" defer></script>
+<script src="../analytics.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="116 76 140 166" width="19" height="22" focusable="false"><path fill="currentColor" d="M127.9 82.5C132.1 82.7 136.3 82.7 140.5 82.6C140.4 101.6 140.8 121.1 140.4 140.1C146.3 134.3 152.1 127.8 157.9 122.3C163.3 122 169.2 122.2 174.6 122.1C166.9 129.4 159.2 137 151.5 144.4L244.2 237L224.1 237L141.3 154.2L140.9 154.5C140.2 157.1 140.5 172.3 140.5 176L127.8 176C128.3 167.4 127.8 155.5 127.9 146.7C128.1 125.3 127.7 103.9 127.9 82.5Z"/></svg></span>
+      <span class="brand-name">Kiley Sullivan</span>
+    </a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="../about.html">About</a>
+      <a href="../case-studies.html">Case studies</a>
+      <a href="../process.html">Process</a>
+      <a href="../writing.html">Writing</a>
+      <a class="nav-contact" href="#contact">Contact</a>
+      <a class="btn btn-primary btn-sm" href="../kiley-sullivan-resume.pdf">Résumé</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="container">
+  <a class="breadcrumb" href="../anomaly-upload-validator.html">← Anomaly Upload Validator</a>
+
+  <div class="page-hero">
+    <p class="label">Anomaly Upload Validator · Specification artifact</p>
+    <h1 class="display">Data Dictionary</h1>
+    <p class="lede">Every field, its source schema, and how it maps across vendor, platform, and client.</p>
+    <div class="hero-actions">
+      <a class="btn btn-ghost" href="../assets/artifacts/data_dictionary_sanitised.docx" download>Download the data dictionary (DOCX) ↓</a>
+    </div>
+    <p class="media-note">This page is rendered from that DOCX. Same document, same words.</p>
+  </div>
+
+  <div class="doc">
+    <p>Anomaly Upload Validator , Data Dictionary</p>
+    <p><strong>Internal Tool  ·  v3.1.4  ·  September 2026</strong></p>
+    <h2>About this revision</h2>
+    <p>Updated 2026-09-17 from v2.1 to v2.7, then extended 2026-09-18 to v3.1.4. Three kinds of change in the first pass:</p>
+    <p>1. <strong>Output schema.</strong> The D/E/F columns were split (v2.5). <code>Asset</code> now carries the blade letter; turbine and asset serial numbers are separate fields.</p>
+    <p>2. <strong>Sanitization.</strong> Generic labels were inconsistent across the previous revision (four competing forms, some producing ungrammatical sentences). The whole document now uses one scheme, defined below.</p>
+    <p>3. <strong>Verification flags.</strong> Items marked <strong><code>[verify]</code></strong> could not be confirmed from the change log alone and need checking against a current export before this document is treated as authoritative. They are listed together in "Open verification items" at the end.</p>
+    <p>The tool's own version header and its working file advance together: <code>v2.x</code> / <code>v8.x</code> through v2.7.1, <code>v3.x</code> / <code>v9.x</code> since. This document describes <strong>v3.1.4 (working file v9.1.4)</strong>.</p>
+    <p>The second pass, on 2026-09-18, carried the document from v2.7 to v3.1.4. That range is four defect fixes: the header misrenderings below (v2.7.1); a date fault that shifted CSV dates back a day west of UTC and made every dated row fail its own YYYY-MM-DD check in every timezone (v3.0); two output columns that wrote an empty cell under a correct header because the export looked them up by header text rather than canonical name (v3.1); and the export's column-width list, one entry short since the v2.5 split and so shifting every width from column E onward onto its right-hand neighbour (v3.1.1 through v3.1.4).</p>
+    <h2>Generic labels used in this document</h2>
+    <p>This is an internal tool operating between three commercial systems. Their names, and the contents of the conversion tables between them, are withheld. The structure is not.</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="data-dictionary-table-1-cap">
+    <table>
+    <caption id="data-dictionary-table-1-cap" class="sr-only">Generic labels used in this document</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Label</strong></th><td><strong>Means</strong></td></tr>
+    <tr><th scope="row"><strong>Input Source</strong></th><td>The inspection platform the raw dataset is exported from. Column A of the Conversions tab.</td></tr>
+    <tr><th scope="row"><strong>Platform A</strong></th><td>The platform the dataset is being loaded into. Column B of the Conversions tab.</td></tr>
+    <tr><th scope="row"><strong>Platform B</strong></th><td>The manufacturer's system the report is ultimately delivered in. Column C of the Conversions tab.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>Conversion runs Input Source, then Platform A, then Platform B. All three classify the same physical damage differently, which is the problem this tool exists to solve.</p>
+    <h2>Overview</h2>
+    <p>This data dictionary defines every field the Anomaly Upload Validator processes, from the raw Input Source export columns through to the derived conversion columns in the exported XLSX. It covers field names, source column mappings, data types, classification, validation rules, and conversion output targets.</p>
+    <h2>Field Classification Key</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="data-dictionary-table-2-cap">
+    <table>
+    <caption id="data-dictionary-table-2-cap" class="sr-only">Field Classification Key</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Classification</strong></th><td><strong>Meaning</strong></td></tr>
+    <tr><th scope="row"><strong>Required</strong></th><td>Must be present and non-empty in every data row. Missing or invalid values raise an Error.</td></tr>
+    <tr><th scope="row"><strong>Conditional</strong></th><td>Optional. No flag raised if absent or empty. Format validated only when populated.</td></tr>
+    <tr><th scope="row"><strong>Check Internally</strong></th><td>Required in principle but may exist in internal records. Empty gives a Check Internally flag, not an Error, and is excluded from the compliance score.</td></tr>
+    <tr><th scope="row"><strong>Raw</strong></th><td>Source columns used only as inputs to derivation formulas. Not directly validated.</td></tr>
+    <tr><th scope="row"><strong>Derived</strong></th><td>Computed by the tool from raw source columns. Written to the output XLSX as lookup formulas.</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <h2>Column Alias Map</h2>
+    <p>The tool normalizes the following column name variants before validation. Applied silently at ingestion.</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="data-dictionary-table-3-cap">
+    <table>
+    <caption id="data-dictionary-table-3-cap" class="sr-only">Column Alias Map</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Raw Column Name</strong></th><td><strong>Normalized To</strong></td><td><strong>Notes</strong></td></tr>
+    <tr><th scope="row"><code>Date</code></th><td><code>Inspection Date</code></td><td>Input Source uses 'Date'; Platform A requires 'Inspection Date'</td></tr>
+    <tr><th scope="row"><code>Blade Chamber</code></th><td><code>BladeChamber</code></td><td>Space removed to match the Platform A column spec</td></tr>
+    <tr><th scope="row"><code>Chord (%)</code></th><td><code>Chord(%)</code></td><td>Parenthetical formatting normalized</td></tr>
+    <tr><th scope="row"><code>Turbine Serial Number</code></th><td><code>Serial Number</code></td><td>Input Source full label mapped to the Platform A short label. <strong><code>[verify]</code></strong> This alias predates the v2.5 D/E/F split and may now be ambiguous, since two serial-number fields exist.</td></tr>
+    <tr><th scope="row"><code>Links</code></th><td><code>Source Images</code></td><td>Input Source uses 'Links'; Platform A expects 'Source Images'</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>Since v2.3 the alias map is a fallback rather than the primary mechanism. Columns are matched by content as well as by name: see "Column matching" below.</p>
+    <h2>Column matching</h2>
+    <p>Added v2.3. Input files vary in column order, column names, and sheet structure, so a fixed-layout assumption failed on any file that did not match the canonical structure exactly.</p>
+    <p>The matcher runs two passes. First a header-alias match, priority-ordered so that a more specific alias wins over a general one. Second a data-shape fingerprint, comparing each candidate column's values against the expected shape of the field. Where alias matches are ambiguous, the closer shape match wins. Where shape scores tie, the column with more distinct values wins, which resolves the case of two identically named columns holding different things at different levels of the record.</p>
+    <p>The header row is detected automatically and is not assumed to be row 1: up to 25 rows of metadata preamble above the header are scanned and skipped. A collapsible confirmation panel shows which input column was bound to each canonical field.</p>
+    <h2>Field Reference</h2>
+    <p>All fields listed in the order they appear in the Damages Report output tab.</p>
+    <p><strong>Output column letters confirmed 2026-09-17</strong> against a current export header row. All previously flagged letters are resolved. The layout below is the real one, and it differs from the v2.1 document in more than position: four fields moved, two were removed, and one is new.</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="data-dictionary-table-4-cap">
+    <table>
+    <caption id="data-dictionary-table-4-cap" class="sr-only">Field Reference</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field Name</strong></th><td><strong>Col</strong></td><td><strong>Source Column(s)</strong></td><td><strong>Type</strong></td><td><strong>Classification</strong></td><td><strong>Format / Validation Rule</strong></td></tr>
+    <tr><th scope="row"><code>ID</code></th><td>A</td><td>ID</td><td>String</td><td>Required</td><td>Any non-empty value</td></tr>
+    <tr><th scope="row"><code>Site</code></th><td>B</td><td>Site</td><td>String</td><td>Required</td><td>Any non-empty value</td></tr>
+    <tr><th scope="row"><code>Turbine</code></th><td>C</td><td>Turbine</td><td>String</td><td>Required</td><td>Any non-empty value</td></tr>
+    <tr><th scope="row"><code>Asset</code></th><td>D</td><td>Blade / Asset (extracted)</td><td>String</td><td>Required</td><td>Single letter A to C. <strong>Changed at v2.5: carries the BLADE LETTER, not a turbine identifier.</strong> Extracted from a dedicated Blade column, a Blade Position column, a full label, or a bare letter.</td></tr>
+    <tr><th scope="row"><code>Turbine Serial Number</code></th><td>E</td><td>Asset (input column)</td><td>String</td><td>Conditional</td><td>New at v2.5. Carries the value previously written to the output Asset column.</td></tr>
+    <tr><th scope="row"><code>Asset Serial Number</code></th><td>F</td><td>Serial Number (input column)</td><td>String</td><td>Conditional</td><td>New at v2.5. Carries the value previously written to the output Serial Number column.</td></tr>
+    <tr><th scope="row"><code>Severity</code></th><td>G</td><td>Severity</td><td>Integer</td><td>Required</td><td>Must be exactly 1, 2, 3, 4, or 5</td></tr>
+    <tr><th scope="row"><code>Critical</code></th><td>H</td><td>Critical</td><td>String</td><td>Required. <strong>See D-5, open.</strong></td><td>"Yes" or "No", case-insensitive</td></tr>
+    <tr><th scope="row"><code>Propagation Type</code></th><td>I</td><td>Propagation Type</td><td>String</td><td>Conditional</td><td>Preserved unchanged</td></tr>
+    <tr><th scope="row"><code>Date</code></th><td>J</td><td>Date / Inspection Date (alias)</td><td>Date</td><td>Required</td><td>Must match YYYY-MM-DD exactly. <strong>The output header is <code>Date</code>, not <code>Inspection Date</code>.</strong></td></tr>
+    <tr><th scope="row"><code>OpSeverity</code></th><td>K</td><td>OpSeverity</td><td>String</td><td>Conditional</td><td>Preserved unchanged</td></tr>
+    <tr><th scope="row"><code>Monitoring Recommendation</code></th><td>L</td><td>Monitoring Recommendation</td><td>String</td><td>Conditional</td><td>Preserved unchanged</td></tr>
+    <tr><th scope="row"><code>Damage Location</code></th><td>M</td><td>Damage Location</td><td>String</td><td>Required. <strong>See D-5, open.</strong></td><td>"Internal" or "External", case-insensitive</td></tr>
+    <tr><th scope="row"><code>Component</code></th><td>N</td><td>Component</td><td>String</td><td>Raw</td><td>Base of the component concatenation</td></tr>
+    <tr><th scope="row"><code>Material</code></th><td>O</td><td>Material / Element</td><td>String</td><td>Raw</td><td>Carries the effective suffix for both formats: Material for Format A, Element for Format B. The header stays <code>Material</code> either way.</td></tr>
+    <tr><th scope="row"><code>Input Source Component</code></th><td>P</td><td>Derived</td><td>String</td><td>Derived</td><td>Concatenation of N and O. Lookup key for Q and R.</td></tr>
+    <tr><th scope="row"><code>Platform A Element</code></th><td>Q</td><td>Derived</td><td>String</td><td>Derived</td><td>Lookup on P, column 2</td></tr>
+    <tr><th scope="row"><code>Platform B Element</code></th><td>R</td><td>Derived</td><td>String</td><td>Derived</td><td>Lookup on P, column 3</td></tr>
+    <tr><th scope="row"><code>Type</code></th><td>S</td><td>Type / Anomaly Type</td><td>String</td><td>Raw</td><td>Carries the damage base for both formats: Type for Format A, Anomaly Type for Format B. The header stays <code>Type</code> either way.</td></tr>
+    <tr><th scope="row"><code>Subtype</code></th><td>T</td><td>Subtype</td><td>String</td><td>Raw</td><td>Optional. Appended to the base if non-empty.</td></tr>
+    <tr><th scope="row"><code>Input Source Damage Type</code></th><td>U</td><td>Derived</td><td>String</td><td>Derived</td><td>Concatenation of S and T. Lookup key for V and W.</td></tr>
+    <tr><th scope="row"><code>Platform A Anomaly Type</code></th><td>V</td><td>Derived</td><td>String</td><td>Derived</td><td>Lookup on U, column 2</td></tr>
+    <tr><th scope="row"><code>Platform B Anomaly Type</code></th><td>W</td><td>Derived</td><td>String</td><td>Derived</td><td>Lookup on U, column 3</td></tr>
+    <tr><th scope="row"><code>Blade Side</code></th><td>X</td><td>Blade Side</td><td>String</td><td>Required</td><td>Code 1 / Value 1 / Code 2 / Value 2 / Code 3 / Value 3 / Code 4 / Value 4</td></tr>
+    <tr><th scope="row"><code>Platform A Blade Side</code></th><td>Y</td><td>Derived</td><td>String</td><td>Derived</td><td>Direct lookup on X, column 2</td></tr>
+    <tr><th scope="row"><code>Platform B Blade Side</code></th><td>Z</td><td>Derived</td><td>String</td><td>Derived</td><td>Direct lookup on X, column 3</td></tr>
+    <tr><th scope="row"><code>Blade Chamber</code></th><td>AA</td><td>Blade Chamber</td><td>String</td><td>Conditional</td><td>Any value, no format rule. <strong>The output header is <code>Blade Chamber</code> with a space, not <code>BladeChamber</code>.</strong></td></tr>
+    <tr><th scope="row"><code>Distance (m)</code></th><td>AB</td><td>Distance (m)</td><td>Decimal</td><td>Required</td><td>Numeric, float noise cleaned to 4dp</td></tr>
+    <tr><th scope="row"><code>Length (m)</code></th><td>AC</td><td>Length (m)</td><td>Decimal</td><td>Required</td><td>Numeric, float noise cleaned to 4dp</td></tr>
+    <tr><th scope="row"><code>Width (m)</code></th><td>AD</td><td>Width (m)</td><td>Decimal</td><td>Required</td><td>Numeric, float noise cleaned to 4dp</td></tr>
+    <tr><th scope="row"><code>Chord (%)</code></th><td>AE</td><td>Chord (%)</td><td>Decimal</td><td>Conditional</td><td>Numeric if present, float noise cleaned to 4dp</td></tr>
+    <tr><th scope="row"><code>Action</code></th><td>AF</td><td>Action</td><td>String</td><td>Conditional</td><td>Preserved unchanged</td></tr>
+    <tr><th scope="row"><code>Rule</code></th><td>AG</td><td>Rule</td><td>String</td><td>Conditional</td><td>Preserved unchanged</td></tr>
+    <tr><th scope="row"><code>Coordinates</code></th><td>AH</td><td>Coordinates</td><td>String</td><td>Check Internally</td><td>At least 3 [x,y] pairs. Empty gives a Check Internally flag.</td></tr>
+    <tr><th scope="row"><code>Source Image Reference</code></th><td>AI</td><td>Source Image Reference</td><td>String</td><td>Required</td><td>Identifier, not a URL. No hyperlink attached.</td></tr>
+    <tr><th scope="row"><code>Links</code></th><td>AJ</td><td>Links</td><td>String</td><td>Required</td><td>URL value. Hyperlink attached since v2.6.</td></tr>
+    <tr><th scope="row"><code>Source Images</code></th><td>AK</td><td>Source Images</td><td>String</td><td>Required</td><td>URL value. Hyperlink attached since v2.6.</td></tr>
+    <tr><th scope="row"><code>Source Image Expiration Date</code></th><td>AL</td><td>Derived or passed through. <strong><code>[verify]</code></strong></td><td>Date</td><td><strong><code>[verify]</code></strong></td><td><strong>Not documented anywhere.</strong> Present in the current export, absent from the v2.1 dictionary and from the change log. See open items.</td></tr>
+    <tr><th scope="row"><code>Tasks</code></th><td>AM</td><td>Tasks</td><td>String</td><td>Conditional</td><td>Preserved unchanged</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>Output header names were misrendered in four of eight derived columns. FIXED in v2.7.1.</p>
+    <p><strong>Corrected in v2.7.1 (working file v8.9.1) on 2026-09-17</strong>, verified against a live export, and carried forward unchanged since. All four headers now render both company names correctly. Retained as a record of the defect and of what it showed about the "preserved intentionally" note, not as a description of current behaviour.</p>
+    <p>The defect as it stood through v2.7: two separate name errors, neither applied consistently.</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="data-dictionary-table-5-cap">
+    <table>
+    <caption id="data-dictionary-table-5-cap" class="sr-only">Field Reference</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Col</strong></th><td><strong>Header through v2.7</strong></td><td><strong>Error</strong></td></tr>
+    <tr><th scope="row">P</th><td>Source-system name, lower-cased mid-word</td><td>Casing</td></tr>
+    <tr><th scope="row">Q</th><td>Platform A name, two letters transposed</td><td>Transposition</td></tr>
+    <tr><th scope="row">R</th><td>Platform B name</td><td>Correct</td></tr>
+    <tr><th scope="row">U</th><td>Source-system name, lower-cased mid-word</td><td>Casing</td></tr>
+    <tr><th scope="row">V</th><td>Platform A name</td><td>Correct</td></tr>
+    <tr><th scope="row">W</th><td>Platform B name</td><td>Correct</td></tr>
+    <tr><th scope="row">Y</th><td>Platform A name, two letters transposed</td><td>Transposition</td></tr>
+    <tr><th scope="row">Z</th><td>Platform B name</td><td>Correct</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>Four of the eight derived columns carried a wrong rendering of a company name. Two different companies, two different kinds of error, and the same name appeared correct in one column and wrong in another.</p>
+    <p><strong>This settled how the typo item should be read.</strong> The v2.1 limitation log records the misspelling as <em>preserved intentionally</em>, which implied a downstream consumer matching on that exact string. A deliberately preserved convention would have been consistent. Four of eight, with one name spelled both ways in the same sheet, was accumulated copy error rather than convention.</p>
+    <p>Consequences worth stating plainly:</p>
+    <ul>
+    <li>A consumer matching these columns by header string had to match two spellings of one name to catch all three of its columns. Exports produced before v2.7.1 still carry the old headers, so that remains true when reading one of them.</li>
+    <li>Correcting all four was a single normalization, not a schema negotiation. Nothing depended on a misrendered form.</li>
+    <li>The question for Engineering was not "may I fix the spelling" but "what matched on those strings when they were preserved, and does it still". Answered in the closure below.</li>
+    <li><strong>Only the transposition was ever tracked, as LIM-07. The casing error was never recorded anywhere</strong> and was found during this revision. Both were corrected together in v2.7.1.</li>
+    </ul>
+    <p><strong>LIM-07: CLOSED, 2026-09-18.</strong> Closed by the v2.7.1 correction, verified against the header row of a live export read from the raw file rather than from a summary.</p>
+    <p>It is closed as <strong>copy error, not convention</strong>. The v2.1 log recorded the misspelling as <em>preserved intentionally</em>, which implied a downstream consumer matching on that exact string. Nothing did. Before the correction the tool was searched for all four misrendered strings: every occurrence was on the output side, and the input-side column matcher — both its alias map and its field signatures — contained neither spelling. No ingestion path depended on a misrendered form, so none was made tolerant of one, and files exported before the change ingest exactly as they did before. The question this document put to Engineering, "what matched on those strings when they were preserved, and does it still", is answered: nothing did, and nothing does.</p>
+    <p>The casing error takes no entry of its own. It was found and fixed within the same change, so it was never an open item.</p>
+    <p><em>Scope note: the v2.1 limitation log that holds the LIM-07 entry is not part of this sanitized document set. This records the closure; if that log is maintained separately it still shows LIM-07 open and needs the same update.</em></p>
+    <p>Sanitized note: these headers appear in this document under generic labels, so neither error surfaces here. Both are recorded because they describe every export produced up to v2.7.1, which anyone opening an older file will still see.</p>
+    <p>What changed against the v2.1 document, beyond position</p>
+    <ul>
+    <li><strong><code>Blade</code> is gone as an output column.</strong> <code>Asset</code> in column D represents it fully. This closes the open question from the v2.5 entry.</li>
+    <li><strong><code>Recommendation</code> is gone.</strong> It was listed in the v2.1 dictionary and does not appear in the current export.</li>
+    <li><strong><code>Links</code> and <code>Source Images</code> are both present as separate columns.</strong> The v2.1 alias map said <code>Links</code> normalizes <em>to</em> <code>Source Images</code>. The export carries both, so that alias entry describes ingestion only, not the output layout.</li>
+    <li><strong>Four fields moved forward.</strong> Propagation Type, OpSeverity and Monitoring Recommendation now sit at I, K and L, between Critical and Damage Location, rather than near the end. <code>Date</code> moved to J.</li>
+    <li><strong><code>Source Image Expiration Date</code> is new and undocumented.</strong></li>
+    </ul>
+    <p><strong>Note on the pass-through fields.</strong> Propagation Type, OpSeverity, Monitoring Recommendation and Tasks were defined in this document at v2.1 and were correct. What was wrong was the tool: the matcher held no field signatures for them, so it never bound the input column and the export wrote a header with nothing beneath it. Signatures were added at v2.4. The definitions did not change.</p>
+    <p>Derived Fields</p>
+    <p>Computed by the tool from raw source columns. Written as lookup formulas in the output XLSX.</p>
+    <p><strong>Column references confirmed 2026-09-17.</strong> The change log's references to a Material slot at N and a Type slot at R, and this document's previous references to O, T and W, were all <strong>pre-v2.5</strong> values. The v2.5 insertion shifted every one of them by exactly one position, which is why the two sets never reconciled. The values below are post-v2.5 and match the current export.</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="data-dictionary-table-6-cap">
+    <table>
+    <caption id="data-dictionary-table-6-cap" class="sr-only">Field Reference</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Col</strong></td><td><strong>Formula</strong></td></tr>
+    <tr><th scope="row"><code>Input Source Component</code></th><td>P</td><td><code>IF(LEN(O2)&gt;0, N2&amp;" - "&amp;O2, N2)</code></td></tr>
+    <tr><th scope="row"><code>Platform A Element</code></th><td>Q</td><td><code>IFERROR(VLOOKUP(P2, Conversions!A:C, 2, FALSE), "MANUAL REVIEW: "&amp;P2)</code></td></tr>
+    <tr><th scope="row"><code>Platform B Element</code></th><td>R</td><td><code>IFERROR(VLOOKUP(P2, Conversions!A:C, 3, FALSE), "MANUAL REVIEW: "&amp;P2)</code></td></tr>
+    <tr><th scope="row"><code>Input Source Damage Type</code></th><td>U</td><td><code>IF(LEN(T2)&gt;0, S2&amp;" - "&amp;T2, S2)</code></td></tr>
+    <tr><th scope="row"><code>Platform A Anomaly Type</code></th><td>V</td><td><code>IFERROR(VLOOKUP(U2, Conversions!A:C, 2, FALSE), "MANUAL REVIEW: "&amp;U2)</code></td></tr>
+    <tr><th scope="row"><code>Platform B Anomaly Type</code></th><td>W</td><td><code>IFERROR(VLOOKUP(U2, Conversions!A:C, 3, FALSE), "MANUAL REVIEW: "&amp;U2)</code></td></tr>
+    <tr><th scope="row"><code>Platform A Blade Side</code></th><td>Y</td><td><code>IFERROR(VLOOKUP(X2, Conversions!A:C, 2, FALSE), "MANUAL REVIEW: "&amp;X2)</code></td></tr>
+    <tr><th scope="row"><code>Platform B Blade Side</code></th><td>Z</td><td><code>IFERROR(VLOOKUP(X2, Conversions!A:C, 3, FALSE), "MANUAL REVIEW: "&amp;X2)</code></td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>Row 2 shown as the example row. <code>LEN()</code> is used rather than <code>ISBLANK()</code> because <code>ISBLANK()</code> returns FALSE for an empty-string cell, which produced a trailing separator on the derived value. Fixed at v2.1.</p>
+    <p><strong>Derivation rule, added v2.4.</strong> Any raw input value the export needs is read from the untouched input row, never from the working row. The row object is mutated during derivation, so reading a value back from it after processing returns the already-transformed value and concatenates it a second time.</p>
+    <p><strong>Format handling, added v2.4.</strong> The formulas reference the output slots rather than the raw input columns, so one formula path serves both input formats. The output Material slot carries the effective suffix, Material for Format A and Element for Format B. The output Type slot carries the damage base, Type for Format A and Anomaly Type for Format B.</p>
+    <h2>Dataset Format Variations</h2>
+    <p>Two distinct Input Source export formats are handled. Format is detected automatically.</p>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="data-dictionary-table-7-cap">
+    <table>
+    <caption id="data-dictionary-table-7-cap" class="sr-only">Dataset Format Variations</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Field</strong></th><td><strong>Format A</strong></td><td><strong>Format B</strong></td><td><strong>Detection Logic</strong></td></tr>
+    <tr><th scope="row">Element source</th><td>Component + Material</td><td>Component + Element</td><td>Check whether a Material column exists</td></tr>
+    <tr><th scope="row">Element formula</th><td><code>Component &amp; " - " &amp; Material</code></td><td><code>Component &amp; " - " &amp; Element</code></td><td><code>LEN(Material)&gt;0</code> uses Material, else Element</td></tr>
+    <tr><th scope="row">Damage Type source</th><td>Type + Subtype</td><td>Anomaly Type + Subtype</td><td>Check whether a Type column exists</td></tr>
+    <tr><th scope="row">Damage Type formula</th><td><code>Type &amp; " - " &amp; Subtype</code></td><td><code>Anomaly Type &amp; " - " &amp; Subtype</code></td><td><code>LEN(Type)&gt;0</code> uses Type, else Anomaly Type</td></tr>
+    <tr><th scope="row">Blade field</th><td>Empty, extracted from Asset</td><td>"Blade A", letter extracted</td><td>Accepts a full label, a bare letter, a Blade column, or a Blade Position column</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p><strong>Provenance note.</strong> Format B support was built against illustrative reconstructed examples and was first confirmed against a genuine Input Source export later. Treat any Format B behavior not exercised by a real file as unverified.</p>
+    <h2>Conversion Lookup Tables</h2>
+    <p>The three lookup tables live in the Conversions tab of the exported XLSX. Columns are A (Input Source) then B (Platform A) then C (Platform B).</p>
+    <p><strong>What is published here and what is not.</strong> The structure of the conversion problem is described below. The tables themselves are not, because the category names, code values and the mappings between them are the commercial property of the platforms and the manufacturers involved. The redaction is deliberate and is marked where it applies rather than left as a silent gap.</p>
+    <p><strong>Structure, which is publishable:</strong></p>
+    <ul>
+    <li>Three separate taxonomies are in play, and none of them classifies damage the same way.</li>
+    <li>The mapping between them is uneven in both directions: some source categories collapse together downstream, others split apart.</li>
+    <li>Severity is an ordinal scale.</li>
+    <li>Some source categories have no clean target at all. These are held for manual review rather than guessed at, which is why conversion is a decision with exceptions rather than a lookup.</li>
+    </ul>
+    <p>Illustrative shape only, with invented values:</p>
+    <p><code>[input category A]  -&gt;  [platform A category 2]  -&gt;  [platform B code X]</code></p>
+    <p><code>[input category B]  -&gt;  [platform A category 2]  -&gt;  [platform B code X]</code></p>
+    <p><code>[input category C]  -&gt;  (no clean target)        -&gt;  held for manual review</code></p>
+    <p>Element / Component Conversions</p>
+    <p>Lookup key: <code>Input Source Component</code>.</p>
+    <p><em>[Table withheld. See the redaction note above.]</em></p>
+    <p>Anomaly Type Conversions</p>
+    <p>Lookup key: <code>Input Source Damage Type</code>.</p>
+    <p><em>[Table withheld. See the redaction note above.]</em></p>
+    <p>Blade Side Conversions</p>
+    <p>Lookup key: <code>Blade Side</code>, a direct lookup with no concatenation.</p>
+    <p><em>[Table withheld. See the redaction note above.]</em></p>
+    <p>Table currency</p>
+    <p>The tool currently uses the original key set. A reconciled union table built from the conversion tables of genuine delivered files is staged but <strong>not wired in</strong>, pending confirmation of four conflicting mappings where the same source value resolves to different targets in files of different dates.</p>
+    <p><strong>Reconciliation rule.</strong> The tables reconcile by union, not intersection. A key absent from one client's table is a key that client's data has never needed. Absent does not mean retired, and pruning on that basis would silently drop valid mappings.</p>
+    <h2>Validation Status Reference</h2>
+    <div class="table-wrap" role="region" tabindex="0" aria-labelledby="data-dictionary-table-8-cap">
+    <table>
+    <caption id="data-dictionary-table-8-cap" class="sr-only">Validation Status Reference</caption>
+    <tbody>
+    <tr><th scope="row"><strong>Status</strong></th><td><strong>Trigger</strong></td><td><strong>Compliance Score</strong></td><td><strong>Export Gate</strong></td></tr>
+    <tr><th scope="row">Error</th><td>Required field missing or format invalid</td><td>Counts against score</td><td>Does not block export</td></tr>
+    <tr><th scope="row">Manual Review</th><td>Concatenated value not found in the conversion table</td><td>Counts against score</td><td><strong>Blocks export until resolved</strong></td></tr>
+    <tr><th scope="row">Check Internally</th><td>Field empty where the value may exist in internal records</td><td><strong>Excluded from score</strong></td><td>Does not block export</td></tr>
+    <tr><th scope="row">Warning</th><td>Conditional field format invalid</td><td>Counts against score</td><td>Does not block export</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>Manual Review flags can be resolved in bulk from within the tool rather than row by row (added v2.2). The export button stays disabled until every Manual Review flag is cleared.</p>
+    <p>Compliance Score Formula</p>
+    <p><code>Score = ROUND( cleanRows / (totalRows - checkInternallyRows) * 100, 0 )</code></p>
+    <p><code>cleanRows</code> counts rows with no issues of any kind. Check Internally rows are excluded from the denominator.</p>
+    <h2>Known Limitations</h2>
+    <ul>
+    <li>Lookup row ranges in the Damages Report are calculated at export time. Rows added beyond those ranges require the formula references to be updated by hand.</li>
+    <li>Only the first sheet of an input XLSX is processed.</li>
+    <li>Cross-field conditional validation is not implemented, for example requiring BladeChamber when Damage Location is Internal.</li>
+    <li>Duplicate anomaly ID detection is not implemented.</li>
+    <li>Manual Review resolutions are held in browser memory only and are not persisted across sessions. Bulk resolution (v2.2) reduced the cost of redoing them but did not remove it.</li>
+    <li><strong>Image links expire.</strong> The signed URLs carried in the Source Images column are time-limited by the source system, typically around a 30 day window. After expiry the link resolves to a not-found error. This is an upstream constraint rather than a tool defect, and the tool does not currently warn about it: a file processed outside the window will export links that silently fail when clicked.</li>
+    <li>One client's conversion model is severity-aware, using severity inside the lookup key together with size-threshold rules. The flat three-column lookup cannot represent it, and that client is out of scope for automated conversion until the model question is decided.</li>
+    </ul>
+    <h2>Open verification items</h2>
+    <p>Resolved 2026-09-17 by a current export header row: all output column letters, every derived-field formula reference, the classification of <code>Asset</code> and the two serial-number fields, and whether <code>Blade</code> survives as its own column. It does not.</p>
+    <p>Three items remain.</p>
+    <p>1. <strong><code>Source Image Expiration Date</code>, column AL.</strong> Present in the current export, absent from the v2.1 dictionary and absent from the change log across all six versions. Either it predates v2.1 and was never documented, or it shipped without a change-log entry. Needs classification, a source, and a format rule. The change log lists an expiry warning at ingest as a <em>deferred</em> idea, so a column already emitting the expiry date is worth reconciling against that.</p>
+    <p>2. <strong>The <code>Turbine Serial Number</code> to <code>Serial Number</code> alias.</strong> Predates the v2.5 split and now sits against two serial-number fields. Confirm which it feeds.</p>
+    <p>3. <strong>Classification of <code>Critical</code> and <code>Damage Location</code>.</strong> Open as D-5. Both currently Required, both empty in some client files and absent as columns in others, both therefore penalising the compliance score for data the client never supplies. Reclassification to Check Internally is under consideration.</p>
+    <p><em>Anomaly Upload Validator  ·  Internal Use Only  ·  v3.1.4  ·  September 2026</em></p>
+  </div>
+
+  <p class="doc-return"><a href="../anomaly-upload-validator.html">← Back to the Anomaly Upload Validator case study</a></p>
+</main>
+
+<footer class="site-footer container">
+  <div class="footer-panel" id="contact">
+    <div>
+      <h2 class="footer-title">Say hello.</h2>
+      <p>Open to product and customer success engineer roles in renewable energy, climate, and AI-native software.</p>
+      <a class="footer-email" href="mailto:kiley@kileysullivan.com">kiley@kileysullivan.com</a>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="https://www.linkedin.com/in/kiley-sullivan-87133480/">LinkedIn ↗</a>
+      <a href="../kiley-sullivan-resume.pdf">Résumé ↓</a>
+      <a href="../case-studies.html">Case studies</a>
+      <a href="../writing.html">Writing</a>
+      <a href="../metrics.html">Metrics</a>
+    </nav>
+  </div>
+  <p class="colophon"><span>Kiley Sullivan · Hawaiʻi</span><span>Built with Claude Code</span></p>
+</footer>
+</body>
+</html>

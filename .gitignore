@@ -1,0 +1,5 @@
+node_modules/
+data/index.json
+.vercel/
+.env*
+eval/results/
