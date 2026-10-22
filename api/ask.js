@@ -33,9 +33,11 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: `Keep it under ${MAX_QUESTION} characters.` });
   }
   try {
-    const { status, answer, citations } = await ask(question);
+    const { status, answer, citations, debug } = await ask(question);
     res.setHeader("cache-control", "no-store");
-    return res.status(200).json({ status, answer, citations });
+    // ?debug=1 adds chunk ids and scores for the evaluation runner. No secrets in it.
+    const withDebug = String(req.query?.debug || "") === "1";
+    return res.status(200).json(withDebug ? { status, answer, citations, debug } : { status, answer, citations });
   } catch (err) {
     console.error(err);
     return res.status(502).json({ error: "Something went wrong answering that. Try again in a minute." });
