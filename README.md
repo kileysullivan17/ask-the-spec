@@ -14,4 +14,4 @@ A small RAG app over the Anomaly Upload Validator's five published, redacted spe
 - `ANTHROPIC_API_KEY`
 - `VOYAGE_API_KEY`
 - `ANSWER_MODEL` (optional, default `claude-haiku-5-5`)
-- `MIN_DENSE` (optional refusal threshold, default `0.4`, tuned by the evaluation)
+- `MIN_DENSE` (optional refusal threshold, default `0.3`, tuned by the evaluation)
