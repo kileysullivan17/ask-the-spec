@@ -19,7 +19,14 @@ for (const item of questions) {
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ question: item.q }),
   });
-  const data = await res.json();
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.status) {
+    console.log(`${item.id} ERROR ${res.status} ${data.error || ""}`);
+    results.push({ id: item.id, q: item.q, status: "error", http: res.status, error: data.error });
+    if (res.status === 429) break;
+    await sleep(1500);
+    continue;
+  }
   const retrieved = data.debug?.retrieved || [];
   const cited = (data.citations || []).map((c) => c.id);
   const row = { id: item.id, q: item.q, status: data.status, answer: data.answer, cited, retrieved, bestDense: data.debug?.bestDense };
@@ -36,6 +43,8 @@ for (const item of questions) {
   await sleep(1500);
 }
 
+const errors = results.filter((r) => r.status === "error");
+if (errors.length) console.log(`\n${errors.length} questions errored and are not scored.`);
 const answerable = results.filter((r) => "retrievalHit" in r);
 const refusals = results.filter((r) => "refusalOk" in r);
 const pct = (n, d) => `${n} of ${d} (${Math.round((100 * n) / d)}%)`;
