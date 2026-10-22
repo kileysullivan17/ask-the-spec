@@ -5,7 +5,7 @@
 import { ask, MAX_QUESTION } from "../lib/answer.mjs";
 
 const WINDOW_MS = 60 * 60 * 1000;
-const PER_WINDOW = 20;
+const PER_WINDOW = 40;
 const seen = new Map();
 
 function limited(ip) {
