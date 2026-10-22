@@ -6,5 +6,5 @@
     "build": "node scripts/build-index.mjs",
     "eval": "node scripts/eval.mjs"
   },
-  "engines": { "node": ">=20" }
+  "engines": { "node": "22.x" }
 }
