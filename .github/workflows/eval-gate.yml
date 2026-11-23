@@ -1,0 +1,55 @@
+# Eval gate: runs the promptfoo evaluation against every successful Vercel
+# deployment and fails the commit's check if any metric drops below
+# eval/promptfoo/thresholds.json. Make "Eval gate" a required check on main to
+# block merges on it.
+#
+# Secrets:
+#   ANTHROPIC_API_KEY                 grader model (required)
+#   VERCEL_AUTOMATION_BYPASS_SECRET   only if preview deployments are protected
+
+name: Eval gate
+
+on:
+  deployment_status:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: Deployment to evaluate
+        default: https://ask.kileysullivan.com
+
+concurrency:
+  group: eval-gate-${{ github.event.deployment.sha || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  eval:
+    name: Eval gate
+    if: github.event_name == 'workflow_dispatch' || github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.deployment.sha || github.sha }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run canaries, evaluation and gate
+        env:
+          ASK_BASE_URL: ${{ github.event.deployment_status.environment_url || github.event.deployment_status.target_url || inputs.base_url }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+        run: |
+          echo "Evaluating $ASK_BASE_URL"
+          mkdir -p eval/results
+          npm run eval:gate
+
+      - name: Keep the raw results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: promptfoo-results
+          path: eval/results/promptfoo-*.json
+          if-no-files-found: ignore

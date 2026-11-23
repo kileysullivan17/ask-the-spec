@@ -1,0 +1,20 @@
+# promptfoo evaluation of Ask the Spec, run against a deployed instance.
+#   npm run eval:gate                      (live site)
+#   ASK_BASE_URL=https://<preview> npm run eval:gate
+# Needs ANTHROPIC_API_KEY for the grader model. See eval/promptfoo/README.md.
+
+description: Ask the Spec regression gate
+
+prompts:
+  - "{{question}}"
+
+providers:
+  - id: file://provider.mjs
+    label: ask-the-spec
+
+tests: file://tests.mjs
+
+evaluateOptions:
+  # The public endpoint rate-limits per visitor; stay well under it.
+  maxConcurrency: 2
+  delay: 1000

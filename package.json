@@ -5,7 +5,10 @@
   "scripts": {
     "build": "node scripts/build-index.mjs",
     "eval": "node scripts/eval.mjs",
-    "test": "node --test test/*.test.mjs"
+    "test": "node --test test/*.test.mjs",
+    "eval:canaries": "PROMPTFOO_DISABLE_TELEMETRY=1 PROMPTFOO_PASS_RATE_THRESHOLD=0 npx -y promptfoo@0.126.0 eval --no-cache --no-progress-bar -c eval/promptfoo/canaries.yaml -o eval/results/promptfoo-canaries.json",
+    "eval:pf": "PROMPTFOO_DISABLE_TELEMETRY=1 PROMPTFOO_PASS_RATE_THRESHOLD=0 npx -y promptfoo@0.126.0 eval --no-cache --no-progress-bar -c eval/promptfoo/promptfooconfig.yaml -o eval/results/promptfoo-run.json",
+    "eval:gate": "npm run eval:canaries && npm run eval:pf && node eval/promptfoo/gate.mjs eval/results/promptfoo-canaries.json eval/results/promptfoo-run.json"
   },
   "engines": {
     "node": "22.x"
