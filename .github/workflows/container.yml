@@ -77,7 +77,8 @@ jobs:
   # until those variables exist.
   deploy:
     needs: build
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.GCP_PROJECT_ID != ''
+    # Also runnable by hand from the Actions tab (Run workflow on main), to redeploy without a commit.
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main' && vars.GCP_PROJECT_ID != ''
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
