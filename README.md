@@ -83,6 +83,8 @@ docker run -p 8080:8080 -e VOYAGE_API_KEY=... -e ANTHROPIC_API_KEY=... -e BANNED
 
 `.github/workflows/container.yml` builds the image on every push and pull request, starts it, and checks health, the page, a guardrail refusal and the MCP tool list, none of which need a key. On `main` it publishes the image to GitHub Container Registry.
 
+On `main`, a second job deploys it to Google Cloud Run: it builds the embedding index (so instances serve at once instead of embedding the spec on each cold start), pushes the image to Artifact Registry, deploys with the keys read from Secret Manager, then checks the live service's health and a guardrail refusal. GitHub signs in to Google Cloud without a stored key, through Workload Identity Federation limited to this repository's `main` branch. The service scales to zero and is capped at two instances. One-time setup: `scripts/gcp-setup.sh`, run in Cloud Shell. Traces from each host are labeled (`host: cloud-run` or `vercel`), so the two can be compared in Langfuse.
+
 ### MCP server
 
 `https://ask.kileysullivan.com/mcp` serves the same spec over Streamable HTTP. It is stateless (one server per request, no sessions) and needs no sign-in. Code: `api/mcp.js` (HTTP, CORS, rate limit) and `lib/mcp-server.mjs` (the tools).

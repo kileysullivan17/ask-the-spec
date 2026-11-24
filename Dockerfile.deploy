@@ -1,0 +1,7 @@
+# The deploy image: the tested container image plus a prebuilt embedding
+# index, so a Cloud Run instance starts serving at once instead of embedding
+# the spec on every cold start. The index holds embeddings of the public,
+# redacted spec only. Built by the deploy job in .github/workflows/container.yml.
+ARG BASE
+FROM ${BASE}
+COPY --chown=node:node index.json /app/data/index.json

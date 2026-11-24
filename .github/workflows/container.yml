@@ -70,3 +70,78 @@ jobs:
           docker push "$image:latest"
           docker push "$image:${{ github.sha }}"
           echo "Published $image:latest and $image:${{ github.sha }}" >> "$GITHUB_STEP_SUMMARY"
+
+  # Deploys main to Google Cloud Run once the smoke test has passed. Signs in
+  # without keys (Workload Identity Federation); see scripts/gcp-setup.sh for
+  # the one-time setup and the four repository variables it prints. Skipped
+  # until those variables exist.
+  deploy:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.GCP_PROJECT_ID != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      PROJECT: ${{ vars.GCP_PROJECT_ID }}
+      REGION: ${{ vars.GCP_REGION }}
+      SERVICE: ask-the-spec
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: ${{ vars.GCP_DEPLOY_SA }}
+
+      - uses: google-github-actions/setup-gcloud@v3
+
+      - name: Build the embedding index
+        run: |
+          VOYAGE_API_KEY="$(gcloud secrets versions access latest --secret=VOYAGE_API_KEY --project="$PROJECT")"
+          echo "::add-mask::$VOYAGE_API_KEY"
+          export VOYAGE_API_KEY
+          npm ci --omit=dev
+          node scripts/build-index.mjs
+
+      - name: Build and push the image
+        run: |
+          image="$REGION-docker.pkg.dev/$PROJECT/ask-the-spec/ask-the-spec:${{ github.sha }}"
+          docker build -t ask-the-spec:base .
+          mkdir -p /tmp/deploy && cp data/index.json /tmp/deploy/index.json
+          docker build -f Dockerfile.deploy --build-arg BASE=ask-the-spec:base -t "$image" /tmp/deploy
+          gcloud auth configure-docker "$REGION-docker.pkg.dev" --quiet
+          docker push "$image"
+          echo "IMAGE=$image" >> "$GITHUB_ENV"
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy "$SERVICE" --project="$PROJECT" --region="$REGION" --image="$IMAGE" \
+            --service-account="ats-runtime@$PROJECT.iam.gserviceaccount.com" \
+            --allow-unauthenticated --port=8080 \
+            --cpu=1 --memory=512Mi --concurrency=20 --min-instances=0 --max-instances=2 --cpu-boost \
+            --set-env-vars=HOSTING=cloud-run \
+            --set-secrets=ANTHROPIC_API_KEY=ANTHROPIC_API_KEY:latest,VOYAGE_API_KEY=VOYAGE_API_KEY:latest,BANNED_NAMES=BANNED_NAMES:latest,LANGFUSE_PUBLIC_KEY=LANGFUSE_PUBLIC_KEY:latest,LANGFUSE_SECRET_KEY=LANGFUSE_SECRET_KEY:latest \
+            --quiet
+          url="$(gcloud run services describe "$SERVICE" --project="$PROJECT" --region="$REGION" --format='value(status.url)')"
+          echo "URL=$url" >> "$GITHUB_ENV"
+
+      - name: Check the live service
+        run: |
+          set -e
+          h=$(curl -sf --retry 5 --retry-delay 3 "$URL/health")
+          echo "$h" | grep -q '"ok":true' || { echo "::error::health not ok: $h"; exit 1; }
+          a=$(curl -sf -X POST "$URL/api/ask" -H 'content-type: application/json' -d '{"question":"Which company built this tool?"}')
+          echo "$a" | grep -q '"status":"not_covered"' || { echo "::error::guardrail did not refuse: $a"; exit 1; }
+          {
+            echo "## Deployed to Cloud Run"
+            echo ""
+            echo "- Service: $URL"
+            echo "- Image: \`$IMAGE\`"
+            echo "- Health: \`$h\`"
+          } >> "$GITHUB_STEP_SUMMARY"
