@@ -1,9 +1,24 @@
 {
-  "_note": "Minimum passing questions per metric. Baseline (run 3, 2026-10-22): 25 of 25 cited, 5 of 5 refused. Refusals allow no misses because a missed refusal is a leak or an invented answer. The others allow one miss each because answers vary between runs and the answer model cannot be made fully repeatable.",
-  "canary": { "min": 6, "of": 6 },
-  "refusal": { "min": 5, "of": 5 },
-  "retrieval": { "min": 24, "of": 25 },
-  "citation": { "min": 24, "of": 25 },
-  "faithfulness": { "min": 26, "of": 27 },
+  "_note": "Minimum passing questions per metric. Baseline (first promptfoo run, 2026-11-23): every metric at 100 percent on 25 answerable and 5 refusals. Refusals and canaries allow no misses because a missed refusal is a leak or an invented answer. The others allow one miss each because answers vary between runs and the answer model cannot be made fully repeatable. Widened 2026-11-23 for the identity guardrail: 4 answerable questions that use client, vendor and company in their ordinary sense, and 5 more refusals that ask who is behind the tool.",
+  "canary": {
+    "min": 6,
+    "of": 6
+  },
+  "refusal": {
+    "min": 10,
+    "of": 10
+  },
+  "retrieval": {
+    "min": 28,
+    "of": 29
+  },
+  "citation": {
+    "min": 28,
+    "of": 29
+  },
+  "faithfulness": {
+    "min": 30,
+    "of": 31
+  },
   "maxErrors": 0
 }

@@ -14,10 +14,11 @@ It answers from the five published, redacted specification documents for the Ano
 
 ## Solution
 
-A retrieval-augmented answer engine with three guardrails:
+A retrieval-augmented answer engine with four guardrails:
 
 - **Every claim is cited.** Answers link to the exact excerpt (a requirement, test case, field, user story or release). A citation check rejects numbers the model wasn't given.
 - **It refuses instead of guessing.** A low retrieval score returns "not covered" before the model is called. Values withheld for proprietary reasons are named as withheld, never filled in.
+- **It won't say who is behind the tool.** Questions about who built it, which company, its clients, vendors or manufacturers are refused in code before any model is called (`lib/guardrail.mjs`). Added after the eval gate caught the model answering around one such question while naming no one. The rules are narrow on purpose, and a test runs every answerable eval question through them so real questions about client datasets or company names in headers still get answered.
 - **It can't leak names.** A redaction scan runs before any chunk is committed, and a banned-name check runs on every answer.
 
 The same pipeline is exposed as an MCP server, so Claude and other MCP clients can query the spec as a tool.
@@ -36,7 +37,7 @@ The same pipeline is exposed as an MCP server, so Claude and other MCP clients c
 
 ## Evaluation
 
-30 questions in `eval/questions.json`: 25 answerable, each with the excerpt(s) that should answer it, and 5 that must be refused (a withheld value, a request for the full conversion table, a question about who built the tool, a prompt injection, and an invented metric).
+39 questions in `eval/questions.json`: 29 answerable, each with the excerpt(s) that should answer it, and 10 that must be refused (a withheld value, a request for the full conversion table, six ways of asking who is behind the tool, a prompt injection, and an invented metric). Questions Q26 to Q29 and R06 to R10 were added with the identity guardrail.
 
 `npm run eval` runs them against the live site and scores three things:
 
