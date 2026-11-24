@@ -67,6 +67,10 @@ What the evaluation changed: the refusal threshold (0.4 to 0.3), accepting group
 3. `npm run build` (the Vercel build step) embeds the chunks with Voyage into `data/index.json`.
 4. `api/ask.js` answers questions: hybrid retrieval, the low-score refusal, Claude with an answer-only-from-excerpts prompt, the citation check and the banned-name check.
 
+### Tracing
+
+Every question is traced in Langfuse (`lib/trace.mjs`): the embedding call, retrieval with each excerpt's score against the refusal threshold, the answer model's call with its token usage, the citation check, and why a question was refused when it was. Traces are tagged `web`, `mcp` or `eval` by where the question came from, so evaluation runs can be left out of the numbers. Tracing is off unless `LANGFUSE_PUBLIC_KEY` and `LANGFUSE_SECRET_KEY` are set, sends after the response so it adds no latency, and never changes or fails an answer. No IP address or other visitor detail is recorded.
+
 ### MCP server
 
 `https://ask.kileysullivan.com/mcp` serves the same spec over Streamable HTTP. It is stateless (one server per request, no sessions) and needs no sign-in. Code: `api/mcp.js` (HTTP, CORS, rate limit) and `lib/mcp-server.mjs` (the tools).
