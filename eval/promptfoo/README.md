@@ -2,7 +2,7 @@
 
 A second evaluation of Ask the Spec, built with promptfoo instead of the tooling that built the product, and wired into CI so a regression fails the deploy's check.
 
-It uses the same 30 questions as `scripts/eval.mjs` (`eval/questions.json`) and calls a deployed `/api/ask` the way a visitor does, so it tests the real retrieval, threshold, model call and citation check together.
+It uses the same questions as `scripts/eval.mjs` (`eval/questions.json`) and calls a deployed `/api/ask` the way a visitor does, so it tests the real retrieval, threshold, model call and citation check together.
 
 ## What it scores
 
@@ -58,4 +58,4 @@ ANTHROPIC_API_KEY=... ASK_BASE_URL=https://<preview-url> npm run eval:gate  # a 
 
 To block merges on it, make "Eval gate" a required status check on `main`.
 
-One full run is 30 questions to the app plus 33 grader calls.
+One full run is 39 questions to the app plus 37 grader calls (31 faithfulness checks and 6 canaries).

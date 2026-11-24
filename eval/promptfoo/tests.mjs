@@ -1,4 +1,4 @@
-// Builds the promptfoo test cases from eval/questions.json, the same 30
+// Builds the promptfoo test cases from eval/questions.json, the same
 // questions the original runner (scripts/eval.mjs) uses, so both tools score
 // one question set.
 //
