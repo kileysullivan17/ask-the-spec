@@ -71,7 +71,13 @@ jobs:
           docker push "$image:${{ github.sha }}"
           echo "Published $image:latest and $image:${{ github.sha }}" >> "$GITHUB_STEP_SUMMARY"
 
-  # Deploys main to Google Cloud Run once the smoke test has passed. Signs in
+  # Deploys main to Google Cloud Run once the smoke test has passed.
+  # Public access: this project's Google Cloud organization enforces domain
+  # restricted sharing, which blocks granting allUsers. With the owner's
+  # approval (2026-11-23), this one service is made public by turning off
+  # Cloud Run's invoker IAM check instead, the path Google documents for that
+  # case. The organization policy itself is unchanged. The service serves
+  # only the already-public, redacted spec. Signs in
   # without keys (Workload Identity Federation); see scripts/gcp-setup.sh for
   # the one-time setup and the four repository variables it prints. Skipped
   # until those variables exist.
@@ -124,7 +130,7 @@ jobs:
         run: |
           gcloud run deploy "$SERVICE" --project="$PROJECT" --region="$REGION" --image="$IMAGE" \
             --service-account="ats-runtime@$PROJECT.iam.gserviceaccount.com" \
-            --allow-unauthenticated --port=8080 \
+            --no-invoker-iam-check --port=8080 \
             --cpu=1 --memory=512Mi --concurrency=20 --min-instances=0 --max-instances=2 --cpu-boost \
             --set-env-vars=HOSTING=cloud-run \
             --set-secrets=ANTHROPIC_API_KEY=ANTHROPIC_API_KEY:latest,VOYAGE_API_KEY=VOYAGE_API_KEY:latest,BANNED_NAMES=BANNED_NAMES:latest,LANGFUSE_PUBLIC_KEY=LANGFUSE_PUBLIC_KEY:latest,LANGFUSE_SECRET_KEY=LANGFUSE_SECRET_KEY:latest \
@@ -135,9 +141,12 @@ jobs:
       - name: Check the live service
         run: |
           set -e
-          h=$(curl -sf --retry 5 --retry-delay 3 "$URL/health")
+          # Report the status code on failure, not just curl's exit code.
+          code=$(curl -s -o /tmp/health.json -w '%{http_code}' --retry 5 --retry-delay 3 --retry-all-errors "$URL/health" || true)
+          h=$(cat /tmp/health.json 2>/dev/null || true)
+          [ "$code" = 200 ] || { echo "::error::GET /health returned HTTP $code. 403 means the service is not public; 5xx means it failed to start (see its Cloud Run logs). Body: $h"; exit 1; }
           echo "$h" | grep -q '"ok":true' || { echo "::error::health not ok: $h"; exit 1; }
-          a=$(curl -sf -X POST "$URL/api/ask" -H 'content-type: application/json' -d '{"question":"Which company built this tool?"}')
+          a=$(curl -s -X POST "$URL/api/ask" -H 'content-type: application/json' -d '{"question":"Which company built this tool?"}')
           echo "$a" | grep -q '"status":"not_covered"' || { echo "::error::guardrail did not refuse: $a"; exit 1; }
           {
             echo "## Deployed to Cloud Run"
