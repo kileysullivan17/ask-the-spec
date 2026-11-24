@@ -38,6 +38,18 @@ First run, 2026-11-23, against the live site ([run](https://github.com/kileysull
 
 The grader rejected all three broken canaries in the same run, so the faithfulness score is not a grader that passes everything.
 
+After the identity guardrail and the faithfulness prompt rule (39 questions), the same eval on both hosts, 2026-11-23:
+
+| Metric | Vercel ([run](https://github.com/kileysullivan17/ask-the-spec/actions/runs/45356932710)) | Google Cloud Run ([run](https://github.com/kileysullivan17/ask-the-spec/actions/runs/45368020971)) | Minimum |
+| --- | --- | --- | --- |
+| canary | 6 of 6 | 6 of 6 | 6 |
+| refusal | 10 of 10 | 10 of 10 | 10 |
+| retrieval | 29 of 29 | 29 of 29 | 28 |
+| citation | 29 of 29 | 29 of 29 | 28 |
+| faithfulness | 31 of 31 | 31 of 31 | 30 |
+
+The Vercel figures held on three consecutive runs before the change was merged.
+
 ## Running it
 
 ```
