@@ -72,6 +72,17 @@ What the evaluation changed: the refusal threshold (0.4 to 0.3), accepting group
 
 Every question is traced in Langfuse (`lib/trace.mjs`): the embedding call, retrieval with each excerpt's score against the refusal threshold, the answer model's call with its token usage, the citation check, and why a question was refused when it was. Traces are tagged `web`, `mcp` or `eval` by where the question came from, so evaluation runs can be left out of the numbers. Tracing is off unless `LANGFUSE_PUBLIC_KEY` and `LANGFUSE_SECRET_KEY` are set, sends after the response so it adds no latency, and never changes or fails an answer. No IP address or other visitor detail is recorded.
 
+### Running it anywhere: the container
+
+The same app runs outside Vercel as a container (`Dockerfile`, `server/`). `server/index.mjs` serves the Vercel handlers and the page through a thin adapter, adds `GET /health`, and loads the index before taking traffic. `server/start.mjs` builds the embedding index at start from `data/chunks.json`, so no key is baked into the image.
+
+```
+docker build -t ask-the-spec .
+docker run -p 8080:8080 -e VOYAGE_API_KEY=... -e ANTHROPIC_API_KEY=... -e BANNED_NAMES=... ask-the-spec
+```
+
+`.github/workflows/container.yml` builds the image on every push and pull request, starts it, and checks health, the page, a guardrail refusal and the MCP tool list, none of which need a key. On `main` it publishes the image to GitHub Container Registry.
+
 ### MCP server
 
 `https://ask.kileysullivan.com/mcp` serves the same spec over Streamable HTTP. It is stateless (one server per request, no sessions) and needs no sign-in. Code: `api/mcp.js` (HTTP, CORS, rate limit) and `lib/mcp-server.mjs` (the tools).

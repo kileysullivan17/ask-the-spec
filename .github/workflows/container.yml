@@ -1,0 +1,72 @@
+# Builds the container on every push and pull request, starts it, and checks
+# that it serves: health, the page, a guardrail refusal and the MCP tool list.
+# None of those need an API key: the smoke test mounts a stand-in index and
+# asks only a question the guardrail refuses before any model call.
+# On main, the image is published to GitHub Container Registry as
+# ghcr.io/<owner>/ask-the-spec, tagged latest and with the commit SHA.
+
+name: Container
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Build
+        run: docker build -t ask-the-spec:ci .
+
+      - name: Start with a stand-in index
+        run: |
+          mkdir -p /tmp/idx
+          node -e '
+            const c = require("./data/chunks.json");
+            require("fs").writeFileSync("/tmp/idx/index.json",
+              JSON.stringify({ chunks: c.map((x) => ({ ...x, vector: [0.1, 0.2, 0.3] })) }));'
+          chmod 644 /tmp/idx/index.json
+          docker run -d --name ats -p 8080:8080 \
+            -e BANNED_NAMES=placeholder \
+            -v /tmp/idx/index.json:/app/data/index.json:ro \
+            ask-the-spec:ci
+          for i in $(seq 1 30); do curl -sf localhost:8080/health && break; sleep 1; done
+
+      - name: Smoke test
+        run: |
+          set -e
+          fail() { echo "::error::$1"; docker logs ats; exit 1; }
+          h=$(curl -sf localhost:8080/health) || fail "health check failed"
+          echo "$h" | grep -q '"ok":true' || fail "health not ok: $h"
+          curl -sf localhost:8080/ | grep -qi "<html" || fail "page not served"
+          a=$(curl -sf -X POST localhost:8080/api/ask -H 'content-type: application/json' \
+            -d '{"question":"Which company built this tool?"}') || fail "/api/ask failed"
+          echo "$a" | grep -q '"status":"not_covered"' || fail "guardrail did not refuse: $a"
+          t=$(curl -sf -X POST localhost:8080/mcp -H 'content-type: application/json' \
+            -H 'accept: application/json, text/event-stream' \
+            -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}') || fail "/mcp failed"
+          echo "$t" | grep -q '"ask_spec"' || fail "MCP tools missing: $t"
+          echo "Health: $h"
+          echo "All smoke checks passed."
+
+      - name: Publish to GitHub Container Registry
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          image=ghcr.io/$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')/ask-the-spec
+          echo "$GH_TOKEN" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          docker tag ask-the-spec:ci "$image:latest"
+          docker tag ask-the-spec:ci "$image:${{ github.sha }}"
+          docker push "$image:latest"
+          docker push "$image:${{ github.sha }}"
+          echo "Published $image:latest and $image:${{ github.sha }}" >> "$GITHUB_STEP_SUMMARY"
