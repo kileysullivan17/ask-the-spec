@@ -2,20 +2,24 @@
 # deployment and marks that commit failed if any metric drops below
 # eval/promptfoo/thresholds.json.
 #
-# Trigger: Vercel's repository_dispatch event (vercel.deployment.success),
-# which carries the deployment URL and commit. GitHub only delivers
-# repository_dispatch to workflows on the default branch, so this file must be
-# on main before it fires. It then posts an "Eval gate" commit status on the
-# deployed commit, so the result shows on the pull request and can be made a
-# required check.
+# Trigger: the "Vercel" commit status turning success, which Vercel posts on
+# every deployed commit. The status links to the deployment in the Vercel
+# dashboard; the workflow looks that deployment up through the Vercel API to
+# get its URL. Vercel's repository_dispatch event is also accepted, but this
+# project was found not to send it (2026-11-23). GitHub only delivers both
+# events to workflows on the default branch, so this file must be on main.
+# It posts an "Eval gate" commit status on the deployed commit, so the result
+# shows on the pull request and can be made a required check.
 #
 # Secrets (repository secrets):
 #   ANTHROPIC_API_KEY                 grader model (required)
+#   VERCEL_TOKEN                      looks up the deployment URL (required for the status trigger)
 #   VERCEL_AUTOMATION_BYPASS_SECRET   only if preview deployments are protected
 
 name: Eval gate
 
 on:
+  status:
   repository_dispatch:
     types: [vercel.deployment.success]
   workflow_dispatch:
@@ -29,18 +33,37 @@ permissions:
   statuses: write
 
 concurrency:
-  group: eval-gate-${{ github.event.client_payload.git.sha || github.sha }}
+  group: eval-gate-${{ github.event.client_payload.git.sha || (github.event_name == 'status' && github.event.sha) || github.sha }}
   cancel-in-progress: true
 
 jobs:
   eval:
     name: Eval gate
+    # On a status event, run only for Vercel's own success status (this
+    # workflow's "Eval gate" statuses also arrive as status events).
+    if: github.event_name != 'status' || (github.event.context == 'Vercel' && github.event.state == 'success')
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
-      SHA: ${{ github.event.client_payload.git.sha || github.sha }}
+      SHA: ${{ github.event.client_payload.git.sha || (github.event_name == 'status' && github.event.sha) || github.sha }}
       ASK_BASE_URL: ${{ github.event.client_payload.url || inputs.base_url }}
+      AUTOMATIC: ${{ github.event_name != 'workflow_dispatch' }}
     steps:
+      - name: Find the deployment URL
+        if: github.event_name == 'status'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          TARGET_URL: ${{ github.event.target_url }}
+        run: |
+          # target_url looks like https://vercel.com/<team>/<project>/<deployment id>
+          team=$(echo "$TARGET_URL" | cut -d/ -f4)
+          id=$(echo "$TARGET_URL" | cut -d/ -f6)
+          if [ -z "$VERCEL_TOKEN" ]; then echo "::error::VERCEL_TOKEN secret is not set"; exit 1; fi
+          host=$(curl -sf -H "Authorization: Bearer $VERCEL_TOKEN" \
+            "https://api.vercel.com/v13/deployments/dpl_${id}?slug=${team}" | jq -r .url)
+          if [ -z "$host" ] || [ "$host" = "null" ]; then echo "::error::Could not look up deployment $id"; exit 1; fi
+          echo "DEPLOY_URL=https://$host" >> "$GITHUB_ENV"
+
       - uses: actions/checkout@v4
         with:
           ref: ${{ env.SHA }}
@@ -50,13 +73,13 @@ jobs:
           node-version: 22
 
       - name: Mark the commit pending
-        if: github.event_name == 'repository_dispatch'
+        if: env.AUTOMATIC == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh api repos/${{ github.repository }}/statuses/$SHA \
             -f state=pending -f context="Eval gate" \
-            -f description="Evaluating $ASK_BASE_URL" \
+            -f description="Evaluating ${DEPLOY_URL:-$ASK_BASE_URL}" \
             -f target_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
       - name: Run canaries, evaluation and gate
@@ -65,6 +88,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
         run: |
+          ASK_BASE_URL="${DEPLOY_URL:-$ASK_BASE_URL}"
           case "$ASK_BASE_URL" in http*) ;; *) ASK_BASE_URL="https://$ASK_BASE_URL" ;; esac
           export ASK_BASE_URL
           echo "Evaluating $ASK_BASE_URL at $SHA"
@@ -72,7 +96,7 @@ jobs:
           npm run eval:gate
 
       - name: Report the result on the commit
-        if: always() && github.event_name == 'repository_dispatch'
+        if: always() && env.AUTOMATIC == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |

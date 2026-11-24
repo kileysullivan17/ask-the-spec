@@ -49,12 +49,13 @@ ANTHROPIC_API_KEY=... ASK_BASE_URL=https://<preview-url> npm run eval:gate  # a 
 
 ## In CI
 
-`.github/workflows/eval-gate.yml` runs on every successful Vercel deployment, using the `vercel.deployment.success` event Vercel sends to GitHub, against that deployment's URL. It then posts an "Eval gate" status on the deployed commit, so the result shows on the pull request. GitHub only delivers that event to workflows on the default branch, so the gate starts firing once this file is on `main`. It can also be run by hand against any URL from the Actions tab. It needs:
+`.github/workflows/eval-gate.yml` runs on every successful Vercel deployment. It starts when Vercel marks the commit's "Vercel" status successful, looks up that deployment's URL through the Vercel API, evaluates it, then posts an "Eval gate" status on the same commit so the result shows on the pull request. GitHub only delivers that event to workflows on the default branch, so changes to the workflow take effect once they are on `main`. It can also be run by hand against any URL from the Actions tab. It needs:
 
 - `ANTHROPIC_API_KEY` as a repository secret, for the grader.
+- `VERCEL_TOKEN` as a repository secret, scoped to the Vercel team, to look up each deployment's URL.
 - `VERCEL_AUTOMATION_BYPASS_SECRET`, only if preview deployments are protected (Vercel, Settings, Deployment Protection, Protection Bypass for Automation).
 - `BANNED_NAMES` set for the Preview environment in Vercel. Without it the app fails closed and refuses everything, and the gate fails on citation.
 
-To block merges on it, make "Eval gate" a required status check on `main`. If runs never start, check that repository dispatch events are on in the Vercel project's Git settings.
+To block merges on it, make "Eval gate" a required status check on `main`.
 
 One full run is 30 questions to the app plus 33 grader calls.
