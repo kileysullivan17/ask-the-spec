@@ -48,6 +48,8 @@ The same pipeline is exposed as an MCP server, so Claude and other MCP clients c
 
 Answers are saved for hand grading; the runner scores retrieval, citation and refusal, not correctness of wording.
 
+A second evaluation in promptfoo adds a model-graded faithfulness check, a set of grader canaries, and a CI gate that runs on every deployment. See [eval/promptfoo/README.md](eval/promptfoo/README.md).
+
 What the evaluation changed: the refusal threshold (0.4 to 0.3), accepting grouped citations like `[1][3]`, and reporting errors instead of crashing mid-run.
 
 ## Outcomes

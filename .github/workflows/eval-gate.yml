@@ -1,0 +1,90 @@
+# Eval gate: runs the promptfoo evaluation against every successful Vercel
+# deployment and marks that commit failed if any metric drops below
+# eval/promptfoo/thresholds.json.
+#
+# Trigger: Vercel's repository_dispatch event (vercel.deployment.success),
+# which carries the deployment URL and commit. GitHub only delivers
+# repository_dispatch to workflows on the default branch, so this file must be
+# on main before it fires. It then posts an "Eval gate" commit status on the
+# deployed commit, so the result shows on the pull request and can be made a
+# required check.
+#
+# Secrets (repository secrets):
+#   ANTHROPIC_API_KEY                 grader model (required)
+#   VERCEL_AUTOMATION_BYPASS_SECRET   only if preview deployments are protected
+
+name: Eval gate
+
+on:
+  repository_dispatch:
+    types: [vercel.deployment.success]
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: Deployment to evaluate
+        default: https://ask.kileysullivan.com
+
+permissions:
+  contents: read
+  statuses: write
+
+concurrency:
+  group: eval-gate-${{ github.event.client_payload.git.sha || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  eval:
+    name: Eval gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SHA: ${{ github.event.client_payload.git.sha || github.sha }}
+      ASK_BASE_URL: ${{ github.event.client_payload.url || inputs.base_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.SHA }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Mark the commit pending
+        if: github.event_name == 'repository_dispatch'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api repos/${{ github.repository }}/statuses/$SHA \
+            -f state=pending -f context="Eval gate" \
+            -f description="Evaluating $ASK_BASE_URL" \
+            -f target_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+      - name: Run canaries, evaluation and gate
+        id: gate
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+        run: |
+          case "$ASK_BASE_URL" in http*) ;; *) ASK_BASE_URL="https://$ASK_BASE_URL" ;; esac
+          export ASK_BASE_URL
+          echo "Evaluating $ASK_BASE_URL at $SHA"
+          mkdir -p eval/results
+          npm run eval:gate
+
+      - name: Report the result on the commit
+        if: always() && github.event_name == 'repository_dispatch'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "${{ steps.gate.outcome }}" = "success" ]; then s=success; d="All metrics at or above thresholds"; else s=failure; d="Below threshold or errored; see the run summary"; fi
+          gh api repos/${{ github.repository }}/statuses/$SHA \
+            -f state=$s -f context="Eval gate" -f description="$d" \
+            -f target_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+      - name: Keep the raw results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: promptfoo-results
+          path: eval/results/promptfoo-*.json
+          if-no-files-found: ignore

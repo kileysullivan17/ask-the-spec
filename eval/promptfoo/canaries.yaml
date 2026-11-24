@@ -1,0 +1,14 @@
+# Grader canaries: run before the main evaluation. See canaries.mjs.
+#   npm run eval:canaries
+description: Ask the Spec grader canaries
+
+# The echo provider returns the prompt unchanged, so each canary's prepared
+# answer reaches the grader exactly as written.
+prompts:
+  - "{{canned | safe}}"
+
+providers:
+  - id: echo
+    label: canary
+
+tests: file://canaries.mjs

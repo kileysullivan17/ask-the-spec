@@ -3,3 +3,4 @@ data/index.json
 .vercel/
 .env*
 eval/results/*.tmp
+eval/results/promptfoo-*.json
