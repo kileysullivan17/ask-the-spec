@@ -24,6 +24,20 @@ A model-graded score is only worth something if the grader catches bad answers. 
 
 `thresholds.json` sets the minimum passing count per metric. Refusals and canaries allow no misses, since a missed refusal is a leak or an invented answer. The others allow one miss each, because answers vary between runs and the answer model can't be made fully repeatable. Promptfoo's own exit code is turned off (`PROMPTFOO_PASS_RATE_THRESHOLD=0`); `gate.mjs` decides, prints a table and every miss, and writes the same report to the GitHub job summary.
 
+## Results
+
+First run, 2026-11-23, against the live site ([run](https://github.com/kileysullivan17/ask-the-spec/actions/runs/45345251852)):
+
+| Metric | Passed | Minimum |
+| --- | --- | --- |
+| canary | 6 of 6 | 6 |
+| refusal | 5 of 5 | 5 |
+| retrieval | 25 of 25 | 24 |
+| citation | 25 of 25 | 24 |
+| faithfulness | 27 of 27 | 26 |
+
+The grader rejected all three broken canaries in the same run, so the faithfulness score is not a grader that passes everything.
+
 ## Running it
 
 ```
