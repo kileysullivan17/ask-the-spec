@@ -64,11 +64,11 @@ jobs:
           if [ -z "$host" ] || [ "$host" = "null" ]; then echo "::error::Could not look up deployment $id"; exit 1; fi
           echo "DEPLOY_URL=https://$host" >> "$GITHUB_ENV"
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: ${{ env.SHA }}
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
 
@@ -107,7 +107,7 @@ jobs:
 
       - name: Keep the raw results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: promptfoo-results
           path: eval/results/promptfoo-*.json
