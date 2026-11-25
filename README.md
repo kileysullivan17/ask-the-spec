@@ -70,7 +70,7 @@ What the evaluation changed: the refusal threshold (0.4 to 0.3), accepting group
 
 ### Tracing
 
-Every question is traced in Langfuse (`lib/trace.mjs`): the embedding call, retrieval with each excerpt's score against the refusal threshold, the answer model's call with its token usage, the citation check, and why a question was refused when it was. Traces are tagged `web`, `mcp` or `eval` by where the question came from, so evaluation runs can be left out of the numbers. Tracing is off unless `LANGFUSE_PUBLIC_KEY` and `LANGFUSE_SECRET_KEY` are set, sends after the response so it adds no latency, and never changes or fails an answer. No IP address or other visitor detail is recorded.
+Every question is traced in Langfuse (`lib/trace.mjs`), and each trace holds only what is needed to judge quality and cost: the question, the answer, its citations, whether it was refused, the trace's timing, and the embedding and answer calls with their model name and token usage, from which Langfuse prices each question. Two tags make the numbers usable: where the question came from (`web`, `mcp` or `eval`, so evaluation runs can be left out) and which host served it (`vercel` or `cloud-run`). No retrieval scores, prompts, raw model output, IP address or other visitor detail is recorded. The page tells visitors that questions and answers are logged. Tracing is off unless `LANGFUSE_PUBLIC_KEY` and `LANGFUSE_SECRET_KEY` are set, sends after the response so it adds no latency, and never changes or fails an answer.
 
 ### Running it anywhere: the container
 
