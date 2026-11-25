@@ -147,3 +147,10 @@ test("findChunk prefers an exact label over prefix matches", () => {
   assert.ok(hits.length >= 1);
   assert.ok(hits.every((c) => c.label.toUpperCase().startsWith("V2.5") || c.section.toUpperCase().startsWith("V2.5")));
 });
+
+test("tells clients that ask_spec questions and answers are logged", async () => {
+  assert.match(client.getInstructions() || "", /ask_spec and their answers are logged/);
+  const { tools } = await client.listTools();
+  const ask = tools.find((t) => t.name === "ask_spec");
+  assert.match(ask.description, /Questions and answers are logged/);
+});
