@@ -10,7 +10,7 @@ A spec spread across five documents is hard to query. The answer to "why did thi
 
 ## User
 
-[CONFIRM] Anyone reading the Validator's spec: the people who use the tool, and reviewers who want to see how it was specified without reading all five documents.
+Two kinds of reader: people who use the Anomaly Upload Validator and need one answer from its spec, and reviewers who want to see how it was specified without reading all five documents.
 
 ## Solution
 
@@ -78,11 +78,12 @@ An answered question costs about $0.00036, almost all of it the answer call (a m
 
 ## Outcomes
 
-[CONFIRM] What you've seen since launch: who has used it, questions asked, anything a reviewer or interviewer said.
+Ask the Spec has been live since October 22, 2026. On November 23 the eval gate passed all 39 questions on both Vercel and Cloud Run, and it now runs on every deploy. The gate has already earned its place: it caught an answer that talked around who is behind the tool, which led to the identity guardrail and the faithfulness rule. An answered question costs about $0.00036, so the $20 monthly cap covers roughly 55,000 answers. Real use is still light.
 
 ## What I'd do differently
 
-[YOUR WORDS] Two or three honest lessons.
+- **I trusted the prompt too long.** The identity question was handled by instructions to the model until the gate showed an answer that technically named no one but still went around the question. A rule in code was the right fix from the start.
+- **A grader needs its own test.** I almost took the faithfulness scores at face value. Adding canaries that the grader has to fail is what made the score worth reporting.
 
 ## How it works
 
