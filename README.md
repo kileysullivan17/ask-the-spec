@@ -6,11 +6,11 @@ It answers from the five published, redacted specification documents for the Ano
 
 ## Problem
 
-[CONFIRM] A spec spread across five documents is hard to query. The answer to "why did this field stop blocking uploads?" can live in a release note, a requirement and a test case at once. Readers either search each document by hand or ask the person who wrote it.
+A spec spread across five documents is hard to query. The answer to "why did this field stop blocking uploads?" can live in a release note, a requirement and a test case at once. Readers either search each document by hand or ask the person who wrote it.
 
 ## User
 
-[CONFIRM] Anyone reading the Validator's spec: the people who use the tool, and reviewers who want to see how it was specified without reading all five documents.
+Two kinds of reader: people who use the Anomaly Upload Validator and need one answer from its spec, and reviewers who want to see how it was specified without reading all five documents.
 
 ## Solution
 
@@ -39,27 +39,51 @@ The same pipeline is exposed as an MCP server, so Claude and other MCP clients c
 
 39 questions in `eval/questions.json`: 29 answerable, each with the excerpt(s) that should answer it, and 10 that must be refused (a withheld value, a request for the full conversion table, six ways of asking who is behind the tool, a prompt injection, and an invented metric). Questions Q26 to Q29 and R06 to R10 were added with the identity guardrail.
 
-`npm run eval` runs them against the live site and scores three things:
+`npm run eval` runs them against the live site and scores three things. Its last recorded run was on the original 30 questions (25 answerable, 5 to refuse), on 2026-10-22, the third of three that day:
 
 | Metric | Result |
 | --- | --- |
-| Right section retrieved (in the top 5) | [EVAL RESULT] |
-| Right section cited in the answer | [EVAL RESULT] |
-| Correct refusals | [EVAL RESULT] |
+| Right section retrieved (in the top 5) | 25 of 25 |
+| Right section cited in the answer | 25 of 25 |
+| Correct refusals | 5 of 5 |
 
 Answers are saved for hand grading; the runner scores retrieval, citation and refusal, not correctness of wording.
 
-A second evaluation in promptfoo adds a model-graded faithfulness check, a set of grader canaries, and a CI gate that runs on every deployment. See [eval/promptfoo/README.md](eval/promptfoo/README.md).
+A second evaluation in promptfoo adds a model-graded faithfulness check, a set of grader canaries, and a CI gate that runs on every deployment. On all 39 questions, 2026-11-23:
+
+| Metric | Vercel | Google Cloud Run | Minimum |
+| --- | --- | --- | --- |
+| Canaries judged correctly | 6 of 6 | 6 of 6 | 6 |
+| Correct refusals | 10 of 10 | 10 of 10 | 10 |
+| Right section retrieved | 29 of 29 | 29 of 29 | 28 |
+| Right section cited | 29 of 29 | 29 of 29 | 28 |
+| Faithful to its citations | 31 of 31 | 31 of 31 | 30 |
+
+Details, thresholds and run links: [eval/promptfoo/README.md](eval/promptfoo/README.md).
 
 What the evaluation changed: the refusal threshold (0.4 to 0.3), accepting grouped citations like `[1][3]`, and reporting errors instead of crashing mid-run.
 
+## Time and cost
+
+From 918 eval questions traced in Langfuse on 2026-11-24 and 25 (test traffic, so live numbers will replace these):
+
+| Questions | Count | Median server time | 95th percentile |
+| --- | --- | --- | --- |
+| Answered | 737 | 2.1 s | 3.3 s |
+| Answered on Vercel | 248 | 2.2 s | 3.4 s |
+| Answered on Cloud Run | 62 | 2.1 s | 3.2 s |
+| Identity questions refused in code | 96 | 0 ms | 1 ms |
+
+An answered question costs about $0.00036, almost all of it the answer call (a median of 1,434 tokens in and 335 out on Claude Haiku 5.5, at $0.10 and $0.50 per million tokens). The query embedding is about 9 tokens on voyage-3.5. Langfuse has no price for voyage-3.5, so that part uses Voyage's list price of $0.06 per million tokens. A question refused by the identity guardrail costs nothing, since no model is called.
+
 ## Outcomes
 
-[CONFIRM] What you've seen since launch: who has used it, questions asked, anything a reviewer or interviewer said.
+Ask the Spec has been live since October 22, 2026. On November 23 the eval gate passed all 39 questions on both Vercel and Cloud Run, and it now runs on every deploy. The gate has already earned its place: it caught an answer that talked around who is behind the tool, which led to the identity guardrail and the faithfulness rule. An answered question costs about $0.00036, so the $20 monthly cap covers roughly 55,000 answers. Real use is still light.
 
 ## What I'd do differently
 
-[YOUR WORDS] Two or three honest lessons.
+- **I trusted the prompt too long.** The identity question was handled by instructions to the model until the gate showed an answer that technically named no one but still went around the question. A rule in code was the right fix from the start.
+- **A grader needs its own test.** I almost took the faithfulness scores at face value. Adding canaries that the grader has to fail is what made the score worth reporting.
 
 ## How it works
 
@@ -70,7 +94,7 @@ What the evaluation changed: the refusal threshold (0.4 to 0.3), accepting group
 
 ### Tracing
 
-Every question is traced in Langfuse (`lib/trace.mjs`), and each trace holds only what is needed to judge quality and cost: the question, the answer, its citations, whether it was refused, the trace's timing, and the embedding and answer calls with their model name and token usage, from which Langfuse prices each question. Two tags make the numbers usable: where the question came from (`web`, `mcp` or `eval`, so evaluation runs can be left out) and which host served it (`vercel` or `cloud-run`). No retrieval scores, prompts, raw model output, IP address or other visitor detail is recorded. The page tells visitors that questions and answers are logged. Tracing is off unless `LANGFUSE_PUBLIC_KEY` and `LANGFUSE_SECRET_KEY` are set, sends after the response so it adds no latency, and never changes or fails an answer.
+Every question is traced in Langfuse (`lib/trace.mjs`), and each trace holds only what is needed to judge quality and cost: the question, the answer, its citations, whether it was refused, the trace's timing, and the embedding and answer calls with their model name and token usage, from which Langfuse prices each question. Two tags make the numbers usable: where the question came from (`web`, `mcp` or `eval`, so evaluation runs can be left out) and which host served it (`vercel` or `cloud-run`). Since this was narrowed on 2026-11-25 (04:35 UTC), no retrieval scores, prompts, raw model output, IP address or other visitor detail is recorded. Traces from before that, the first day of tracing, also hold retrieval scores, the retrieved excerpt ids, refusal reasons and the raw model output; none hold an IP address or other visitor detail. The page tells visitors that questions and answers are logged. Tracing is off unless `LANGFUSE_PUBLIC_KEY` and `LANGFUSE_SECRET_KEY` are set, sends after the response so it adds no latency, and never changes or fails an answer.
 
 ### Running it anywhere: the container
 
